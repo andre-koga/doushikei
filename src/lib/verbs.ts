@@ -16,7 +16,7 @@ export interface ConjugationOption {
 }
 
 export const tenseOptions: ConjugationOption[] = [
-    { id: 'present', label: 'Present (Non-past)', description: '現在形' },
+    { id: 'present', label: 'Present', description: '現在形' },
     { id: 'past', label: 'Past', description: '過去形' },
     { id: 'teForm', label: 'Te-form', description: 'て形' },
     { id: 'potential', label: 'Potential', description: '可能形' },
@@ -32,8 +32,8 @@ export const polarityOptions: ConjugationOption[] = [
 ];
 
 export const formalityOptions: ConjugationOption[] = [
-    { id: 'plain', label: 'Plain (だ/である)', description: '普通形' },
-    { id: 'polite', label: 'Polite (です/ます)', description: '丁寧形' },
+    { id: 'plain', label: 'Plain', description: '普通形' },
+    { id: 'polite', label: 'Polite', description: '丁寧形' },
 ];
 
 // Sample verb list

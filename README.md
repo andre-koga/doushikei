@@ -8,6 +8,8 @@ A Svelte and Tailwind CSS application for practicing Japanese verb conjugation. 
   - Tenses: present/non-past, past, te-form, potential, passive, causative, imperative, volitional
   - Polarity: affirmative, negative
   - Formality: plain (casual), polite (です/ます)
+- **Romaji input support**: Type your answers using the Latin alphabet, and they'll be automatically converted to Japanese characters
+- Real-time conversion preview shows how your romaji will be converted
 - Immediate feedback on your answers
 - Track your progress with a score system
 - Learn the correct conjugations for both ichidan and godan verbs
@@ -39,11 +41,23 @@ pnpm run dev
 ## How to Use
 
 1. Select the tense, polarity, and formality level you want to practice
-2. A random Japanese verb will be displayed with its meaning
-3. Type the correctly conjugated form in the input field
-4. Click "Check" to verify your answer
-5. If incorrect, you can click "Show Answer" to see the correct conjugation
-6. Click "Next Verb" to continue practicing with a new verb
+2. Toggle the "Use Romaji Input" checkbox according to your preference:
+   - When enabled, you can type using the Latin alphabet (e.g., "tabemasu")
+   - The app will automatically convert your input to Japanese characters
+3. A random Japanese verb will be displayed with its meaning
+4. Type the correctly conjugated form in the input field
+5. Click "Check" to verify your answer
+6. If incorrect, you can click "Show Answer" to see the correct conjugation
+7. Click "Next Verb" to continue practicing with a new verb
+
+## Romaji Conversion Examples
+
+- "tabemasu" → "たべます"
+- "nomimashita" → "のみました"
+- "ikimasu" → "いきます"
+- "kakimasen" → "かきません"
+- "tabeta" → "たべた"
+- "yomemasu" → "よめます"
 
 ## Built With
 
@@ -66,4 +80,4 @@ This project is open source and available under the MIT License.
 
 ---
 
-日本語動詞の活用を練習するためのアプリです。ぜひ使ってみてください！
+日本語動詞の活用を練習するためのアプリです。ローマ字で入力することもできます！ぜひ使ってみてください！

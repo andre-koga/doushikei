@@ -2,11 +2,9 @@
 	import { onMount } from 'svelte';
 	import { verbs, tenseOptions, polarityOptions, formalityOptions, type Verb } from '$lib/verbs';
 	import { conjugateVerb, checkAnswer } from '$lib/conjugation';
+	import { romajiToJapanese, isRomaji } from '$lib/romaji';
 
 	// State variables
-	let selectedTense = tenseOptions[0].id;
-	let selectedPolarity = polarityOptions[0].id;
-	let selectedFormality = formalityOptions[0].id;
 	let currentVerb: Verb | null = null;
 	let userAnswer = '';
 	let feedback = '';
@@ -15,6 +13,65 @@
 	let score = 0;
 	let attempts = 0;
 	let correctAnswer = '';
+	let useRomaji = true; // Default to using romaji input for better accessibility
+	let convertedAnswer = ''; // To show the conversion from romaji to Japanese
+	let answerInput: HTMLInputElement | null = null; // Reference to the input element
+	let remainingAttempts = 3; // Number of attempts allowed per question
+	let currentAttempt = 0; // Current attempt count for the current question
+
+	// Replace single selections with arrays of enabled options
+	let enabledTenses = tenseOptions.map((t) => t.id); // Start with all enabled
+	let enabledPolarities = polarityOptions.map((p) => p.id); // Start with all enabled
+	let enabledFormalities = formalityOptions.map((f) => f.id); // Start with all enabled
+
+	// Currently selected options for the current question
+	let currentTense = '';
+	let currentPolarity = '';
+	let currentFormality = '';
+
+	// Global keyboard event handler
+	function handleGlobalKeyDown(event: KeyboardEvent) {
+		// If Enter key is pressed and we're at the "Next Verb" stage
+		if (event.key === 'Enter' && (isCorrect || showAnswer)) {
+			newQuestion();
+			event.preventDefault(); // Prevent default behavior
+		}
+	}
+
+	// Function to check if text contains kanji characters
+	function hasKanji(text: string): boolean {
+		// Check for kanji characters (CJK Unified Ideographs)
+		return /[\u4e00-\u9faf]/.test(text);
+	}
+
+	// Function to get hiragana version of the answer if it contains kanji
+	function getHiraganaVersion(text: string): string | null {
+		// This is a simplified function to show the hiragana reading
+		// for verbs we know. In a real app, you might use a more comprehensive
+		// kanji-to-hiragana conversion or get it from the verb data
+
+		// Map common kanji in our verbs to hiragana
+		const kanjiMap: Record<string, string> = {
+			行: 'い',
+			来: 'く',
+			食: 'た',
+			飲: 'の',
+			見: 'み',
+			読: 'よ',
+			書: 'か',
+			話: 'はな',
+			買: 'か'
+		};
+
+		if (!hasKanji(text)) return null;
+
+		let result = text;
+		Object.entries(kanjiMap).forEach(([kanji, hiragana]) => {
+			result = result.replaceAll(kanji, hiragana);
+		});
+
+		return result !== text ? result : null;
+	}
 
 	// Get a random verb from our list
 	function getRandomVerb(): Verb {
@@ -22,22 +79,67 @@
 		return verbs[randomIndex];
 	}
 
+	// Get a random option from an enabled list
+	function getRandomOption<T>(options: T[], enabledOptions: T[]): T {
+		// If no options are enabled, enable all options
+		if (enabledOptions.length === 0) {
+			return options[Math.floor(Math.random() * options.length)];
+		}
+
+		// Otherwise, select randomly from enabled options
+		const randomIndex = Math.floor(Math.random() * enabledOptions.length);
+		return enabledOptions[randomIndex];
+	}
+
+	// Focus the input field
+	function focusInput() {
+		if (answerInput && !isCorrect && !showAnswer) {
+			setTimeout(() => {
+				answerInput?.focus();
+			}, 50);
+		}
+	}
+
 	// Start a new question
 	function newQuestion() {
 		currentVerb = getRandomVerb();
 		userAnswer = '';
+		convertedAnswer = '';
 		feedback = '';
 		isCorrect = false;
 		showAnswer = false;
+		currentAttempt = 0;
+		remainingAttempts = 3;
+
+		// Select random conjugation options from enabled lists
+		currentTense = getRandomOption(
+			tenseOptions.map((t) => t.id),
+			enabledTenses
+		);
+		currentPolarity = getRandomOption(
+			polarityOptions.map((p) => p.id),
+			enabledPolarities
+		);
+		currentFormality = getRandomOption(
+			formalityOptions.map((f) => f.id),
+			enabledFormalities
+		);
 
 		// Compute the correct answer in advance
 		if (currentVerb) {
-			correctAnswer = conjugateVerb(
-				currentVerb,
-				selectedTense,
-				selectedPolarity,
-				selectedFormality
-			);
+			correctAnswer = conjugateVerb(currentVerb, currentTense, currentPolarity, currentFormality);
+		}
+
+		// Focus the input field for the new question
+		focusInput();
+	}
+
+	// Process user input for romaji conversion
+	function processInput() {
+		if (useRomaji && isRomaji(userAnswer)) {
+			convertedAnswer = romajiToJapanese(userAnswer);
+		} else {
+			convertedAnswer = userAnswer;
 		}
 	}
 
@@ -45,15 +147,42 @@
 	function checkUserAnswer() {
 		if (!currentVerb || !userAnswer.trim()) return;
 
+		// Increment attempt counters
 		attempts++;
+		currentAttempt++;
 
-		if (checkAnswer(correctAnswer, userAnswer)) {
+		// Process input first in case it's romaji
+		processInput();
+
+		// Check if the converted answer is correct
+		if (checkAnswer(correctAnswer, convertedAnswer)) {
 			feedback = '正解！ (Correct!)';
 			isCorrect = true;
 			score++;
 		} else {
-			feedback = '不正解 (Incorrect)';
-			isCorrect = false;
+			remainingAttempts--;
+			if (remainingAttempts > 0) {
+				feedback = `不正解 (Incorrect) - ${remainingAttempts} ${remainingAttempts === 1 ? 'attempt' : 'attempts'} remaining`;
+				// Clear the input and focus it for next attempt
+				userAnswer = '';
+				convertedAnswer = '';
+				focusInput();
+			} else {
+				feedback = '不正解 (Incorrect)';
+				isCorrect = false;
+				// Automatically show the answer after three incorrect attempts
+				showAnswer = true;
+			}
+		}
+	}
+
+	// Handle key press in the input field
+	function handleKeyDown(event: KeyboardEvent) {
+		// If Enter key is pressed while answering
+		if (event.key === 'Enter' && !isCorrect && !showAnswer && remainingAttempts > 0) {
+			checkUserAnswer();
+			event.preventDefault();
+			event.stopPropagation(); // Stop the event from bubbling up to the document level
 		}
 	}
 
@@ -69,17 +198,103 @@
 		newQuestion();
 	}
 
-	// Watch for changes in the selected options and generate a new question
+	// Toggle romaji input mode
+	function toggleRomajiMode() {
+		// Toggle the flag
+		useRomaji = !useRomaji;
+
+		// Clear the input fields
+		userAnswer = '';
+		convertedAnswer = '';
+
+		// Force a UI update and focus the input
+		setTimeout(() => {
+			// Ensure the toggle state is properly reflected in the UI
+			useRomaji = useRomaji;
+			focusInput();
+		}, 10);
+	}
+
+	// Toggle an option in a list
+	function toggleOption(optionId: string, optionsList: string[]): string[] {
+		if (optionsList.includes(optionId)) {
+			// Remove if already included
+			return optionsList.filter((id) => id !== optionId);
+		} else {
+			// Add if not included
+			return [...optionsList, optionId];
+		}
+	}
+
+	// Toggle functions for each category
+	function toggleTense(tenseId: string) {
+		enabledTenses = toggleOption(tenseId, enabledTenses);
+		// Ensure at least one option is selected
+		if (enabledTenses.length === 0) {
+			enabledTenses = [tenseId];
+		}
+	}
+
+	function togglePolarity(polarityId: string) {
+		enabledPolarities = toggleOption(polarityId, enabledPolarities);
+		// Ensure at least one option is selected
+		if (enabledPolarities.length === 0) {
+			enabledPolarities = [polarityId];
+		}
+	}
+
+	function toggleFormality(formalityId: string) {
+		enabledFormalities = toggleOption(formalityId, enabledFormalities);
+		// Ensure at least one option is selected
+		if (enabledFormalities.length === 0) {
+			enabledFormalities = [formalityId];
+		}
+	}
+
+	// Toggle all options in a category
+	function toggleAllTenses(enable: boolean) {
+		enabledTenses = enable ? tenseOptions.map((t) => t.id) : [tenseOptions[0].id];
+	}
+
+	function toggleAllPolarities(enable: boolean) {
+		enabledPolarities = enable ? polarityOptions.map((p) => p.id) : [polarityOptions[0].id];
+	}
+
+	function toggleAllFormalities(enable: boolean) {
+		enabledFormalities = enable ? formalityOptions.map((f) => f.id) : [formalityOptions[0].id];
+	}
+
+	// When user input changes, update the conversion
 	$: {
-		if (selectedTense && selectedPolarity && selectedFormality) {
-			newQuestion();
+		if (userAnswer && useRomaji && isRomaji(userAnswer)) {
+			convertedAnswer = romajiToJapanese(userAnswer);
+		} else if (userAnswer) {
+			convertedAnswer = userAnswer;
+		} else {
+			convertedAnswer = '';
 		}
 	}
 
 	// Initialize on component mount
 	onMount(() => {
 		newQuestion();
+
+		// Add global keyboard event listener
+		document.addEventListener('keydown', handleGlobalKeyDown);
+
+		// Cleanup function to remove event listener when component unmounts
+		return () => {
+			document.removeEventListener('keydown', handleGlobalKeyDown);
+		};
 	});
+
+	// Get hiragana version of the current correct answer if it contains kanji
+	$: hiraganaAnswer = getHiraganaVersion(correctAnswer);
+
+	// Get the current options for display
+	$: currentTenseOption = tenseOptions.find((t) => t.id === currentTense);
+	$: currentPolarityOption = polarityOptions.find((p) => p.id === currentPolarity);
+	$: currentFormalityOption = formalityOptions.find((f) => f.id === currentFormality);
 </script>
 
 <main class="container mx-auto max-w-4xl px-4 py-8">
@@ -87,47 +302,161 @@
 	<h2 class="mb-8 text-center text-xl font-semibold">Japanese Verb Conjugation Practice</h2>
 
 	<div class="mb-8 rounded-lg bg-white p-6 shadow-lg">
-		<div class="mb-6 grid gap-4 md:grid-cols-3">
+		<div class="mb-6 grid gap-6 md:grid-cols-3">
 			<!-- Tense Selection -->
 			<div class="space-y-2">
-				<label for="tense" class="block font-medium">Tense/Form</label>
-				<select
-					id="tense"
-					bind:value={selectedTense}
-					class="w-full rounded-md border p-2 focus:ring focus:ring-indigo-200"
-				>
+				<div class="flex items-center justify-between">
+					<h3 class="font-medium">Tense/Form</h3>
+					<div class="flex gap-2">
+						<button
+							class="rounded bg-indigo-100 px-2 py-1 text-xs hover:bg-indigo-200"
+							on:click={() => toggleAllTenses(true)}
+						>
+							Select All
+						</button>
+						<button
+							class="rounded bg-gray-100 px-2 py-1 text-xs hover:bg-gray-200"
+							on:click={() => toggleAllTenses(false)}
+						>
+							Clear
+						</button>
+					</div>
+				</div>
+				<div class="flex flex-wrap gap-2">
 					{#each tenseOptions as option}
-						<option value={option.id}>{option.label} ({option.description})</option>
+						<button
+							class="rounded-md px-3 py-1 text-sm transition-colors"
+							class:bg-indigo-600={enabledTenses.includes(option.id)}
+							class:text-white={enabledTenses.includes(option.id)}
+							class:bg-gray-100={!enabledTenses.includes(option.id)}
+							class:hover:bg-indigo-700={enabledTenses.includes(option.id)}
+							class:hover:bg-gray-200={!enabledTenses.includes(option.id)}
+							on:click={() => toggleTense(option.id)}
+						>
+							{option.label}
+						</button>
 					{/each}
-				</select>
+				</div>
+				<div class="mt-1 text-xs text-gray-500">
+					{enabledTenses.length} of {tenseOptions.length} selected
+				</div>
 			</div>
 
 			<!-- Polarity Selection -->
 			<div class="space-y-2">
-				<label for="polarity" class="block font-medium">Polarity</label>
-				<select
-					id="polarity"
-					bind:value={selectedPolarity}
-					class="w-full rounded-md border p-2 focus:ring focus:ring-indigo-200"
-				>
+				<div class="flex items-center justify-between">
+					<h3 class="font-medium">Polarity</h3>
+					<div class="flex gap-2">
+						<button
+							class="rounded bg-indigo-100 px-2 py-1 text-xs hover:bg-indigo-200"
+							on:click={() => toggleAllPolarities(true)}
+						>
+							Select All
+						</button>
+						<button
+							class="rounded bg-gray-100 px-2 py-1 text-xs hover:bg-gray-200"
+							on:click={() => toggleAllPolarities(false)}
+						>
+							Clear
+						</button>
+					</div>
+				</div>
+				<div class="flex flex-wrap gap-2">
 					{#each polarityOptions as option}
-						<option value={option.id}>{option.label} ({option.description})</option>
+						<button
+							class="rounded-md px-3 py-1 text-sm transition-colors"
+							class:bg-indigo-600={enabledPolarities.includes(option.id)}
+							class:text-white={enabledPolarities.includes(option.id)}
+							class:bg-gray-100={!enabledPolarities.includes(option.id)}
+							class:hover:bg-indigo-700={enabledPolarities.includes(option.id)}
+							class:hover:bg-gray-200={!enabledPolarities.includes(option.id)}
+							on:click={() => togglePolarity(option.id)}
+						>
+							{option.label}
+						</button>
 					{/each}
-				</select>
+				</div>
+				<div class="mt-1 text-xs text-gray-500">
+					{enabledPolarities.length} of {polarityOptions.length} selected
+				</div>
 			</div>
 
 			<!-- Formality Selection -->
 			<div class="space-y-2">
-				<label for="formality" class="block font-medium">Formality</label>
-				<select
-					id="formality"
-					bind:value={selectedFormality}
-					class="w-full rounded-md border p-2 focus:ring focus:ring-indigo-200"
-				>
+				<div class="flex items-center justify-between">
+					<h3 class="font-medium">Formality</h3>
+					<div class="flex gap-2">
+						<button
+							class="rounded bg-indigo-100 px-2 py-1 text-xs hover:bg-indigo-200"
+							on:click={() => toggleAllFormalities(true)}
+						>
+							Select All
+						</button>
+						<button
+							class="rounded bg-gray-100 px-2 py-1 text-xs hover:bg-gray-200"
+							on:click={() => toggleAllFormalities(false)}
+						>
+							Clear
+						</button>
+					</div>
+				</div>
+				<div class="flex flex-wrap gap-2">
 					{#each formalityOptions as option}
-						<option value={option.id}>{option.label} ({option.description})</option>
+						<button
+							class="rounded-md px-3 py-1 text-sm transition-colors"
+							class:bg-indigo-600={enabledFormalities.includes(option.id)}
+							class:text-white={enabledFormalities.includes(option.id)}
+							class:bg-gray-100={!enabledFormalities.includes(option.id)}
+							class:hover:bg-indigo-700={enabledFormalities.includes(option.id)}
+							class:hover:bg-gray-200={!enabledFormalities.includes(option.id)}
+							on:click={() => toggleFormality(option.id)}
+						>
+							{option.label}
+						</button>
 					{/each}
-				</select>
+				</div>
+				<div class="mt-1 text-xs text-gray-500">
+					{enabledFormalities.length} of {formalityOptions.length} selected
+				</div>
+			</div>
+		</div>
+
+		<!-- Romaji Toggle -->
+		<div class="mb-6 flex flex-col items-center justify-center gap-2">
+			<button
+				type="button"
+				class="flex items-center rounded-md px-3 py-2 transition-colors"
+				class:bg-indigo-100={!useRomaji}
+				class:bg-indigo-200={useRomaji}
+				class:hover:bg-indigo-200={!useRomaji}
+				class:hover:bg-indigo-300={useRomaji}
+				on:click={toggleRomajiMode}
+			>
+				<div
+					class="relative flex h-6 w-12 items-center rounded-full p-1 transition-colors duration-300 ease-in-out"
+					class:bg-indigo-600={useRomaji}
+					class:bg-gray-400={!useRomaji}
+				>
+					<!-- Toggle indicator -->
+					<div
+						class="absolute h-4 w-4 transform rounded-full bg-white shadow transition-transform duration-300 ease-in-out"
+						style={useRomaji ? 'transform: translateX(24px)' : 'transform: translateX(0px)'}
+					></div>
+				</div>
+				<span
+					class="ml-3 font-medium transition-colors duration-300"
+					class:text-indigo-700={useRomaji}
+					class:text-gray-700={!useRomaji}
+				>
+					{useRomaji ? 'Romaji Input: ON' : 'Romaji Input: OFF'}
+				</span>
+			</button>
+			<div class="flex items-center text-sm text-gray-600">
+				{#if useRomaji}
+					(Type using Latin alphabet and it will be converted)
+				{:else}
+					(Direct Japanese input)
+				{/if}
 			</div>
 		</div>
 
@@ -151,36 +480,49 @@
 			<div class="mb-6 text-center">
 				<p class="text-lg">
 					Conjugate this verb to the
-					<span class="font-semibold"
-						>{tenseOptions.find((t) => t.id === selectedTense)?.label}</span
-					>
+					<span class="font-semibold">{currentTenseOption?.label}</span>
 					tense in the
-					<span class="font-semibold"
-						>{polarityOptions.find((p) => p.id === selectedPolarity)?.label}</span
-					>,
-					<span class="font-semibold"
-						>{formalityOptions.find((f) => f.id === selectedFormality)?.label}</span
-					> form.
+					<span class="font-semibold">{currentPolarityOption?.label}</span>,
+					<span class="font-semibold">{currentFormalityOption?.label}</span> form.
+				</p>
+				<p class="mt-2 text-sm text-gray-600">
+					You have {remainingAttempts}
+					{remainingAttempts === 1 ? 'attempt' : 'attempts'} for this question.
 				</p>
 			</div>
 
 			<!-- User answer input -->
 			<div class="mb-6">
-				<div class="flex">
-					<input
-						type="text"
-						bind:value={userAnswer}
-						placeholder="Enter your answer..."
-						class="flex-grow rounded-l-md border p-3 focus:ring focus:ring-indigo-200 focus:outline-none"
-						disabled={isCorrect || showAnswer}
-					/>
-					<button
-						on:click={checkUserAnswer}
-						class="rounded-r-md bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-700 focus:ring focus:ring-indigo-200 focus:outline-none"
-						disabled={isCorrect || showAnswer}
-					>
-						Check
-					</button>
+				<div class="flex flex-col">
+					<div class="flex">
+						<input
+							type="text"
+							bind:value={userAnswer}
+							bind:this={answerInput}
+							on:keydown={handleKeyDown}
+							placeholder={useRomaji
+								? 'Enter your answer in romaji... (press Enter to submit)'
+								: 'Enter your answer in Japanese... (press Enter to submit)'}
+							class="flex-grow rounded-l-md border p-3 focus:ring focus:ring-indigo-200 focus:outline-none"
+							disabled={isCorrect || showAnswer}
+							autocomplete="off"
+						/>
+						<button
+							on:click={checkUserAnswer}
+							class="rounded-r-md bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-700 focus:ring focus:ring-indigo-200 focus:outline-none"
+							disabled={isCorrect || showAnswer}
+						>
+							Check
+						</button>
+					</div>
+
+					<!-- Romaji conversion preview -->
+					{#if useRomaji && convertedAnswer && !isCorrect && !showAnswer && remainingAttempts > 0}
+						<div class="mt-2 text-gray-600">
+							<span class="text-sm">Will be converted to:</span>
+							<span class="ml-2 font-medium">{convertedAnswer}</span>
+						</div>
+					{/if}
 				</div>
 			</div>
 
@@ -191,19 +533,22 @@
 						{feedback}
 					</p>
 
-					{#if !isCorrect && !showAnswer}
-						<button
-							on:click={revealAnswer}
-							class="mt-3 text-indigo-600 underline hover:text-indigo-800"
-						>
-							Show Answer
-						</button>
-					{/if}
-
 					{#if showAnswer && !isCorrect}
-						<p class="mt-3">
-							The correct answer is: <span class="font-semibold">{correctAnswer}</span>
-						</p>
+						<div class="mt-3">
+							<p>
+								The correct answer is: <span class="font-semibold">{correctAnswer}</span>
+							</p>
+
+							{#if hiraganaAnswer && hasKanji(correctAnswer)}
+								<p class="mt-1 text-gray-600">
+									(All hiragana: <span class="font-medium">{hiraganaAnswer}</span>)
+								</p>
+							{/if}
+
+							<p class="mt-2 text-sm text-gray-600">
+								Both kanji and hiragana answers are accepted!
+							</p>
+						</div>
 					{/if}
 				</div>
 			{/if}
@@ -217,6 +562,7 @@
 					>
 						Next Verb
 					</button>
+					<p class="mt-2 text-sm text-gray-600">(Press Enter to continue)</p>
 				</div>
 			{/if}
 		{/if}
@@ -231,12 +577,21 @@
 				({attempts > 0 ? Math.round((score / attempts) * 100) : 0}%)
 			</p>
 
-			<button
-				on:click={resetGame}
-				class="mt-4 rounded-md bg-gray-600 px-4 py-2 font-semibold text-white transition hover:bg-gray-700 focus:ring focus:ring-gray-200 focus:outline-none"
-			>
-				Reset
-			</button>
+			<div class="mt-4 flex justify-center gap-4">
+				<button
+					class="rounded-md bg-green-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-green-700"
+					on:click={newQuestion}
+				>
+					New Question
+				</button>
+
+				<button
+					on:click={resetGame}
+					class="rounded-md bg-gray-600 px-4 py-2 font-semibold text-white transition hover:bg-gray-700 focus:ring focus:ring-gray-200 focus:outline-none"
+				>
+					Reset
+				</button>
+			</div>
 		</div>
 	</div>
 </main>

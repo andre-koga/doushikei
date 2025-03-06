@@ -362,19 +362,120 @@ export function getConjugationKey(tense: string, polarity: string, formality: st
     return `${tense}-${polarity}-${formality}`;
 }
 
+// Helper function to convert kanji to hiragana (for known verb patterns)
+function toHiragana(text: string): string {
+    // Common kanji-to-hiragana mappings in verb conjugations
+    const kanjiToHiragana: Record<string, string> = {
+        // Numbers and common kanji in verbs
+        '一': 'いち', '二': 'に', '三': 'さん', '四': 'よん', '五': 'ご',
+        '六': 'ろく', '七': 'なな', '八': 'はち', '九': 'きゅう', '十': 'じゅう',
+        '百': 'ひゃく', '千': 'せん', '万': 'まん',
+
+        // Common verb-related kanji
+        '行': 'い', '来': 'く', '食': 'た', '飲': 'の', '見': 'み',
+        '読': 'よ', '書': 'か', '話': 'はな', '買': 'か', '売': 'う',
+        '泳': 'およ', '走': 'はし', '座': 'すわ', '立': 'た', '歩': 'ある',
+        '寝': 'ね', '起': 'お', '開': 'あ', '閉': 'し', '出': 'で',
+        '入': 'はい', '登': 'のぼ', '降': 'お', '使': 'つか', '持': 'も',
+        '待': 'ま', '知': 'し', '思': 'おも', '考': 'かんが', '言': 'い',
+        '聞': 'き', '教': 'おし', '始': 'はじ', '終': 'お', '死': 'し',
+        '生': 'い', '働': 'はたら', '休': 'やす', '遊': 'あそ', '学': 'まな',
+    };
+
+    // Replace kanji with hiragana
+    let result = text;
+
+    // Apply each substitution
+    Object.entries(kanjiToHiragana).forEach(([kanji, hiragana]) => {
+        result = result.replaceAll(kanji, hiragana);
+    });
+
+    return result;
+}
+
 // Determine if a user's answer is correct, with some flexibility
 export function checkAnswer(expected: string, actual: string): boolean {
-    // Normalize both strings for comparison (trim whitespace, etc)
-    const normalizedExpected = expected.trim();
-    const normalizedActual = actual.trim();
+    // Normalize both strings for comparison (trim whitespace, remove spaces, etc)
+    const normalizedExpected = expected.trim().replace(/\s+/g, '');
+    const normalizedActual = actual.trim().replace(/\s+/g, '');
 
     // Exact match
     if (normalizedExpected === normalizedActual) {
         return true;
     }
 
-    // Optional: Implement more flexible matching if needed
-    // For example, accepting different forms of writing certain characters
+    // Convert both to hiragana for more flexible matching
+    const hiraganaExpected = toHiragana(normalizedExpected);
+    const hiraganaActual = toHiragana(normalizedActual);
+
+    // Check if the hiragana versions match
+    if (hiraganaExpected === hiraganaActual) {
+        return true;
+    }
+
+    // More flexible matching for alternative spelling variants
+
+    // Handle long vowel mark (ー) alternatives
+    const longVowelExpected = normalizedExpected.replace(/([あいうえお])ー/g, '$1$1');
+    const longVowelActual = normalizedActual.replace(/([あいうえお])ー/g, '$1$1');
+
+    if (longVowelExpected === longVowelActual) {
+        return true;
+    }
+
+    // Try the same with hiragana versions
+    const longVowelHiraganaExpected = hiraganaExpected.replace(/([あいうえお])ー/g, '$1$1');
+    const longVowelHiraganaActual = hiraganaActual.replace(/([あいうえお])ー/g, '$1$1');
+
+    if (longVowelHiraganaExpected === longVowelHiraganaActual) {
+        return true;
+    }
+
+    // Handle small tsu (っ) variations in typing
+    const smallTsuExpected = normalizedExpected.replace(/っ([kstpcgzjdbfr])/g, '$1$1');
+    const smallTsuActual = normalizedActual.replace(/っ([kstpcgzjdbfr])/g, '$1$1');
+
+    if (smallTsuExpected === smallTsuActual) {
+        return true;
+    }
+
+    // Try the same with hiragana versions
+    const smallTsuHiraganaExpected = hiraganaExpected.replace(/っ([kstpcgzjdbfr])/g, '$1$1');
+    const smallTsuHiraganaActual = hiraganaActual.replace(/っ([kstpcgzjdbfr])/g, '$1$1');
+
+    if (smallTsuHiraganaExpected === smallTsuHiraganaActual) {
+        return true;
+    }
+
+    // Handle common particle variations (は/わ, へ/え, を/お)
+    const particleExpected = longVowelExpected
+        .replace(/は/g, 'わ')
+        .replace(/へ/g, 'え')
+        .replace(/を/g, 'お');
+
+    const particleActual = longVowelActual
+        .replace(/は/g, 'わ')
+        .replace(/へ/g, 'え')
+        .replace(/を/g, 'お');
+
+    if (particleExpected === particleActual) {
+        return true;
+    }
+
+    // Try the same with hiragana versions
+    const particleHiraganaExpected = longVowelHiraganaExpected
+        .replace(/は/g, 'わ')
+        .replace(/へ/g, 'え')
+        .replace(/を/g, 'お');
+
+    const particleHiraganaActual = longVowelHiraganaActual
+        .replace(/は/g, 'わ')
+        .replace(/へ/g, 'え')
+        .replace(/を/g, 'お');
+
+    if (particleHiraganaExpected === particleHiraganaActual) {
+        return true;
+    }
 
     return false;
 } 
