@@ -669,7 +669,13 @@
 	</div>
 </main>
 
-<footer class="bg-gray-900 p-6 text-center text-gray-400">
+<footer class="bg-gray-900 pt-4 pb-12 text-center text-gray-400">
 	<p>Japanese Verb Conjugation Practice App</p>
-	<p class="text-sm">Created with Svelte and Tailwind CSS</p>
+	<p class="mt-1 text-sm">
+		Created with Svelte and Tailwind CSS by <a
+			href="https://github.com/andre-koga"
+			target="_blank"
+			class="text-indigo-400 hover:text-indigo-300">Andre Koga</a
+		>
+	</p>
 </footer>
