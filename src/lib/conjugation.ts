@@ -704,11 +704,62 @@ export function checkAnswer(expected: string, actual: string): boolean {
             (normalizedActual.endsWith('なければならない') || normalizedActual.endsWith('なければなりません'))) {
             return true;
         }
+
+        // Also try using hiragana conversion for more flexibility
+        const hiraganaExpected = toHiragana(normalizedExpected);
+        const hiraganaActual = toHiragana(normalizedActual);
+
+        const hiraganaVerbPartExpected = hiraganaExpected.replace(/(なければならない|なければなりません)$/, '');
+        const hiraganaVerbPartActual = hiraganaActual.replace(/(なければならない|なければなりません)$/, '');
+
+        // Check the hiragana versions
+        if (hiraganaVerbPartExpected === hiraganaVerbPartActual &&
+            (hiraganaActual.endsWith('なければならない') || hiraganaActual.endsWith('なければなりません'))) {
+            return true;
+        }
+    }
+
+    // Also check if the actual answer is either form and expected is the other form
+    if ((normalizedExpected.endsWith('なければならない') && normalizedActual.endsWith('なければなりません')) ||
+        (normalizedExpected.endsWith('なければなりません') && normalizedActual.endsWith('なければならない'))) {
+
+        // Extract and compare the verb parts
+        const verbPartExpected = normalizedExpected.replace(/(なければならない|なければなりません)$/, '');
+        const verbPartActual = normalizedActual.replace(/(なければならない|なければなりません)$/, '');
+
+        if (verbPartExpected === verbPartActual) {
+            return true;
+        }
     }
 
     // Convert both to hiragana for more flexible matching
     const hiraganaExpected = toHiragana(normalizedExpected);
     const hiraganaActual = toHiragana(normalizedActual);
+
+    // Additional check for "must" form with more variations
+    // This handles potential romaji input variations and other common patterns
+    if (hiraganaExpected.includes('なければ') || hiraganaActual.includes('なければ')) {
+        // Common variations of the endings
+        const mustEndings = [
+            'なければならない', 'なければなりません',
+            'なければいけない', 'なければいけません',
+            'なければだめ', 'なければだめです'
+        ];
+
+        // Check if either the expected or actual answer uses any of these endings
+        const hasExpectedMustEnding = mustEndings.some(ending => hiraganaExpected.endsWith(ending));
+        const hasActualMustEnding = mustEndings.some(ending => hiraganaActual.endsWith(ending));
+
+        if (hasExpectedMustEnding && hasActualMustEnding) {
+            // Get the verb stem part (everything before なければ)
+            const verbPartExpected = hiraganaExpected.split('なければ')[0];
+            const verbPartActual = hiraganaActual.split('なければ')[0];
+
+            if (verbPartExpected === verbPartActual) {
+                return true;
+            }
+        }
+    }
 
     // Check if the hiragana versions match
     if (hiraganaExpected === hiraganaActual) {

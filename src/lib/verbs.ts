@@ -75,7 +75,7 @@ export const tenseOptions: TenseOption[] = [
     },
 
     {
-        id: 'conditionalBa', label: 'Conditional (Ba)', description: 'ば形', essential: true,
+        id: 'conditionalBa', label: 'Conditional (Ba)', description: 'ば形', essential: false,
         longDescription: 'The ba-conditional expresses hypothetical conditions ("if X, then Y") and is used for general or natural consequences.'
     },
 
@@ -116,7 +116,7 @@ export const tenseOptions: TenseOption[] = [
 
     {
         id: 'must', label: 'Must', description: 'なければならない形', essential: false,
-        longDescription: 'The "must" form expresses necessity or obligation. We allow the two most used forms: なければならない (plain) and なければなりません (polite). Both are acceptable and mean "if you don\'t do X, it won\'t work/be acceptable."'
+        longDescription: 'The "must" form expresses necessity or obligation. The app accepts both common forms: なければならない (plain) and なければなりません (polite). Type either one for a correct answer regardless of the formality selected.'
     },
 
     {
@@ -150,17 +150,17 @@ export const tenseOptions: TenseOption[] = [
     },
 
     {
-        id: 'simultaneous', label: 'Simultaneous', description: 'ながら形', essential: true,
+        id: 'simultaneous', label: 'Simultaneous', description: 'ながら形', essential: false,
         longDescription: 'The simultaneous form expresses doing two actions at the same time. It\'s similar to "while doing" in English.'
     },
 
     {
-        id: 'purposeGoing', label: 'Purpose (Going)', description: 'に行く形', essential: true,
+        id: 'purposeGoing', label: 'Purpose (Going)', description: 'に行く形', essential: false,
         longDescription: 'The purpose going form expresses going somewhere to do something. It shows movement with a specific purpose in mind.'
     },
 
     {
-        id: 'purposeComing', label: 'Purpose (Coming)', description: 'に来る形', essential: true,
+        id: 'purposeComing', label: 'Purpose (Coming)', description: 'に来る形', essential: false,
         longDescription: 'The purpose coming form expresses coming somewhere to do something. It shows movement toward the speaker with a specific purpose.'
     }
 ];

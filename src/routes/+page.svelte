@@ -266,6 +266,9 @@
 		userAnswer = '';
 		convertedAnswer = '';
 
+		// Save the preference
+		savePreferences();
+
 		// Force a UI update and focus the input
 		setTimeout(() => {
 			// Ensure the toggle state is properly reflected in the UI
@@ -292,6 +295,7 @@
 		if (enabledTenses.length === 0) {
 			enabledTenses = [tenseId];
 		}
+		savePreferences();
 	}
 
 	function togglePolarity(polarityId: Polarity) {
@@ -300,6 +304,7 @@
 		if (enabledPolarities.length === 0) {
 			enabledPolarities = [polarityId];
 		}
+		savePreferences();
 	}
 
 	function toggleFormality(formalityId: Formality) {
@@ -308,23 +313,29 @@
 		if (enabledFormalities.length === 0) {
 			enabledFormalities = [formalityId];
 		}
+		savePreferences();
 	}
 
 	// Toggle all options in a category
 	function toggleAllTenses(enable: boolean) {
 		enabledTenses = enable ? tenseOptions.map((t) => t.id) : [tenseOptions[0].id];
+		savePreferences();
 	}
+
 	function toggleEssentialTenses(enable: boolean) {
 		const essentialTenses = tenseOptions.filter((t) => t.essential).map((t) => t.id);
 		enabledTenses = enable ? essentialTenses : [essentialTenses[0]];
+		savePreferences();
 	}
 
 	function toggleAllPolarities(enable: boolean) {
 		enabledPolarities = enable ? polarityOptions.map((p) => p.id) : [polarityOptions[0].id];
+		savePreferences();
 	}
 
 	function toggleAllFormalities(enable: boolean) {
 		enabledFormalities = enable ? formalityOptions.map((f) => f.id) : [formalityOptions[0].id];
+		savePreferences();
 	}
 
 	// Calculate accuracy percentage for a tense
@@ -360,6 +371,37 @@
 		// Apply dark mode by default
 		document.documentElement.classList.add('dark');
 
+		// Load saved preferences from localStorage if they exist
+		try {
+			const savedPreferences = localStorage.getItem('verbConjugationPreferences');
+			if (savedPreferences) {
+				const preferences = JSON.parse(savedPreferences);
+
+				// Restore tense selections (ensuring at least one is selected)
+				if (preferences.enabledTenses && preferences.enabledTenses.length > 0) {
+					enabledTenses = preferences.enabledTenses;
+				}
+
+				// Restore polarity selections
+				if (preferences.enabledPolarities && preferences.enabledPolarities.length > 0) {
+					enabledPolarities = preferences.enabledPolarities;
+				}
+
+				// Restore formality selections
+				if (preferences.enabledFormalities && preferences.enabledFormalities.length > 0) {
+					enabledFormalities = preferences.enabledFormalities;
+				}
+
+				// Restore romaji mode setting
+				if (preferences.useRomaji !== undefined) {
+					useRomaji = preferences.useRomaji;
+				}
+			}
+		} catch (error) {
+			console.error('Error loading preferences:', error);
+			// If there's an error, we'll just use the default settings
+		}
+
 		newQuestion();
 
 		// Add global keyboard event listener
@@ -370,6 +412,21 @@
 			document.removeEventListener('keydown', handleGlobalKeyDown);
 		};
 	});
+
+	// Function to save user preferences to localStorage
+	function savePreferences() {
+		try {
+			const preferences = {
+				enabledTenses,
+				enabledPolarities,
+				enabledFormalities,
+				useRomaji
+			};
+			localStorage.setItem('verbConjugationPreferences', JSON.stringify(preferences));
+		} catch (error) {
+			console.error('Error saving preferences:', error);
+		}
+	}
 
 	// Get hiragana version of the current correct answer if it contains kanji
 	$: hiraganaAnswer = getHiraganaVersion(correctAnswer);
@@ -575,6 +632,11 @@
 					<span class="font-semibold">{currentPolarityOption?.label}</span>,
 					<span class="font-semibold">{currentFormalityOption?.label}</span> form.
 				</p>
+				{#if currentTense === 'must' && currentPolarity === 'affirmative'}
+					<p class="mt-2 text-sm text-indigo-400">
+						Note: Both なければならない and なければなりません forms are accepted for this tense.
+					</p>
+				{/if}
 				<p class="mt-2 text-sm text-gray-400">
 					You have {remainingAttempts}
 					{remainingAttempts === 1 ? 'attempt' : 'attempts'} for this question.
@@ -623,10 +685,16 @@
 						{feedback}
 					</p>
 
-					{#if showAnswer && !isCorrect}
+					{#if showAnswer || isCorrect}
 						<div class="mt-3">
 							<p>
-								The correct answer is: <span class="font-semibold">{correctAnswer}</span>
+								{#if isCorrect}
+									You entered: <span class="font-semibold">{convertedAnswer}</span>
+									<br />
+									Correct answer: <span class="font-semibold">{correctAnswer}</span>
+								{:else}
+									The correct answer is: <span class="font-semibold">{correctAnswer}</span>
+								{/if}
 							</p>
 
 							{#if hiraganaAnswer && hasKanji(correctAnswer)}
