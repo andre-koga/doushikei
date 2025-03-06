@@ -1,4 +1,4 @@
-import type { Verb } from './verbs';
+import type { Formality, Polarity, Tense, Verb } from './verbs';
 
 // Helper function to get the verb stem
 function getVerbStem(verb: Verb): string {
@@ -98,12 +98,12 @@ const godanConjugationMap: Record<string, Record<string, string>> = {
 // Function to conjugate verbs based on tense, polarity and formality
 export function conjugateVerb(
     verb: Verb,
-    tense: string,
-    polarity: string = 'affirmative',
-    formality: string = 'plain'
+    tense: Tense,
+    polarity: Polarity = 'affirmative',
+    formality: Formality = 'plain'
 ): string {
     // For irregular verbs, check if we have a pre-defined form
-    const formKey = `${tense}-${polarity}-${formality}`;
+    const formKey = `${tense}-${polarity}-${formality}` as `${Tense}-${Polarity}-${Formality}`;
     if (verb.type === 'irregular' && verb.irregularForms && verb.irregularForms[formKey]) {
         return verb.irregularForms[formKey];
     }
@@ -141,6 +141,32 @@ export function conjugateVerb(
             return conjugateDesire(verb, polarity, formality);
         case 'causativePassive':
             return conjugateCausativePassive(verb, polarity, formality);
+        case 'conditionalNara':
+            return conjugateConditionalNara(verb, polarity, formality);
+        case 'conditionalTo':
+            return conjugateConditionalTo(verb, polarity, formality);
+        case 'should':
+            return conjugateShould(verb, polarity, formality);
+        case 'must':
+            return conjugateMust(verb, polarity, formality);
+        case 'attemptive':
+            return conjugateAttemptive(verb, polarity, formality);
+        case 'preparatory':
+            return conjugatePreparatory(verb, polarity, formality);
+        case 'regrettable':
+            return conjugateRegrettable(verb, polarity, formality);
+        case 'giving':
+            return conjugateGiving(verb, polarity, formality);
+        case 'receiving':
+            return conjugateReceiving(verb, polarity, formality);
+        case 'receivingFavor':
+            return conjugateReceivingFavor(verb, polarity, formality);
+        case 'simultaneous':
+            return conjugateSimultaneous(verb, polarity, formality);
+        case 'purposeGoing':
+            return conjugatePurposeGoing(verb, polarity, formality);
+        case 'purposeComing':
+            return conjugatePurposeComing(verb, polarity, formality);
         default:
             return verb.dictionary; // Default to dictionary form
     }
@@ -397,9 +423,9 @@ function conjugateVolitional(verb: Verb, polarity: string, formality: string): s
 // Handle special irregular verbs like する and 来る
 function conjugateIrregularVerb(
     verb: Verb,
-    tense: string,
-    polarity: string,
-    formality: string
+    tense: Tense,
+    polarity: Polarity,
+    formality: Formality
 ): string {
     // This function would implement special rules for する and 来る
     // but is simplified here
@@ -487,6 +513,88 @@ function conjugateIrregularVerb(
                 return formality === 'plain' ? '来させられる' : '来させられます';
             } else {
                 return formality === 'plain' ? '来させられない' : '来させられません';
+            }
+        } else if (tense === 'conditionalNara') {
+            if (polarity === 'affirmative') {
+                return '来るなら';
+            } else {
+                return '来ないなら';
+            }
+        } else if (tense === 'conditionalTo') {
+            if (polarity === 'affirmative') {
+                return '来ると';
+            } else {
+                return '来ないと';
+            }
+        } else if (tense === 'should') {
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来るべき' : '来るべきです';
+            } else {
+                return formality === 'plain' ? '来るべきではない' : '来るべきではありません';
+            }
+        } else if (tense === 'must') {
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来なければならない' : '来なければなりません';
+            } else {
+                return formality === 'plain' ? '来なくてもいい' : '来なくてもいいです';
+            }
+        } else if (tense === 'attemptive') {
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来てみる' : '来てみます';
+            } else {
+                return formality === 'plain' ? '来てみない' : '来てみません';
+            }
+        } else if (tense === 'preparatory') {
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来ておく' : '来ておきます';
+            } else {
+                return formality === 'plain' ? '来ておかない' : '来ておきません';
+            }
+        } else if (tense === 'regrettable') {
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来てしまう' : '来てしまいます';
+            } else {
+                return formality === 'plain' ? '来てしまわない' : '来てしまいません';
+            }
+        } else if (tense === 'giving') {
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来てあげる' : '来てあげます';
+            } else {
+                return formality === 'plain' ? '来てあげない' : '来てあげません';
+            }
+        } else if (tense === 'receiving') {
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来てくれる' : '来てくれます';
+            } else {
+                return formality === 'plain' ? '来てくれない' : '来てくれません';
+            }
+        } else if (tense === 'receivingFavor') {
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来てもらう' : '来てもらいます';
+            } else {
+                return formality === 'plain' ? '来てもらわない' : '来てもらいません';
+            }
+        } else if (tense === 'simultaneous') {
+            if (polarity === 'affirmative') {
+                return '来ながら';
+            } else {
+                return '来ないで';
+            }
+        } else if (tense === 'purposeGoing') {
+            // This is a special case: "coming to come" doesn't make much sense
+            // So we'll use a different pattern
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来るために行く' : '来るために行きます';
+            } else {
+                return formality === 'plain' ? '来るために行かない' : '来るために行きません';
+            }
+        } else if (tense === 'purposeComing') {
+            // This is also a special case: "coming to come" is redundant
+            // So we'll use a clearer expression
+            if (polarity === 'affirmative') {
+                return formality === 'plain' ? '来るために来る' : '来るために来ます';
+            } else {
+                return formality === 'plain' ? '来るために来ない' : '来るために来ません';
             }
         }
     }
@@ -760,6 +868,252 @@ function conjugateCausativePassive(verb: Verb, polarity: string, formality: stri
             return base + 'ない';
         } else {
             return base + 'ません';
+        }
+    }
+}
+
+// Conditional Nara-form conjugation
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function conjugateConditionalNara(verb: Verb, polarity: string, _formality: string): string {
+    const dictionaryForm = conjugatePresent(verb, polarity, 'plain');
+    return dictionaryForm + 'なら';
+}
+
+// Conditional To-form conjugation (provisional)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function conjugateConditionalTo(verb: Verb, polarity: string, _formality: string): string {
+    const dictionaryForm = conjugatePresent(verb, polarity, 'plain');
+    return dictionaryForm + 'と';
+}
+
+// Should form conjugation (-べき)
+function conjugateShould(verb: Verb, polarity: string, formality: string): string {
+    let base = '';
+
+    if (verb.type === 'ichidan') {
+        base = getVerbStem(verb);
+    } else if (verb.type === 'godan' && verb.ending) {
+        const stem = getGodanConsonantStem(verb);
+        base = stem + godanConjugationMap[verb.ending]['u']; // Using the u-row for べき
+    }
+
+    if (polarity === 'affirmative') {
+        const shoudForm = base + 'べき';
+        return formality === 'plain' ? shoudForm : shoudForm + 'です';
+    } else {
+        // Negative form using "should not"
+        const negForm = base + 'べきでは';
+        return formality === 'plain' ? negForm + 'ない' : negForm + 'ありません';
+    }
+}
+
+// Must form conjugation (-なければならない)
+function conjugateMust(verb: Verb, polarity: string, formality: string): string {
+    // For "must" form we use the negative conditional + ならない/なりません
+    if (polarity === 'affirmative') {
+        const negCond = conjugateConditionalBa(verb, 'negative', 'plain');
+        return formality === 'plain' ? negCond + 'ならない' : negCond + 'なりません';
+    } else {
+        // For "don't have to" form
+        const negCond = conjugateConditionalBa(verb, 'negative', 'plain');
+        return formality === 'plain' ? negCond + 'なくてもいい' : negCond + 'なくてもいいです';
+    }
+}
+
+// Attemptive form conjugation (-てみる)
+function conjugateAttemptive(verb: Verb, polarity: string, formality: string): string {
+    const teForm = conjugateTeForm(verb, 'affirmative');
+
+    if (polarity === 'affirmative') {
+        if (formality === 'plain') {
+            return teForm + 'みる';
+        } else {
+            return teForm + 'みます';
+        }
+    } else {
+        // Negative "try doing"
+        if (formality === 'plain') {
+            return teForm + 'みない';
+        } else {
+            return teForm + 'みません';
+        }
+    }
+}
+
+// Preparatory form conjugation (-ておく)
+function conjugatePreparatory(verb: Verb, polarity: string, formality: string): string {
+    const teForm = conjugateTeForm(verb, 'affirmative');
+
+    if (polarity === 'affirmative') {
+        if (formality === 'plain') {
+            return teForm + 'おく';
+        } else {
+            return teForm + 'おきます';
+        }
+    } else {
+        // Negative "do in advance"
+        if (formality === 'plain') {
+            return teForm + 'おかない';
+        } else {
+            return teForm + 'おきません';
+        }
+    }
+}
+
+// Regrettable form conjugation (-てしまう)
+function conjugateRegrettable(verb: Verb, polarity: string, formality: string): string {
+    const teForm = conjugateTeForm(verb, 'affirmative');
+
+    if (polarity === 'affirmative') {
+        if (formality === 'plain') {
+            return teForm + 'しまう';
+        } else {
+            return teForm + 'しまいます';
+        }
+    } else {
+        // Negative "completely do"
+        if (formality === 'plain') {
+            return teForm + 'しまわない';
+        } else {
+            return teForm + 'しまいません';
+        }
+    }
+}
+
+// Giving form conjugation (-てあげる)
+function conjugateGiving(verb: Verb, polarity: string, formality: string): string {
+    const teForm = conjugateTeForm(verb, 'affirmative');
+
+    if (polarity === 'affirmative') {
+        if (formality === 'plain') {
+            return teForm + 'あげる';
+        } else {
+            return teForm + 'あげます';
+        }
+    } else {
+        // Negative "do for someone"
+        if (formality === 'plain') {
+            return teForm + 'あげない';
+        } else {
+            return teForm + 'あげません';
+        }
+    }
+}
+
+// Receiving form conjugation (-てくれる)
+function conjugateReceiving(verb: Verb, polarity: string, formality: string): string {
+    const teForm = conjugateTeForm(verb, 'affirmative');
+
+    if (polarity === 'affirmative') {
+        if (formality === 'plain') {
+            return teForm + 'くれる';
+        } else {
+            return teForm + 'くれます';
+        }
+    } else {
+        // Negative "someone does for you"
+        if (formality === 'plain') {
+            return teForm + 'くれない';
+        } else {
+            return teForm + 'くれません';
+        }
+    }
+}
+
+// Receiving Favor form conjugation (-てもらう)
+function conjugateReceivingFavor(verb: Verb, polarity: string, formality: string): string {
+    const teForm = conjugateTeForm(verb, 'affirmative');
+
+    if (polarity === 'affirmative') {
+        if (formality === 'plain') {
+            return teForm + 'もらう';
+        } else {
+            return teForm + 'もらいます';
+        }
+    } else {
+        // Negative "receive the action from someone"
+        if (formality === 'plain') {
+            return teForm + 'もらわない';
+        } else {
+            return teForm + 'もらいません';
+        }
+    }
+}
+
+// Simultaneous action form conjugation (-ながら)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function conjugateSimultaneous(verb: Verb, polarity: string, _formality: string): string {
+    let stem = '';
+
+    if (verb.type === 'ichidan') {
+        stem = getVerbStem(verb);
+    } else if (verb.type === 'godan' && verb.ending) {
+        const consonantStem = getGodanConsonantStem(verb);
+        stem = consonantStem + godanConjugationMap[verb.ending]['i'];
+    }
+
+    if (polarity === 'affirmative') {
+        return stem + 'ながら';
+    } else {
+        // There isn't really a negative for ながら, but we'll create a suitable alternative
+        return stem + 'ないで';
+    }
+}
+
+// Purpose Going form conjugation (-に行く)
+function conjugatePurposeGoing(verb: Verb, polarity: string, formality: string): string {
+    let stem = '';
+
+    if (verb.type === 'ichidan') {
+        stem = getVerbStem(verb);
+    } else if (verb.type === 'godan' && verb.ending) {
+        const consonantStem = getGodanConsonantStem(verb);
+        stem = consonantStem + godanConjugationMap[verb.ending]['i'];
+    }
+
+    const baseForm = stem + 'に';
+
+    if (polarity === 'affirmative') {
+        if (formality === 'plain') {
+            return baseForm + '行く';
+        } else {
+            return baseForm + '行きます';
+        }
+    } else {
+        // Negative "go to do"
+        if (formality === 'plain') {
+            return baseForm + '行かない';
+        } else {
+            return baseForm + '行きません';
+        }
+    }
+}
+
+// Purpose Coming form conjugation (-に来る)
+function conjugatePurposeComing(verb: Verb, polarity: string, formality: string): string {
+    let stem = '';
+
+    if (verb.type === 'ichidan') {
+        stem = getVerbStem(verb);
+    } else if (verb.type === 'godan' && verb.ending) {
+        const consonantStem = getGodanConsonantStem(verb);
+        stem = consonantStem + godanConjugationMap[verb.ending]['i'];
+    }
+
+    const baseForm = stem + 'に';
+
+    if (polarity === 'affirmative') {
+        if (formality === 'plain') {
+            return baseForm + '来る';
+        } else {
+            return baseForm + '来ます';
+        }
+    } else {
+        // Negative "come to do"
+        if (formality === 'plain') {
+            return baseForm + '来ない';
+        } else {
+            return baseForm + '来ません';
         }
     }
 }

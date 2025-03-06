@@ -1,6 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { verbs, tenseOptions, polarityOptions, formalityOptions, type Verb } from '$lib/verbs';
+	import {
+		verbs,
+		tenseOptions,
+		polarityOptions,
+		formalityOptions,
+		type Verb,
+		type Tense,
+		type Polarity,
+		type Formality
+	} from '$lib/verbs';
 	import { conjugateVerb, checkAnswer } from '$lib/conjugation';
 	import { romajiToJapanese, isRomaji } from '$lib/romaji';
 
@@ -37,9 +46,9 @@
 	let enabledFormalities = formalityOptions.map((f) => f.id); // Start with all enabled
 
 	// Currently selected options for the current question
-	let currentTense = '';
-	let currentPolarity = '';
-	let currentFormality = '';
+	let currentTense: Tense = 'present';
+	let currentPolarity: Polarity = 'affirmative';
+	let currentFormality: Formality = 'plain';
 
 	// Global keyboard event handler
 	function handleGlobalKeyDown(event: KeyboardEvent) {
@@ -123,19 +132,42 @@
 		currentAttempt = 0;
 		remainingAttempts = 3;
 
-		// Select random conjugation options from enabled lists
-		currentTense = getRandomOption(
-			tenseOptions.map((t) => t.id),
-			enabledTenses
-		);
-		currentPolarity = getRandomOption(
-			polarityOptions.map((p) => p.id),
-			enabledPolarities
-		);
-		currentFormality = getRandomOption(
-			formalityOptions.map((f) => f.id),
-			enabledFormalities
-		);
+		// Keep generating new combinations until we get one that isn't the dictionary form
+		let isDictionaryForm = true;
+		while (isDictionaryForm) {
+			// Select random conjugation options from enabled lists
+			currentTense = getRandomOption(
+				tenseOptions.map((t) => t.id),
+				enabledTenses
+			);
+			currentPolarity = getRandomOption(
+				polarityOptions.map((p) => p.id),
+				enabledPolarities
+			);
+			currentFormality = getRandomOption(
+				formalityOptions.map((f) => f.id),
+				enabledFormalities
+			);
+
+			// Skip the dictionary form (present affirmative plain)
+			isDictionaryForm =
+				currentTense === 'present' &&
+				currentPolarity === 'affirmative' &&
+				currentFormality === 'plain';
+
+			// If only present-affirmative-plain is enabled, we need to escape this loop
+			if (
+				isDictionaryForm &&
+				enabledTenses.length === 1 &&
+				enabledTenses[0] === 'present' &&
+				enabledPolarities.length === 1 &&
+				enabledPolarities[0] === 'affirmative' &&
+				enabledFormalities.length === 1 &&
+				enabledFormalities[0] === 'plain'
+			) {
+				isDictionaryForm = false; // Accept the dictionary form if it's the only option
+			}
+		}
 
 		// Compute the correct answer in advance
 		if (currentVerb) {
@@ -243,7 +275,7 @@
 	}
 
 	// Toggle an option in a list
-	function toggleOption(optionId: string, optionsList: string[]): string[] {
+	function toggleOption<T>(optionId: T, optionsList: T[]): T[] {
 		if (optionsList.includes(optionId)) {
 			// Remove if already included
 			return optionsList.filter((id) => id !== optionId);
@@ -254,7 +286,7 @@
 	}
 
 	// Toggle functions for each category
-	function toggleTense(tenseId: string) {
+	function toggleTense(tenseId: Tense) {
 		enabledTenses = toggleOption(tenseId, enabledTenses);
 		// Ensure at least one option is selected
 		if (enabledTenses.length === 0) {
@@ -262,7 +294,7 @@
 		}
 	}
 
-	function togglePolarity(polarityId: string) {
+	function togglePolarity(polarityId: Polarity) {
 		enabledPolarities = toggleOption(polarityId, enabledPolarities);
 		// Ensure at least one option is selected
 		if (enabledPolarities.length === 0) {
@@ -270,7 +302,7 @@
 		}
 	}
 
-	function toggleFormality(formalityId: string) {
+	function toggleFormality(formalityId: Formality) {
 		enabledFormalities = toggleOption(formalityId, enabledFormalities);
 		// Ensure at least one option is selected
 		if (enabledFormalities.length === 0) {
@@ -281,6 +313,10 @@
 	// Toggle all options in a category
 	function toggleAllTenses(enable: boolean) {
 		enabledTenses = enable ? tenseOptions.map((t) => t.id) : [tenseOptions[0].id];
+	}
+	function toggleEssentialTenses(enable: boolean) {
+		const essentialTenses = tenseOptions.filter((t) => t.essential).map((t) => t.id);
+		enabledTenses = enable ? essentialTenses : [essentialTenses[0]];
 	}
 
 	function toggleAllPolarities(enable: boolean) {
@@ -365,6 +401,12 @@
 							Select All
 						</button>
 						<button
+							class="rounded bg-indigo-900 px-2 py-1 text-xs text-white hover:bg-indigo-800"
+							on:click={() => toggleEssentialTenses(true)}
+						>
+							Select Essential
+						</button>
+						<button
 							class="rounded bg-gray-700 px-2 py-1 text-xs text-gray-200 hover:bg-gray-600"
 							on:click={() => toggleAllTenses(false)}
 						>
@@ -379,15 +421,22 @@
 								option.id
 							)
 								? 'bg-indigo-600 text-white hover:bg-indigo-700'
-								: 'bg-gray-700 text-white hover:bg-gray-600'}"
+								: 'bg-gray-700 text-white hover:bg-gray-600'}
+							{option.essential ? 'order-0' : 'order-1'}
+							"
 							on:click={() => toggleTense(option.id)}
 						>
 							{option.label}
+							<span class="text-xs text-gray-400">{option.description}</span>
 						</button>
 					{/each}
 				</div>
 				<div class="mt-1 text-xs text-gray-400">
 					{enabledTenses.length} of {tenseOptions.length} selected
+					<span class="ml-2 italic"
+						>(Note: Present Affirmative Plain will be skipped when randomizing as it's the
+						dictionary form)</span
+					>
 				</div>
 			</div>
 
