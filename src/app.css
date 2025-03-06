@@ -4,7 +4,7 @@
 
 /* Custom styles */
 body {
-	@apply bg-gray-100 text-gray-900;
+	@apply bg-gray-900 text-white;
 	font-family: 'Noto Sans JP', 'Noto Sans', sans-serif;
 }
 

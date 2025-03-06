@@ -277,6 +277,9 @@
 
 	// Initialize on component mount
 	onMount(() => {
+		// Apply dark mode by default
+		document.documentElement.classList.add('dark');
+
 		newQuestion();
 
 		// Add global keyboard event listener
@@ -297,25 +300,25 @@
 	$: currentFormalityOption = formalityOptions.find((f) => f.id === currentFormality);
 </script>
 
-<main class="container mx-auto max-w-4xl px-4 py-8">
+<main class="container mx-auto max-w-4xl bg-gray-900 px-4 py-8 text-white">
 	<h1 class="mb-6 text-center text-3xl font-bold">日本語動詞活用練習</h1>
 	<h2 class="mb-8 text-center text-xl font-semibold">Japanese Verb Conjugation Practice</h2>
 
-	<div class="mb-8 rounded-lg bg-white p-6 shadow-lg">
-		<div class="mb-6 grid gap-6 md:grid-cols-3">
+	<div class="mb-8 rounded-lg bg-gray-800 p-6 shadow-lg">
+		<div class="mb-6 grid gap-8 md:grid-cols-2">
 			<!-- Tense Selection -->
-			<div class="space-y-2">
+			<div class="space-y-2 md:col-span-2">
 				<div class="flex items-center justify-between">
 					<h3 class="font-medium">Tense/Form</h3>
 					<div class="flex gap-2">
 						<button
-							class="rounded bg-indigo-100 px-2 py-1 text-xs hover:bg-indigo-200"
+							class="rounded bg-indigo-900 px-2 py-1 text-xs text-white hover:bg-indigo-800"
 							on:click={() => toggleAllTenses(true)}
 						>
 							Select All
 						</button>
 						<button
-							class="rounded bg-gray-100 px-2 py-1 text-xs hover:bg-gray-200"
+							class="rounded bg-gray-700 px-2 py-1 text-xs text-gray-200 hover:bg-gray-600"
 							on:click={() => toggleAllTenses(false)}
 						>
 							Clear
@@ -325,19 +328,18 @@
 				<div class="flex flex-wrap gap-2">
 					{#each tenseOptions as option}
 						<button
-							class="rounded-md px-3 py-1 text-sm transition-colors"
-							class:bg-indigo-600={enabledTenses.includes(option.id)}
-							class:text-white={enabledTenses.includes(option.id)}
-							class:bg-gray-100={!enabledTenses.includes(option.id)}
-							class:hover:bg-indigo-700={enabledTenses.includes(option.id)}
-							class:hover:bg-gray-200={!enabledTenses.includes(option.id)}
+							class="rounded-md px-3 py-1 text-sm transition-colors {enabledTenses.includes(
+								option.id
+							)
+								? 'bg-indigo-600 text-white hover:bg-indigo-700'
+								: 'bg-gray-700 text-white hover:bg-gray-600'}"
 							on:click={() => toggleTense(option.id)}
 						>
 							{option.label}
 						</button>
 					{/each}
 				</div>
-				<div class="mt-1 text-xs text-gray-500">
+				<div class="mt-1 text-xs text-gray-400">
 					{enabledTenses.length} of {tenseOptions.length} selected
 				</div>
 			</div>
@@ -348,13 +350,13 @@
 					<h3 class="font-medium">Polarity</h3>
 					<div class="flex gap-2">
 						<button
-							class="rounded bg-indigo-100 px-2 py-1 text-xs hover:bg-indigo-200"
+							class="rounded bg-indigo-900 px-2 py-1 text-xs text-white hover:bg-indigo-800"
 							on:click={() => toggleAllPolarities(true)}
 						>
 							Select All
 						</button>
 						<button
-							class="rounded bg-gray-100 px-2 py-1 text-xs hover:bg-gray-200"
+							class="rounded bg-gray-700 px-2 py-1 text-xs text-gray-200 hover:bg-gray-600"
 							on:click={() => toggleAllPolarities(false)}
 						>
 							Clear
@@ -364,19 +366,18 @@
 				<div class="flex flex-wrap gap-2">
 					{#each polarityOptions as option}
 						<button
-							class="rounded-md px-3 py-1 text-sm transition-colors"
-							class:bg-indigo-600={enabledPolarities.includes(option.id)}
-							class:text-white={enabledPolarities.includes(option.id)}
-							class:bg-gray-100={!enabledPolarities.includes(option.id)}
-							class:hover:bg-indigo-700={enabledPolarities.includes(option.id)}
-							class:hover:bg-gray-200={!enabledPolarities.includes(option.id)}
+							class="rounded-md px-3 py-1 text-sm transition-colors {enabledPolarities.includes(
+								option.id
+							)
+								? 'bg-indigo-600 text-white hover:bg-indigo-700'
+								: 'bg-gray-700 text-white hover:bg-gray-600'}"
 							on:click={() => togglePolarity(option.id)}
 						>
 							{option.label}
 						</button>
 					{/each}
 				</div>
-				<div class="mt-1 text-xs text-gray-500">
+				<div class="mt-1 text-xs text-gray-400">
 					{enabledPolarities.length} of {polarityOptions.length} selected
 				</div>
 			</div>
@@ -387,13 +388,13 @@
 					<h3 class="font-medium">Formality</h3>
 					<div class="flex gap-2">
 						<button
-							class="rounded bg-indigo-100 px-2 py-1 text-xs hover:bg-indigo-200"
+							class="rounded bg-indigo-900 px-2 py-1 text-xs text-white hover:bg-indigo-800"
 							on:click={() => toggleAllFormalities(true)}
 						>
 							Select All
 						</button>
 						<button
-							class="rounded bg-gray-100 px-2 py-1 text-xs hover:bg-gray-200"
+							class="rounded bg-gray-700 px-2 py-1 text-xs text-gray-200 hover:bg-gray-600"
 							on:click={() => toggleAllFormalities(false)}
 						>
 							Clear
@@ -403,71 +404,61 @@
 				<div class="flex flex-wrap gap-2">
 					{#each formalityOptions as option}
 						<button
-							class="rounded-md px-3 py-1 text-sm transition-colors"
-							class:bg-indigo-600={enabledFormalities.includes(option.id)}
-							class:text-white={enabledFormalities.includes(option.id)}
-							class:bg-gray-100={!enabledFormalities.includes(option.id)}
-							class:hover:bg-indigo-700={enabledFormalities.includes(option.id)}
-							class:hover:bg-gray-200={!enabledFormalities.includes(option.id)}
+							class="rounded-md px-3 py-1 text-sm transition-colors {enabledFormalities.includes(
+								option.id
+							)
+								? 'bg-indigo-600 text-white hover:bg-indigo-700'
+								: 'bg-gray-700 text-white hover:bg-gray-600'}"
 							on:click={() => toggleFormality(option.id)}
 						>
 							{option.label}
 						</button>
 					{/each}
 				</div>
-				<div class="mt-1 text-xs text-gray-500">
+				<div class="mt-1 text-xs text-gray-400">
 					{enabledFormalities.length} of {formalityOptions.length} selected
 				</div>
 			</div>
 		</div>
 
 		<!-- Romaji Toggle -->
-		<div class="mb-6 flex flex-col items-center justify-center gap-2">
+		<div class="mb-6 flex items-center justify-center">
 			<button
 				type="button"
-				class="flex items-center rounded-md px-3 py-2 transition-colors"
-				class:bg-indigo-100={!useRomaji}
-				class:bg-indigo-200={useRomaji}
-				class:hover:bg-indigo-200={!useRomaji}
-				class:hover:bg-indigo-300={useRomaji}
+				class="flex items-center rounded-md px-2 py-1 transition-colors {useRomaji
+					? 'bg-indigo-900 hover:bg-indigo-800'
+					: 'bg-gray-700 hover:bg-gray-600'}"
 				on:click={toggleRomajiMode}
 			>
 				<div
-					class="relative flex h-6 w-12 items-center rounded-full p-1 transition-colors duration-300 ease-in-out"
-					class:bg-indigo-600={useRomaji}
-					class:bg-gray-400={!useRomaji}
+					class="relative flex h-4 w-8 items-center rounded-full p-0 transition-colors duration-300 ease-in-out {useRomaji
+						? 'bg-indigo-600'
+						: 'bg-gray-400'}"
 				>
 					<!-- Toggle indicator -->
 					<div
-						class="absolute h-4 w-4 transform rounded-full bg-white shadow transition-transform duration-300 ease-in-out"
-						style={useRomaji ? 'transform: translateX(24px)' : 'transform: translateX(0px)'}
+						class="absolute h-3 w-3 transform rounded-full bg-white shadow transition-transform duration-300 ease-in-out"
+						style={useRomaji ? 'transform: translateX(18px)' : 'transform: translateX(2px)'}
 					></div>
 				</div>
 				<span
-					class="ml-3 font-medium transition-colors duration-300"
-					class:text-indigo-700={useRomaji}
-					class:text-gray-700={!useRomaji}
+					class="ml-3 font-medium transition-colors duration-300 {useRomaji
+						? 'text-indigo-300'
+						: 'text-gray-300'}"
 				>
 					{useRomaji ? 'Romaji Input: ON' : 'Romaji Input: OFF'}
 				</span>
 			</button>
-			<div class="flex items-center text-sm text-gray-600">
-				{#if useRomaji}
-					(Type using Latin alphabet and it will be converted)
-				{:else}
-					(Direct Japanese input)
-				{/if}
-			</div>
 		</div>
 
 		<!-- Verb information -->
 		{#if currentVerb}
-			<div class="mb-6 rounded-lg bg-gray-50 p-4">
+			<div class="mb-6 rounded-lg bg-gray-700 p-4">
 				<div class="flex flex-col items-center space-y-3">
 					<p class="text-xl font-bold">{currentVerb.dictionary}</p>
-					<p class="text-md text-gray-600">{currentVerb.kana}</p>
-					<p class="text-md italic">"{currentVerb.meaning}"</p>
-					<p class="text-sm text-gray-500">
+					<p class="text-md text-gray-300">{currentVerb.kana}</p>
+					<p class="text-md italic">{currentVerb.meaning}</p>
+					<p class="text-sm text-gray-400">
 						Type: {currentVerb.type.charAt(0).toUpperCase() + currentVerb.type.slice(1)}
 						{#if currentVerb.ending}
 							({currentVerb.ending}-row verb)
@@ -485,7 +476,7 @@
 					<span class="font-semibold">{currentPolarityOption?.label}</span>,
 					<span class="font-semibold">{currentFormalityOption?.label}</span> form.
 				</p>
-				<p class="mt-2 text-sm text-gray-600">
+				<p class="mt-2 text-sm text-gray-400">
 					You have {remainingAttempts}
 					{remainingAttempts === 1 ? 'attempt' : 'attempts'} for this question.
 				</p>
@@ -503,13 +494,13 @@
 							placeholder={useRomaji
 								? 'Enter your answer in romaji... (press Enter to submit)'
 								: 'Enter your answer in Japanese... (press Enter to submit)'}
-							class="flex-grow rounded-l-md border p-3 focus:ring focus:ring-indigo-200 focus:outline-none"
+							class="flex-grow rounded-l-md border border-gray-600 bg-gray-700 p-3 text-white focus:ring focus:ring-indigo-500 focus:outline-none"
 							disabled={isCorrect || showAnswer}
 							autocomplete="off"
 						/>
 						<button
 							on:click={checkUserAnswer}
-							class="rounded-r-md bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-700 focus:ring focus:ring-indigo-200 focus:outline-none"
+							class="rounded-r-md bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-700 focus:ring focus:ring-indigo-400 focus:outline-none"
 							disabled={isCorrect || showAnswer}
 						>
 							Check
@@ -518,7 +509,7 @@
 
 					<!-- Romaji conversion preview -->
 					{#if useRomaji && convertedAnswer && !isCorrect && !showAnswer && remainingAttempts > 0}
-						<div class="mt-2 text-gray-600">
+						<div class="mt-2 text-gray-300">
 							<span class="text-sm">Will be converted to:</span>
 							<span class="ml-2 font-medium">{convertedAnswer}</span>
 						</div>
@@ -529,7 +520,7 @@
 			<!-- Feedback and answer -->
 			{#if feedback}
 				<div class="mb-6 text-center">
-					<p class="text-lg font-semibold {isCorrect ? 'text-green-600' : 'text-red-600'}">
+					<p class="text-lg font-semibold {isCorrect ? 'text-green-400' : 'text-red-400'}">
 						{feedback}
 					</p>
 
@@ -540,12 +531,12 @@
 							</p>
 
 							{#if hiraganaAnswer && hasKanji(correctAnswer)}
-								<p class="mt-1 text-gray-600">
+								<p class="mt-1 text-gray-400">
 									(All hiragana: <span class="font-medium">{hiraganaAnswer}</span>)
 								</p>
 							{/if}
 
-							<p class="mt-2 text-sm text-gray-600">
+							<p class="mt-2 text-sm text-gray-400">
 								Both kanji and hiragana answers are accepted!
 							</p>
 						</div>
@@ -558,18 +549,18 @@
 				<div class="text-center">
 					<button
 						on:click={newQuestion}
-						class="rounded-md bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700 focus:ring focus:ring-green-200 focus:outline-none"
+						class="rounded-md bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700 focus:ring focus:ring-green-400 focus:outline-none"
 					>
 						Next Verb
 					</button>
-					<p class="mt-2 text-sm text-gray-600">(Press Enter to continue)</p>
+					<p class="mt-2 text-sm text-gray-400">(Press Enter to continue)</p>
 				</div>
 			{/if}
 		{/if}
 	</div>
 
 	<!-- Score display -->
-	<div class="rounded-lg bg-white p-6 shadow-lg">
+	<div class="rounded-lg bg-gray-800 p-6 shadow-lg">
 		<div class="text-center">
 			<h3 class="mb-3 text-xl font-semibold">Score</h3>
 			<p class="text-2xl">
@@ -587,7 +578,7 @@
 
 				<button
 					on:click={resetGame}
-					class="rounded-md bg-gray-600 px-4 py-2 font-semibold text-white transition hover:bg-gray-700 focus:ring focus:ring-gray-200 focus:outline-none"
+					class="rounded-md bg-gray-600 px-4 py-2 font-semibold text-white transition hover:bg-gray-700 focus:ring focus:ring-gray-500 focus:outline-none"
 				>
 					Reset
 				</button>
@@ -596,7 +587,7 @@
 	</div>
 </main>
 
-<footer class="p-6 text-center text-gray-600">
+<footer class="bg-gray-900 p-6 text-center text-gray-400">
 	<p>Japanese Verb Conjugation Practice App</p>
 	<p class="text-sm">Created with Svelte and Tailwind CSS</p>
 </footer>
