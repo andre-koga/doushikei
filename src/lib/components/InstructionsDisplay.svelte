@@ -16,7 +16,7 @@
 	<p class="text-lg">
 		Conjugate this verb to the
 		<span class="font-semibold">{currentTenseOption?.label}</span>
-		tense in the
+		<span class="text-sm text-gray-400">({currentTenseOption?.description})</span> tense in the
 		<span class="font-semibold">{currentPolarityOption?.label}</span>,
 		<span class="font-semibold">{currentFormalityOption?.label}</span> form.
 	</p>

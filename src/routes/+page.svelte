@@ -83,9 +83,6 @@
 			<!-- Feedback and answer -->
 			<FeedbackDisplay />
 
-			<!-- Tense explanation -->
-			<TenseExplanation />
-
 			<!-- Next question button -->
 			<NextButton />
 		{/if}
