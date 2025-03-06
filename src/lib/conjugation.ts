@@ -692,6 +692,20 @@ export function checkAnswer(expected: string, actual: string): boolean {
         return true;
     }
 
+    // Handle the "must" form (なければならない/なければなりません) specifically
+    // Accept either form regardless of which one was expected
+    if (normalizedExpected.endsWith('なければならない') || normalizedExpected.endsWith('なければなりません')) {
+        // Extract the verb part (everything before なければ)
+        const verbPartExpected = normalizedExpected.replace(/(なければならない|なければなりません)$/, '');
+        const verbPartActual = normalizedActual.replace(/(なければならない|なければなりません)$/, '');
+
+        // If the verb parts match, and the ending is either form of "must"
+        if (verbPartExpected === verbPartActual &&
+            (normalizedActual.endsWith('なければならない') || normalizedActual.endsWith('なければなりません'))) {
+            return true;
+        }
+    }
+
     // Convert both to hiragana for more flexible matching
     const hiraganaExpected = toHiragana(normalizedExpected);
     const hiraganaActual = toHiragana(normalizedActual);

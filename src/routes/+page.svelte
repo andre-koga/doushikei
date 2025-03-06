@@ -417,7 +417,7 @@
 				<div class="flex flex-wrap gap-2">
 					{#each tenseOptions as option}
 						<button
-							class="rounded-md px-3 py-1 text-sm transition-colors {enabledTenses.includes(
+							class="tooltip rounded-md px-3 py-1 text-sm transition-colors {enabledTenses.includes(
 								option.id
 							)
 								? 'bg-indigo-600 text-white hover:bg-indigo-700'
@@ -428,6 +428,9 @@
 						>
 							{option.label}
 							<span class="text-xs text-gray-400">{option.description}</span>
+							{#if option.longDescription}
+								<span class="tooltiptext">{option.longDescription}</span>
+							{/if}
 						</button>
 					{/each}
 				</div>
@@ -728,3 +731,55 @@
 		>
 	</p>
 </footer>
+
+<style>
+	/* Tooltip container */
+	.tooltip {
+		position: relative;
+		display: inline-block;
+	}
+
+	/* Tooltip text */
+	.tooltip .tooltiptext {
+		visibility: hidden;
+		width: 280px;
+		background-color: rgba(17, 24, 39, 0.95);
+		color: #fff;
+		text-align: left;
+		padding: 8px;
+		border-radius: 6px;
+		border: 1px solid #4f46e5;
+		font-size: 0.8rem;
+		line-height: 1.3;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 1;
+		bottom: 125%;
+		left: 50%;
+		transform: translateX(-50%);
+
+		/* Fade in tooltip */
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+	/* Show the tooltip when hovering */
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+		opacity: 1;
+		line-height: 1.5;
+	}
+
+	/* Tooltip arrow */
+	.tooltip .tooltiptext::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: #4f46e5 transparent transparent transparent;
+	}
+</style>
