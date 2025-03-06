@@ -19,6 +19,18 @@
 	let remainingAttempts = 3; // Number of attempts allowed per question
 	let currentAttempt = 0; // Current attempt count for the current question
 
+	// Statistics tracking for each tense
+	type TenseStats = {
+		attempts: number;
+		correct: number;
+	};
+
+	// Initialize statistics for each tense
+	let tenseStats: Record<string, TenseStats> = {};
+	tenseOptions.forEach((tense) => {
+		tenseStats[tense.id] = { attempts: 0, correct: 0 };
+	});
+
 	// Replace single selections with arrays of enabled options
 	let enabledTenses = tenseOptions.map((t) => t.id); // Start with all enabled
 	let enabledPolarities = polarityOptions.map((p) => p.id); // Start with all enabled
@@ -143,13 +155,19 @@
 		}
 	}
 
-	// Check the user's answer
+	// Check the user's answer and update stats
 	function checkUserAnswer() {
 		if (!currentVerb || !userAnswer.trim()) return;
 
 		// Increment attempt counters
 		attempts++;
 		currentAttempt++;
+
+		// Only track stats on first attempt for this question
+		if (currentAttempt === 1) {
+			// Update tense stats
+			tenseStats[currentTense].attempts++;
+		}
 
 		// Process input first in case it's romaji
 		processInput();
@@ -159,6 +177,11 @@
 			feedback = '正解！ (Correct!)';
 			isCorrect = true;
 			score++;
+
+			// Only increment correct stat on first attempt
+			if (currentAttempt === 1) {
+				tenseStats[currentTense].correct++;
+			}
 		} else {
 			remainingAttempts--;
 			if (remainingAttempts > 0) {
@@ -195,6 +218,10 @@
 	function resetGame() {
 		score = 0;
 		attempts = 0;
+		// Reset tense stats
+		tenseOptions.forEach((tense) => {
+			tenseStats[tense.id] = { attempts: 0, correct: 0 };
+		});
 		newQuestion();
 	}
 
@@ -264,6 +291,23 @@
 		enabledFormalities = enable ? formalityOptions.map((f) => f.id) : [formalityOptions[0].id];
 	}
 
+	// Calculate accuracy percentage for a tense
+	function getTenseAccuracy(tenseId: string): number {
+		const stats = tenseStats[tenseId];
+		if (stats.attempts === 0) return 0;
+		return Math.round((stats.correct / stats.attempts) * 100);
+	}
+
+	// Get color class based on accuracy percentage
+	function getAccuracyColorClass(accuracy: number): string {
+		if (accuracy === 0) return 'bg-gray-700'; // No attempts yet
+		if (accuracy >= 90) return 'bg-emerald-800';
+		if (accuracy >= 70) return 'bg-green-700';
+		if (accuracy >= 50) return 'bg-yellow-700';
+
+		return 'bg-red-800';
+	}
+
 	// When user input changes, update the conversion
 	$: {
 		if (userAnswer && useRomaji && isRomaji(userAnswer)) {
@@ -298,6 +342,9 @@
 	$: currentTenseOption = tenseOptions.find((t) => t.id === currentTense);
 	$: currentPolarityOption = polarityOptions.find((p) => p.id === currentPolarity);
 	$: currentFormalityOption = formalityOptions.find((f) => f.id === currentFormality);
+
+	// Calculate total attempts across all tenses
+	$: totalTenseAttempts = Object.values(tenseStats).reduce((sum, stat) => sum + stat.attempts, 0);
 </script>
 
 <main class="container mx-auto max-w-4xl bg-gray-900 px-4 py-8 text-white">
@@ -560,7 +607,7 @@
 	</div>
 
 	<!-- Score display -->
-	<div class="rounded-lg bg-gray-800 p-6 shadow-lg">
+	<div class="mb-8 rounded-lg bg-gray-800 p-6 shadow-lg">
 		<div class="text-center">
 			<h3 class="mb-3 text-xl font-semibold">Score</h3>
 			<p class="text-2xl">
@@ -583,6 +630,41 @@
 					Reset
 				</button>
 			</div>
+		</div>
+	</div>
+
+	<!-- Tense Performance Stats -->
+	<div class="mb-8 rounded-lg bg-gray-800 p-6 shadow-lg">
+		<div class="text-center">
+			<h3 class="mb-4 text-xl font-semibold">Tense Performance</h3>
+
+			{#if totalTenseAttempts === 0}
+				<p class="text-gray-400">Complete some questions to see your performance by tense.</p>
+			{:else}
+				<div class="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+					{#each tenseOptions as tense}
+						{#if tenseStats[tense.id].attempts > 0}
+							<div class="rounded-md bg-gray-700 p-3">
+								<div class="mb-1 flex items-center justify-between">
+									<span class="font-medium">{tense.label}</span>
+									<span class="text-sm">
+										{tenseStats[tense.id].correct}/{tenseStats[tense.id].attempts}
+									</span>
+								</div>
+								<div class="h-2 w-full overflow-hidden rounded-full bg-gray-600">
+									<div
+										class="{getAccuracyColorClass(getTenseAccuracy(tense.id))} h-full"
+										style="width: {getTenseAccuracy(tense.id)}%"
+									></div>
+								</div>
+								<div class="mt-1.5 text-right text-xs text-gray-300">
+									{getTenseAccuracy(tense.id)}%
+								</div>
+							</div>
+						{/if}
+					{/each}
+				</div>
+			{/if}
 		</div>
 	</div>
 </main>
