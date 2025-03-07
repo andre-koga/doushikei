@@ -1,4 +1,4 @@
-import { writable, derived } from 'svelte/store';
+import { writable, derived, get } from 'svelte/store';
 import type { Verb, Tense, Polarity, Formality } from '$lib/verbs';
 import { conjugateVerb } from '$lib/conjugation';
 import { getRandomVerb, getRandomOption } from '$lib/utils/gameUtils';
@@ -8,11 +8,11 @@ import { enabledTenses, enabledPolarities, enabledFormalities } from './preferen
 // Game stats
 export const score = writable(0);
 export const attempts = writable(0);
-export const tenseStats = writable<Record<string, { attempts: number, correct: number }>>({});
+export const tenseStats = writable<Record<string, { attempts: number; correct: number }>>({});
 
 // Initialize stats for each tense
 export const initTenseStats = () => {
-    const stats: Record<string, { attempts: number, correct: number }> = {};
+    const stats: Record<string, { attempts: number; correct: number }> = {};
     tenseOptions.forEach((tense) => {
         stats[tense.id] = { attempts: 0, correct: 0 };
     });
@@ -34,7 +34,7 @@ export const remainingAttempts = writable(3);
 export const currentAttempt = writable(0);
 
 // Derived stores
-export const totalTenseAttempts = derived(tenseStats, $tenseStats => {
+export const totalTenseAttempts = derived(tenseStats, ($tenseStats) => {
     return Object.values($tenseStats).reduce((sum, stat) => sum + stat.attempts, 0);
 });
 
@@ -57,22 +57,19 @@ export const newQuestion = () => {
     currentAttempt.set(0);
     remainingAttempts.set(3);
 
-    let verbValue: Verb;
-    let tenseValue: Tense;
-    let polarityValue: Polarity;
-    let formalityValue: Formality;
-    let enabledTensesValue: Tense[];
-    let enabledPolaritiesValue: Polarity[];
-    let enabledFormalitiesValue: Formality[];
-
-    // Get current values from stores (we need to do this synchronously)
-    enabledTenses.subscribe(value => { enabledTensesValue = value; })();
-    enabledPolarities.subscribe(value => { enabledPolaritiesValue = value; })();
-    enabledFormalities.subscribe(value => { enabledFormalitiesValue = value; })();
+    // Get current values from stores using get() function
+    const enabledTensesValue = get(enabledTenses);
+    const enabledPolaritiesValue = get(enabledPolarities);
+    const enabledFormalitiesValue = get(enabledFormalities);
 
     // Get a random verb
-    verbValue = getRandomVerb();
+    const verbValue = getRandomVerb();
     currentVerb.set(verbValue);
+
+    // Initialize variables before the loop
+    let tenseValue: Tense = 'present';
+    let polarityValue: Polarity = 'affirmative';
+    let formalityValue: Formality = 'plain';
 
     // Keep generating new combinations until we get one that isn't the dictionary form
     let isDictionaryForm = true;
@@ -86,16 +83,11 @@ export const newQuestion = () => {
             ['affirmative', 'negative'] as Polarity[],
             enabledPolaritiesValue
         );
-        formalityValue = getRandomOption(
-            ['plain', 'polite'] as Formality[],
-            enabledFormalitiesValue
-        );
+        formalityValue = getRandomOption(['plain', 'polite'] as Formality[], enabledFormalitiesValue);
 
         // Skip the dictionary form (present affirmative plain)
         isDictionaryForm =
-            tenseValue === 'present' &&
-            polarityValue === 'affirmative' &&
-            formalityValue === 'plain';
+            tenseValue === 'present' && polarityValue === 'affirmative' && formalityValue === 'plain';
 
         // If only present-affirmative-plain is enabled, we need to escape this loop
         if (
@@ -124,12 +116,14 @@ export const newQuestion = () => {
 
 // Calculate accuracy percentage for a tense
 export const getTenseAccuracy = (tenseId: string): number => {
-    let stats: Record<string, { attempts: number, correct: number }> = {};
-    tenseStats.subscribe(value => { stats = value; })();
+    let stats: Record<string, { attempts: number; correct: number }> = {};
+    tenseStats.subscribe((value) => {
+        stats = value;
+    })();
 
     if (stats[tenseId]?.attempts === 0) return 0;
     return Math.round((stats[tenseId].correct / stats[tenseId].attempts) * 100);
 };
 
 // Initialize stats
-initTenseStats(); 
+initTenseStats();
