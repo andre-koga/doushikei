@@ -1,16 +1,32 @@
 <script lang="ts">
-	import { currentVerb, currentTense, isCorrect, showAnswer } from '$lib/stores/gameStore';
+	import {
+		currentVerb,
+		currentTense,
+		currentPolarity,
+		currentFormality,
+		isCorrect,
+		showAnswer
+	} from '$lib/stores/gameStore';
+	import { tenseOptions } from '$lib/verbs';
 	import { conjugator } from '$lib/conjugation';
 	import type { JapaneseVerb } from '$lib/types';
-	import type { ConjugationForm } from '$lib/types';
+	import type { Tense } from '$lib/verbs';
 
 	let userInput = '';
 	let expectedAnswer = '';
 
 	$: if ($currentVerb) {
 		const verb = $currentVerb as JapaneseVerb;
-		expectedAnswer = conjugator.conjugate(verb, $currentTense as ConjugationForm);
+		expectedAnswer = conjugator.conjugate(
+			verb,
+			$currentTense as Tense,
+			$currentPolarity,
+			$currentFormality
+		);
 	}
+
+	// Get the readable tense name
+	$: tenseLabel = tenseOptions.find((t) => t.id === $currentTense)?.label || $currentTense;
 
 	function handleSubmit() {
 		if (!$currentVerb) return;

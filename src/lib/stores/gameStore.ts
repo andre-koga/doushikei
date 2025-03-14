@@ -1,6 +1,7 @@
 import { writable, derived, get } from 'svelte/store';
 import type { Polarity, Formality } from '$lib/verbs';
 import { tenseOptions } from '$lib/verbs';
+import { enabledTenses, enabledPolarities, enabledFormalities } from './preferenceStore';
 import type { JapaneseVerb } from '$lib/types';
 import { conjugator } from '$lib/conjugation';
 
@@ -54,11 +55,53 @@ function getCurrentTense(): string {
     return get(currentTense);
 }
 
+// Helper function to get random item from array
+function getRandomItem<T>(array: T[]): T {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
 // Generate a new question
 export function newQuestion() {
+    // Get a random verb
     const allVerbs = conjugator.getAllVerbs();
     const verb = allVerbs[Math.floor(Math.random() * allVerbs.length)];
+
+    // Get current enabled options
+    const enabledTensesValue = get(enabledTenses);
+    const enabledPolaritiesValue = get(enabledPolarities);
+    const enabledFormalitiesValue = get(enabledFormalities);
+
+    // Get a random tense that isn't the dictionary form (present-affirmative-plain)
+    let selectedTense: string;
+    let selectedPolarity: Polarity;
+    let selectedFormality: Formality;
+    let isDictionaryForm: boolean;
+
+    do {
+        selectedTense = getRandomItem(enabledTensesValue);
+        selectedPolarity = getRandomItem(enabledPolaritiesValue);
+        selectedFormality = getRandomItem(enabledFormalitiesValue);
+
+        // Check if this combination is the dictionary form
+        isDictionaryForm =
+            selectedTense === 'present' &&
+            selectedPolarity === 'affirmative' &&
+            selectedFormality === 'plain';
+
+        // If only dictionary form is enabled, accept it
+        if (isDictionaryForm &&
+            enabledTensesValue.length === 1 &&
+            enabledPolaritiesValue.length === 1 &&
+            enabledFormalitiesValue.length === 1) {
+            isDictionaryForm = false;
+        }
+    } while (isDictionaryForm);
+
+    // Update the stores
     currentVerb.set(verb);
+    currentTense.set(selectedTense);
+    currentPolarity.set(selectedPolarity);
+    currentFormality.set(selectedFormality);
     isCorrect.set(false);
     showAnswer.set(false);
 }

@@ -1,5 +1,5 @@
-import type { Formality, Polarity, Tense, Verb } from './verbs';
-import type { JapaneseVerb, ConjugationForm } from './types';
+import type { Verb, Tense, Polarity, Formality } from './verbs';
+import type { JapaneseVerb } from './types';
 import verbData from './verb-data.json';
 
 // Helper function to get the verb stem
@@ -1222,30 +1222,18 @@ export class VerbConjugator {
 		return this.verbs.find(v => v.dictionary === dictionary);
 	}
 
-	conjugate(verb: JapaneseVerb, form: ConjugationForm): string {
-		switch (form) {
-			case 'present':
-				return verb.kana; // Dictionary form is present form
-			case 'negative':
-				if (verb.type === 'godan') {
-					return verb.kana.slice(0, -1) + 'ない';
-				} else if (verb.type === 'irregular') {
-					if (verb.dictionary === '来る') return 'こない';
-					// Add more irregular cases as needed
-				}
-				return verb.kana.slice(0, -1) + 'ない';
-			case 'past':
-				if (verb.type === 'godan') {
-					return verb.kana.slice(0, -1) + 'た';
-				} else if (verb.type === 'irregular') {
-					if (verb.dictionary === '来る') return 'きた';
-					// Add more irregular cases as needed
-				}
-				return verb.kana.slice(0, -1) + 'た';
-			// Add more conjugation forms as needed
-			default:
-				return verb.kana;
-		}
+	conjugate(verb: JapaneseVerb, tense: Tense, polarity: Polarity = 'affirmative', formality: Formality = 'plain'): string {
+		// Convert the verb to our internal Verb type
+		const internalVerb: Verb = {
+			dictionary: verb.dictionary,
+			kana: verb.kana,
+			meaning: verb.meaning,
+			type: verb.type,
+			ending: verb.ending as Verb['ending']
+		};
+
+		// Use the existing conjugation function
+		return conjugateVerb(internalVerb, tense, polarity, formality);
 	}
 
 	getAllVerbs(): JapaneseVerb[] {
