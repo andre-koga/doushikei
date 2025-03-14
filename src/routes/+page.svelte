@@ -141,9 +141,9 @@
 	</div> -->
 </main>
 
-<footer class="bg-gray-900 pt-4 pb-12 text-center text-gray-400">
+<footer class="flex flex-col items-center gap-1 bg-gray-900 pt-4 pb-12 text-center text-gray-400">
 	<p>Japanese Verb Conjugation Practice App</p>
-	<p class="mt-1 text-sm">
+	<p class="text-sm">
 		Created with Svelte and Tailwind CSS by <a
 			href="https://github.com/andre-koga"
 			target="_blank"
