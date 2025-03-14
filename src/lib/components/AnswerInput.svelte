@@ -1,82 +1,52 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { isRomaji } from '$lib/romaji';
-	import {
-		userAnswer,
-		convertedAnswer,
-		isCorrect,
-		showAnswer,
-		remainingAttempts
-	} from '$lib/stores/gameStore';
-	import { useRomaji } from '$lib/stores/preferenceStore';
-	import { checkUserAnswer, processInput } from '$lib/utils/gameUtils';
+	import { currentVerb, currentTense, isCorrect, showAnswer } from '$lib/stores/gameStore';
+	import { conjugator } from '$lib/conjugation';
+	import type { JapaneseVerb } from '$lib/types';
+	import type { ConjugationForm } from '$lib/types';
 
-	let answerInput: HTMLInputElement | null = null;
+	let userInput = '';
+	let expectedAnswer = '';
 
-	// Focus the input field
-	function focusInput() {
-		if (answerInput && !$isCorrect && !$showAnswer) {
-			setTimeout(() => {
-				answerInput?.focus();
-			}, 50);
+	$: if ($currentVerb) {
+		const verb = $currentVerb as JapaneseVerb;
+		expectedAnswer = conjugator.conjugate(verb, $currentTense as ConjugationForm);
+	}
+
+	function handleSubmit() {
+		if (!$currentVerb) return;
+
+		const isAnswerCorrect = userInput.trim() === expectedAnswer.trim();
+		isCorrect.set(isAnswerCorrect);
+
+		if (!isAnswerCorrect) {
+			showAnswer.set(true);
+		} else {
+			userInput = ''; // Clear input when correct
 		}
 	}
-
-	// Handle key press in the input field
-	function handleKeyDown(event: KeyboardEvent) {
-		// If Enter key is pressed while answering
-		if (event.key === 'Enter' && !$isCorrect && !$showAnswer && $remainingAttempts > 0) {
-			checkUserAnswer($useRomaji);
-			event.preventDefault();
-			event.stopPropagation(); // Stop the event from bubbling up to the document level
-		}
-	}
-
-	// Update converted answer when user types
-	$: if ($userAnswer && $useRomaji && isRomaji($userAnswer)) {
-		$convertedAnswer = processInput($userAnswer, true);
-	} else if ($userAnswer) {
-		$convertedAnswer = $userAnswer;
-	} else {
-		$convertedAnswer = '';
-	}
-
-	// Focus input field when component mounts
-	onMount(() => {
-		focusInput();
-	});
 </script>
 
-<div class="mb-6">
-	<div class="flex flex-col">
-		<div class="flex">
-			<input
-				type="text"
-				bind:value={$userAnswer}
-				bind:this={answerInput}
-				on:keydown={handleKeyDown}
-				placeholder={$useRomaji
-					? 'Enter your answer in romaji... (press Enter to submit)'
-					: 'Enter your answer in Japanese... (press Enter to submit)'}
-				class="flex-grow rounded-l-md border border-gray-600 bg-gray-700 p-3 text-white focus:ring focus:ring-indigo-500 focus:outline-none"
-				disabled={$isCorrect || $showAnswer}
-				autocomplete="off"
-			/>
-			<button
-				on:click={() => checkUserAnswer($useRomaji)}
-				class="rounded-r-md bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-700 focus:ring focus:ring-indigo-400 focus:outline-none"
-				disabled={$isCorrect || $showAnswer}
-			>
-				Check
-			</button>
-		</div>
-
-		<!-- Romaji conversion preview -->
-		{#if $useRomaji && $convertedAnswer && !$isCorrect && !$showAnswer && $remainingAttempts > 0}
-			<div class="mt-2 text-gray-300">
-				<span class="text-sm">Will be converted to:</span>
-				<span class="ml-2 font-medium">{$convertedAnswer}</span>
-			</div>
-		{/if}
+<form on:submit|preventDefault={handleSubmit} class="mb-4">
+	<div class="flex flex-col space-y-4">
+		<input
+			type="text"
+			bind:value={userInput}
+			placeholder="Enter conjugated form..."
+			class="w-full rounded-lg bg-gray-600 p-2 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+			disabled={$isCorrect || $showAnswer}
+		/>
+		<button
+			type="submit"
+			class="rounded-lg bg-indigo-600 px-4 py-2 font-semibold text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none disabled:opacity-50"
+			disabled={$isCorrect || $showAnswer}
+		>
+			Check Answer
+		</button>
 	</div>
-</div>
+</form>
+
+{#if $showAnswer}
+	<div class="mt-4 text-center">
+		<p class="text-lg">Correct answer: <span class="font-bold">{expectedAnswer}</span></p>
+	</div>
+{/if}

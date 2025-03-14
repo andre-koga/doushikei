@@ -1,12 +1,11 @@
 import { writable, derived, get } from 'svelte/store';
-import type { Verb, Tense, Polarity, Formality } from '$lib/verbs';
-import { conjugateVerb } from '$lib/conjugation';
-import { getRandomVerb, getRandomOption } from '$lib/utils/gameUtils';
+import type { Polarity, Formality } from '$lib/verbs';
 import { tenseOptions } from '$lib/verbs';
-import { enabledTenses, enabledPolarities, enabledFormalities } from './preferenceStore';
+import type { JapaneseVerb } from '$lib/types';
+import { conjugator } from '$lib/conjugation';
 
 // Game stats
-export const score = writable(0);
+export const score = writable<{ correct: number; total: number }>({ correct: 0, total: 0 });
 export const attempts = writable(0);
 export const tenseStats = writable<Record<string, { attempts: number; correct: number }>>({});
 
@@ -20,16 +19,16 @@ export const initTenseStats = () => {
 };
 
 // Current game state
-export const currentVerb = writable<Verb | null>(null);
-export const currentTense = writable<Tense>('present');
+export const currentVerb = writable<JapaneseVerb | null>(null);
+export const currentTense = writable<string>('present');
 export const currentPolarity = writable<Polarity>('affirmative');
 export const currentFormality = writable<Formality>('plain');
 export const correctAnswer = writable('');
 export const userAnswer = writable('');
 export const convertedAnswer = writable('');
 export const feedback = writable('');
-export const isCorrect = writable(false);
-export const showAnswer = writable(false);
+export const isCorrect = writable<boolean>(false);
+export const showAnswer = writable<boolean>(false);
 export const remainingAttempts = writable(3);
 export const currentAttempt = writable(0);
 
@@ -38,104 +37,34 @@ export const totalTenseAttempts = derived(tenseStats, ($tenseStats) => {
     return Object.values($tenseStats).reduce((sum, stat) => sum + stat.attempts, 0);
 });
 
+// Performance tracking by tense
+export const tensePerformance = writable<Record<string, { correct: number; total: number }>>({});
+
 // Reset game stats
-export const resetGame = () => {
-    score.set(0);
+export function resetGame() {
+    score.set({ correct: 0, total: 0 });
     attempts.set(0);
     initTenseStats();
+    tensePerformance.set({});
     newQuestion();
-};
+}
+
+// Get current tense from store
+function getCurrentTense(): string {
+    return get(currentTense);
+}
 
 // Generate a new question
-export const newQuestion = () => {
-    // Reset question state
-    userAnswer.set('');
-    convertedAnswer.set('');
-    feedback.set('');
+export function newQuestion() {
+    const allVerbs = conjugator.getAllVerbs();
+    const verb = allVerbs[Math.floor(Math.random() * allVerbs.length)];
+    currentVerb.set(verb);
     isCorrect.set(false);
     showAnswer.set(false);
-    currentAttempt.set(0);
-    remainingAttempts.set(3);
-
-    // Get current values from stores using get() function
-    const enabledTensesValue = get(enabledTenses);
-    const enabledPolaritiesValue = get(enabledPolarities);
-    const enabledFormalitiesValue = get(enabledFormalities);
-
-    // Get a random verb
-    const verbValue = getRandomVerb();
-    currentVerb.set(verbValue);
-
-    // Initialize variables before the loop
-    let tenseValue: Tense = 'present';
-    let polarityValue: Polarity = 'affirmative';
-    let formalityValue: Formality = 'plain';
-
-    // Keep generating new combinations until we get one that isn't the dictionary form
-    let isDictionaryForm = true;
-    while (isDictionaryForm) {
-        // Select random conjugation options from enabled lists
-        tenseValue = getRandomOption(
-            tenseOptions.map((t) => t.id),
-            enabledTensesValue
-        );
-
-        // Find the current tense option to check if it has polarity and formality
-        const tenseOption = tenseOptions.find(t => t.id === tenseValue);
-
-        // Only randomize polarity if the tense has polarity variations
-        if (tenseOption && tenseOption.hasPolarity) {
-            polarityValue = getRandomOption(
-                ['affirmative', 'negative'] as Polarity[],
-                enabledPolaritiesValue
-            );
-        } else {
-            // Default to affirmative if tense doesn't have polarity
-            polarityValue = 'affirmative';
-        }
-
-        // Only randomize formality if the tense has formality variations
-        if (tenseOption && tenseOption.hasFormality) {
-            formalityValue = getRandomOption(
-                ['plain', 'polite'] as Formality[],
-                enabledFormalitiesValue
-            );
-        } else {
-            // Default to plain if tense doesn't have formality
-            formalityValue = 'plain';
-        }
-
-        // Skip the dictionary form (present affirmative plain)
-        isDictionaryForm =
-            tenseValue === 'present' && polarityValue === 'affirmative' && formalityValue === 'plain';
-
-        // If only present-affirmative-plain is enabled, we need to escape this loop
-        if (
-            isDictionaryForm &&
-            enabledTensesValue.length === 1 &&
-            enabledTensesValue[0] === 'present' &&
-            enabledPolaritiesValue.length === 1 &&
-            enabledPolaritiesValue[0] === 'affirmative' &&
-            enabledFormalitiesValue.length === 1 &&
-            enabledFormalitiesValue[0] === 'plain'
-        ) {
-            isDictionaryForm = false; // Accept the dictionary form if it's the only option
-        }
-    }
-
-    // Update stores with selected options
-    currentTense.set(tenseValue);
-    currentPolarity.set(polarityValue);
-    currentFormality.set(formalityValue);
-
-    // Compute the correct answer
-    if (verbValue) {
-        correctAnswer.set(conjugateVerb(verbValue, tenseValue, polarityValue, formalityValue));
-    }
-};
+}
 
 // Calculate accuracy percentage for a tense
-export const getTenseAccuracy = (tenseId: string): number => {
+export function getTenseAccuracy(tenseId: string): number {
     let stats: Record<string, { attempts: number; correct: number }> = {};
     tenseStats.subscribe((value) => {
         stats = value;
@@ -143,7 +72,32 @@ export const getTenseAccuracy = (tenseId: string): number => {
 
     if (stats[tenseId]?.attempts === 0) return 0;
     return Math.round((stats[tenseId].correct / stats[tenseId].attempts) * 100);
-};
+}
+
+// Check the answer
+export function checkAnswer(userAnswer: string, expectedAnswer: string) {
+    const correct = userAnswer.trim() === expectedAnswer.trim();
+    isCorrect.set(correct);
+
+    // Update score
+    score.update(s => ({
+        correct: s.correct + (correct ? 1 : 0),
+        total: s.total + 1
+    }));
+
+    // Update tense performance
+    tensePerformance.update(tp => {
+        const tense = getCurrentTense();
+        if (!tp[tense]) {
+            tp[tense] = { correct: 0, total: 0 };
+        }
+        tp[tense].total++;
+        if (correct) {
+            tp[tense].correct++;
+        }
+        return tp;
+    });
+}
 
 // Initialize stats
 initTenseStats();

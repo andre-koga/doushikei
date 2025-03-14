@@ -1,0 +1,3334 @@
+[
+  {
+    "dictionary": "来る",
+    "kana": "くる",
+    "meaning": "to come (spatially or temporally), to approach, to arrive",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "得る",
+    "kana": "える",
+    "meaning": "to get, to acquire, to obtain",
+    "type": "godan"
+  },
+  {
+    "dictionary": "有る",
+    "kana": "ある",
+    "meaning": "to be, to exist, to live",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "発つ",
+    "kana": "たつ",
+    "meaning": "to depart (on a journey, trip, etc.), to leave, to set off",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "行く",
+    "kana": "いく",
+    "meaning": "to go, to move (towards), to head (towards)",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "知る",
+    "kana": "しる",
+    "meaning": "to know, to be aware (of), to be conscious (of)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "争う",
+    "kana": "あらそう",
+    "meaning": "to compete, to contest, to contend",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "企む",
+    "kana": "たくらむ",
+    "meaning": "to scheme, to plan, to play a trick",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "会う",
+    "kana": "あう",
+    "meaning": "to meet, to encounter, to see",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "合う",
+    "kana": "あう",
+    "meaning": "to come together, to merge, to unite",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "力づく",
+    "kana": "ちからづく",
+    "meaning": "to regain one's strength, to recover one's spirit, to be invigorated",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "出来る",
+    "kana": "できる",
+    "meaning": "to be able to do, to be possible, to be permitted (to do)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "飽く",
+    "kana": "あく",
+    "meaning": "to get tired of, to tire of, to lose interest in",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "極力",
+    "kana": "きょくりょく",
+    "meaning": "to the utmost, to the best of one's ability",
+    "type": "godan"
+  },
+  {
+    "dictionary": "身支度",
+    "kana": "みじたく",
+    "meaning": "dress, outfit, getup",
+    "type": "godan"
+  },
+  {
+    "dictionary": "急ぐ",
+    "kana": "いそぐ",
+    "meaning": "to hurry, to rush, to hasten",
+    "type": "godan",
+    "ending": "gu"
+  },
+  {
+    "dictionary": "光る",
+    "kana": "ひかる",
+    "meaning": "to shine, to glitter, to be bright",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "浴びる",
+    "kana": "あびる",
+    "meaning": "to dash over oneself (e.g. water), to take (e.g. shower), to bask in (e.g. the sun)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "あやす",
+    "kana": "あやす",
+    "meaning": "to cuddle, to comfort, to rock",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "保つ",
+    "kana": "たもつ",
+    "meaning": "to keep, to preserve, to hold",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "分かつ",
+    "kana": "わかつ",
+    "meaning": "to divide, to separate",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "動かす",
+    "kana": "うごかす",
+    "meaning": "to move, to shift, to stir",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "下す",
+    "kana": "くだす",
+    "meaning": "to make a decision, to draw a conclusion",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "遊ぶ",
+    "kana": "あそぶ",
+    "meaning": "to play (games, sports), to enjoy oneself, to have a good time",
+    "type": "godan",
+    "ending": "bu"
+  },
+  {
+    "dictionary": "手こずる",
+    "kana": "てこずる",
+    "meaning": "to have much trouble, to have a hard time, to not know how to handle",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "参る",
+    "kana": "まいる",
+    "meaning": "to go, to come, to call",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "降る",
+    "kana": "ふる",
+    "meaning": "to fall (of rain, snow, ash, etc.), to come down",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "直す",
+    "kana": "なおす",
+    "meaning": "to repair, to mend, to fix",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "経つ",
+    "kana": "たつ",
+    "meaning": "to pass (of time), to elapse",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "止む",
+    "kana": "やむ",
+    "meaning": "to cease, to stop, to be over",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "漁る",
+    "kana": "あさる",
+    "meaning": "to fish",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "移る",
+    "kana": "うつる",
+    "meaning": "to move (house), to transfer (department)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "編む",
+    "kana": "あむ",
+    "meaning": "to knit, to plait, to braid",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "売る",
+    "kana": "うる",
+    "meaning": "to sell",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "始まる",
+    "kana": "はじまる",
+    "meaning": "to begin, to start, to commence",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "合わさる",
+    "kana": "あわさる",
+    "meaning": "to join, to be put together, to combine",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "分かる",
+    "kana": "わかる",
+    "meaning": "to understand, to comprehend, to grasp",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "放つ",
+    "kana": "はなつ",
+    "meaning": "to fire (gun, arrow, questions, etc.), to shoot, to hit (e.g. baseball)",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "言う",
+    "kana": "いう",
+    "meaning": "to say, to utter, to declare",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "引っかく",
+    "kana": "ひっかく",
+    "meaning": "to scratch, to claw",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "聞く",
+    "kana": "きく",
+    "meaning": "to hear",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "閉口",
+    "kana": "へいこう",
+    "meaning": "to be stumped, to be at a loss, to be at one's wits' end",
+    "type": "godan"
+  },
+  {
+    "dictionary": "喘ぐ",
+    "kana": "あえぐ",
+    "meaning": "to gasp, to pant, to breathe hard",
+    "type": "godan",
+    "ending": "gu"
+  },
+  {
+    "dictionary": "当たる",
+    "kana": "あたる",
+    "meaning": "to be hit, to strike",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "治る",
+    "kana": "なおる",
+    "meaning": "to get better, to get well, to recover (from an illness)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "信じる",
+    "kana": "しんじる",
+    "meaning": "to believe, to believe in, to place trust in",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "起こす",
+    "kana": "おこす",
+    "meaning": "to raise, to raise up, to set up",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "論う",
+    "kana": "あげつらう",
+    "meaning": "to discuss",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "遇う",
+    "kana": "あしらう",
+    "meaning": "to treat, to handle, to deal with",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "溢れる",
+    "kana": "あぶれる",
+    "meaning": "to fail (in getting a job), to miss out (at fishing, hunting, etc.)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "いかす",
+    "kana": "いかす",
+    "meaning": "to be smart, to be cool, to be sharp",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "いじける",
+    "kana": "いじける",
+    "meaning": "to grow timid, to cower, to shrink",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "いじり回す",
+    "kana": "いじりまわす",
+    "meaning": "to tinker with, to fumble with, to fiddle with",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "いちゃつく",
+    "kana": "いちゃつく",
+    "meaning": "to make out, to neck, to canoodle",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "嘶く",
+    "kana": "いななく",
+    "meaning": "to neigh",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "いびる",
+    "kana": "いびる",
+    "meaning": "to pick on, to tease",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "居らっしゃる",
+    "kana": "いらっしゃる",
+    "meaning": "to come, to go, to be (somewhere)",
+    "type": "godan"
+  },
+  {
+    "dictionary": "狼狽える",
+    "kana": "うろたえる",
+    "meaning": "to be flustered, to lose one's presence of mind",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "お出でになる",
+    "kana": "おいでになる",
+    "meaning": "to be",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "お座なりになる",
+    "kana": "おざなりになる",
+    "meaning": "to not be taken seriously",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "落っこちる",
+    "kana": "おっこちる",
+    "meaning": "to fall, to drop",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "お見えになる",
+    "kana": "おみえになる",
+    "meaning": "to arrive",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "お世話になる",
+    "kana": "おせわになる",
+    "meaning": "to receive favor, to receive assistance, to receive help",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "お風呂に入る",
+    "kana": "おふろにはいる",
+    "meaning": "to take a bath, to have a bath",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "悴む",
+    "kana": "かじかむ",
+    "meaning": "to grow numb with cold",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "格好つける",
+    "kana": "かっこうつける",
+    "meaning": "to affect a stylish air, to try to look good, to show off",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "掻っ攫う",
+    "kana": "かっさらう",
+    "meaning": "to snatch (and run), to carry off, to swipe",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "くすくす笑う",
+    "kana": "くすくすわらう",
+    "meaning": "to giggle",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "擽る",
+    "kana": "くすぐる",
+    "meaning": "to tickle",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "くたばる",
+    "kana": "くたばる",
+    "meaning": "to kick the bucket, to drop dead, to die",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "草臥れる",
+    "kana": "くたびれる",
+    "meaning": "to get tired, to become exhausted, to grow weary",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "くっ付く",
+    "kana": "くっつく",
+    "meaning": "to adhere to, to stick to, to cling to",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "くっ付ける",
+    "kana": "くっつける",
+    "meaning": "to attach, to stick together, to paste",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "くねる",
+    "kana": "くねる",
+    "meaning": "to bend loosely back and forth, to wriggle, to be crooked",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "クンクン鳴く",
+    "kana": "クンクンなく",
+    "meaning": "to whine (of a dog)",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "ぐら付く",
+    "kana": "ぐらつく",
+    "meaning": "to be unsteady, to reel, to shake",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "ぐれる",
+    "kana": "ぐれる",
+    "meaning": "to stray from the right path, to go wrong, to go off the rails",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ケラケラ笑う",
+    "kana": "ケラケラわらう",
+    "meaning": "to cackle",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "ゲラゲラ笑う",
+    "kana": "ゲラゲラわらう",
+    "meaning": "to guffaw, to roar with laughter, to laugh heartily",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "ゲンを担ぐ",
+    "kana": "ゲンをかつぐ",
+    "meaning": "to be superstitious",
+    "type": "godan",
+    "ending": "gu"
+  },
+  {
+    "dictionary": "こじ付ける",
+    "kana": "こじつける",
+    "meaning": "to distort, to strain (an interpretation), to stretch (the meaning of a word)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "拘る",
+    "kana": "こだわる",
+    "meaning": "to be obsessive (about), to be overly concerned (with), to fuss (over)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "ことが出来る",
+    "kana": "ことができる",
+    "meaning": "to be able (to), to be possible (to)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "事になる",
+    "kana": "ことになる",
+    "meaning": "to have been decided (so) that, to have been arranged (so) that",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "ごった返す",
+    "kana": "ごったがえす",
+    "meaning": "to be in confusion or commotion, to be in a turmoil, to be crowded or jammed with people",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "ささくれる",
+    "kana": "ささくれる",
+    "meaning": "to split finely, to splinter, to get frayed",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "させる",
+    "kana": "させる",
+    "meaning": "to make (someone) do",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "さて置く",
+    "kana": "さておく",
+    "meaning": "to set aside",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "さらけ出す",
+    "kana": "さらけだす",
+    "meaning": "to expose, to disclose, to lay bare",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "しがみ付く",
+    "kana": "しがみつく",
+    "meaning": "to cling",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "しくしく泣く",
+    "kana": "しくしくなく",
+    "meaning": "to cry softly, to sob, to weep",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "しくじる",
+    "kana": "しくじる",
+    "meaning": "to fail, to blunder, to mess up",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "しゃがむ",
+    "kana": "しゃがむ",
+    "meaning": "to squat, to crouch",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "しゃぶる",
+    "kana": "しゃぶる",
+    "meaning": "to suck, to lick",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "小便をする",
+    "kana": "しょうべんをする",
+    "meaning": "to urinate, to pee, to piss",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "小便を垂れる",
+    "kana": "しょんべんをたれる",
+    "meaning": "to pee, to piss",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "嗄れる",
+    "kana": "しゃがれる",
+    "meaning": "to become hoarse, to become husky",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "し吹く",
+    "kana": "しぶく",
+    "meaning": "to splash, to spray",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "じっと見る",
+    "kana": "じっとみる",
+    "meaning": "to watch steadily, to stare",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "焦らす",
+    "kana": "じらす",
+    "meaning": "to tease, to irritate, to tantalize",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "じろじろ見る",
+    "kana": "じろじろみる",
+    "meaning": "to stare at, to look hard at, to look up and down",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "すすり泣く",
+    "kana": "すすりなく",
+    "meaning": "to sob",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "すっぽかす",
+    "kana": "すっぽかす",
+    "meaning": "to leave (something) undone, to neglect (a duty, task, etc.), to break (a promise, appointment, etc.)",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "ずばずば言う",
+    "kana": "ずばずばいう",
+    "meaning": "to speak one's mind, to speak very frankly",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "ずらす",
+    "kana": "ずらす",
+    "meaning": "to shift, to move, to slide",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "ずれる",
+    "kana": "ずれる",
+    "meaning": "to slide, to slip off, to get dislocated",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "せがむ",
+    "kana": "せがむ",
+    "meaning": "to badger, to pester, to beg",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "せしめる",
+    "kana": "せしめる",
+    "meaning": "to cheat (someone out of), to swindle, to wangle",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "せびる",
+    "kana": "せびる",
+    "meaning": "to demand money, to pester, to extort",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "唆る",
+    "kana": "そそる",
+    "meaning": "to excite, to incite, to stimulate",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "たくし上げる",
+    "kana": "たくしあげる",
+    "meaning": "to roll up or pull up (sleeves, skirt, etc.)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "たじろぐ",
+    "kana": "たじろぐ",
+    "meaning": "to shrink back, to wince, to flinch",
+    "type": "godan",
+    "ending": "gu"
+  },
+  {
+    "dictionary": "だまし取る",
+    "kana": "だましとる",
+    "meaning": "to take by deception, to defraud someone of, to swindle someone out of",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "駄目になる",
+    "kana": "だめになる",
+    "meaning": "to spoil, to break, to go bad",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "だらける",
+    "kana": "だらける",
+    "meaning": "to be lazy, to be slack, to feel dull",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ちんちん鳴る",
+    "kana": "ちんちんなる",
+    "meaning": "to jingle, to tinkle, to whistle (kettle)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "掴み取る",
+    "kana": "つかみとる",
+    "meaning": "to grasp, to get",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "つなぎ合わせる",
+    "kana": "つなぎあわせる",
+    "meaning": "to connect, to join, to join or tie or knot together",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "突んのめる",
+    "kana": "つんのめる",
+    "meaning": "to pitch forward, to fall forward",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "出来るようになる",
+    "kana": "できるようになる",
+    "meaning": "to become possible, to become able to (do)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "ときめく",
+    "kana": "ときめく",
+    "meaning": "to beat fast (of one's heart), to flutter (with joy, anticipation, etc.), to throb",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "とやかく言う",
+    "kana": "とやかくいう",
+    "meaning": "to say this and that (about), to say (critical) things, to criticize",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "と言われる",
+    "kana": "といわれる",
+    "meaning": "to be called ..., to be referred to as ...",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "と考えられる",
+    "kana": "とかんがえられる",
+    "meaning": "to be conceivable that, to be thinkable that",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ない交ぜにする",
+    "kana": "ないまぜにする",
+    "meaning": "to blend (e.g. fact and fiction), to mix, to weave (together)",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "によって異なる",
+    "kana": "によってことなる",
+    "meaning": "to differ depending on ...",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "のめり込む",
+    "kana": "のめりこむ",
+    "meaning": "to be completely absorbed in, to fall for (something)",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "のめる",
+    "kana": "のめる",
+    "meaning": "to fall forward (of a person), to tumble forward",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "はぐる",
+    "kana": "はぐる",
+    "meaning": "to roll up (e.g. sleeves), to turn over",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "逸る",
+    "kana": "はぐる",
+    "meaning": "to stray from, to get lost",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "含羞む",
+    "kana": "はにかむ",
+    "meaning": "to be shy, to be bashful, to look shy",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "蔓延る",
+    "kana": "はびこる",
+    "meaning": "to become overgrown, to grow thick",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "はめ倒す",
+    "kana": "はめたおす",
+    "meaning": "to make love",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "バテる",
+    "kana": "バテる",
+    "meaning": "to be exhausted, to be worn out",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ばれる",
+    "kana": "ばれる",
+    "meaning": "to leak out (of a secret), to come out, to be exposed (of a lie, improper behaviour, etc.)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ピカピカ光る",
+    "kana": "ピカピカひかる",
+    "meaning": "to sparkle, to glitter, to twinkle",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "ピクピク動く",
+    "kana": "ピクピクうごく",
+    "meaning": "to jerk, to wiggle, to twitch",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "ピヨピヨ鳴く",
+    "kana": "ピヨピヨなく",
+    "meaning": "to peep, to cheep",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "吹かす",
+    "kana": "ふかす",
+    "meaning": "to smoke (a cigarette, pipe, etc.), to puff on, to puff out (smoke)",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "吹っ切れる",
+    "kana": "ふっきれる",
+    "meaning": "to be dispelled (of doubts, ill feeling, etc.), to disappear, to be put behind one",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ブチ撒ける",
+    "kana": "ぶちまける",
+    "meaning": "to dump (e.g. onto the floor), to empty by overturning, to throw out (the contents)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ぶつかる",
+    "kana": "ぶつかる",
+    "meaning": "to bump into, to run into, to collide with",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "打ち付ける",
+    "kana": "うちつける",
+    "meaning": "to nail (to something), to nail down, to fasten (to)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ぶらつく",
+    "kana": "ぶらつく",
+    "meaning": "to stroll about, to saunter, to wander",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "ぶら下がる",
+    "kana": "ぶらさがる",
+    "meaning": "to hang down (from), to dangle, to swing",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "ぶら下げる",
+    "kana": "ぶらさげる",
+    "meaning": "to hang, to suspend, to dangle",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ぶれる",
+    "kana": "ぶれる",
+    "meaning": "to be blurred (due to motion; of a photo, video, etc.), to be shaken (of a camera)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "凹たれる",
+    "kana": "へこたれる",
+    "meaning": "to lose heart, to be discouraged, to be dejected",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "へたばる",
+    "kana": "へたばる",
+    "meaning": "to be exhausted, to be tired out, to be worn out",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "へばり付く",
+    "kana": "へばりつく",
+    "meaning": "to cling to, to stick to, to lie flat (e.g. on the ground)",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "へばる",
+    "kana": "へばる",
+    "meaning": "to be exhausted, to be worn out",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "ベロベロ舐める",
+    "kana": "ベロベロなめる",
+    "meaning": "to lick something up, to lap something up",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ほざく",
+    "kana": "ほざく",
+    "meaning": "to say, to spatter, to prate",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "ほそぼそ話す",
+    "kana": "ほそぼそはなす",
+    "meaning": "to speak slowly and quietly",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "ぼやく",
+    "kana": "ぼやく",
+    "meaning": "to grumble, to complain",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "ぼやける",
+    "kana": "ぼやける",
+    "meaning": "to become dim, to become blurred",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ぼりぼり食べる",
+    "kana": "ぼりぼりたべる",
+    "meaning": "to eat with a munching or crunching sound",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ポタポタ落ちる",
+    "kana": "ポタポタおちる",
+    "meaning": "to fall in drops, to drip down, to trickle down",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "まくり上げる",
+    "kana": "まくりあげる",
+    "meaning": "to tuck (e.g. sleeves), to roll up",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "間誤付かせる",
+    "kana": "まごつかせる",
+    "meaning": "to fluster, to abash, to befuddle",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "間誤付く",
+    "kana": "まごつく",
+    "meaning": "to be confused, to be flustered, to be at a loss",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "まじまじと見る",
+    "kana": "まじまじとみる",
+    "meaning": "to take a long hard look at, to look (someone) full in the face",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "まやかす",
+    "kana": "まやかす",
+    "meaning": "to cheat, to swindle, to deceive",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "むかつく",
+    "kana": "むかつく",
+    "meaning": "to feel irritated, to feel offended, to feel angry",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "向きになる",
+    "kana": "ムキになる",
+    "meaning": "to become serious, to take something seriously (e.g. a joke, teasing), to become irritated or angry (esp. at something trivial)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "剥れる",
+    "kana": "むくれる",
+    "meaning": "to become sullen, to sulk, to get angry",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "無駄にする",
+    "kana": "むだにする",
+    "meaning": "to render futile, to bring to naught, to waste",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "めく",
+    "kana": "めく",
+    "meaning": "to show signs of ..., to have the appearance of ...",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "藻掻く",
+    "kana": "もがく",
+    "meaning": "to struggle, to writhe, to wriggle",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "物にする",
+    "kana": "ものにする",
+    "meaning": "to get, to secure, to take possession of",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "やがる",
+    "kana": "やがる",
+    "meaning": "to have the nerve to",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "やっちまう",
+    "kana": "やっちまう",
+    "meaning": "to screw up, to goof, to do (esp. something one regrets)",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "やって来る",
+    "kana": "やってくる",
+    "meaning": "to come along, to come around, to turn up",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "やり切る",
+    "kana": "やりきる",
+    "meaning": "to complete decisively, to do to completion",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "遣る",
+    "kana": "やる",
+    "meaning": "to do, to undertake, to perform",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "様にする",
+    "kana": "ようにする",
+    "meaning": "to see to it that ..., to make sure that ..., to try to ...",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "様になる",
+    "kana": "ようになる",
+    "meaning": "to reach the point where ..., to come to ..., to come to be that ...",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "寄越す",
+    "kana": "よこす",
+    "meaning": "to send, to forward",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "蹌踉めく",
+    "kana": "よろめく",
+    "meaning": "to stagger, to stumble, to totter",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "らっしゃる",
+    "kana": "らっしゃる",
+    "meaning": "to be (doing)",
+    "type": "godan"
+  },
+  {
+    "dictionary": "わくわく",
+    "kana": "わくわく",
+    "meaning": "to be excited, to be nervous, to be thrilled",
+    "type": "godan"
+  },
+  {
+    "dictionary": "グルになる",
+    "kana": "グルになる",
+    "meaning": "to conspire, to act in collusion, to be hand-in-glove",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "サボる",
+    "kana": "サボる",
+    "meaning": "to be truant, to slack off, to play hooky",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "ダブる",
+    "kana": "ダブる",
+    "meaning": "to be duplicated, to be repeated",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "チクチク痛む",
+    "kana": "チクチクいたむ",
+    "meaning": "to prickle, to tingle",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "ハモる",
+    "kana": "ハモる",
+    "meaning": "to harmonize, to harmonise, to be in harmony",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "ピンと来る",
+    "kana": "ピンとくる",
+    "meaning": "to come (home) to one, to click, to ring a bell",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "ピントが外れる",
+    "kana": "ピントがはずれる",
+    "meaning": "to be out of focus",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ぶち殺す",
+    "kana": "ぶちころす",
+    "meaning": "to beat to death, to club to death",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "ベースとする",
+    "kana": "ベースとする",
+    "meaning": "to base something on, to make something the basis",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "マスをかく",
+    "kana": "マスをかく",
+    "meaning": "to jerk off, to masturbate",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "メスを入れる",
+    "kana": "メスをいれる",
+    "meaning": "to put the scalpel to, to perform an operation on",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "阿る",
+    "kana": "おもねる",
+    "meaning": "to flatter, to play up (to), to curry favor (with)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "哀れむ",
+    "kana": "あわれむ",
+    "meaning": "to pity, to feel sympathy for, to sympathize with",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "愛する",
+    "kana": "あいする",
+    "meaning": "to love",
+    "type": "godan"
+  },
+  {
+    "dictionary": "愛でる",
+    "kana": "めでる",
+    "meaning": "to love, to cherish",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "愛に飢える",
+    "kana": "あいにうえる",
+    "meaning": "to hunger for love, to starve for love",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "悪く言う",
+    "kana": "わるくいう",
+    "meaning": "to speak badly (of), to speak ill (of), to bad-mouth",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "悪たれる",
+    "kana": "あくたれる",
+    "meaning": "to do mischief, to use abusive language",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "悪に傾く",
+    "kana": "あくにかたむく",
+    "meaning": "to be inclined to evil",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "悪びれる",
+    "kana": "わるびれる",
+    "meaning": "to act timid, to show diffidence, to be hesitant",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "悪態をつく",
+    "kana": "あくたいをつく",
+    "meaning": "to use abusive language, to curse, to call someone names",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "握らす",
+    "kana": "にぎらす",
+    "meaning": "to let (someone) take hold of your hand",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "握り締める",
+    "kana": "にぎりしめる",
+    "meaning": "to grasp tightly",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "握る",
+    "kana": "にぎる",
+    "meaning": "to clasp, to grasp, to grip",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "圧し合う",
+    "kana": "へしあう",
+    "meaning": "to jostle, to push",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "圧し込む",
+    "kana": "へしこむ",
+    "meaning": "to push into",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "押し殺す",
+    "kana": "おしころす",
+    "meaning": "to crush to death, to press to death, to squeeze to death",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "へし折る",
+    "kana": "へしおる",
+    "meaning": "to smash, to break",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "圧する",
+    "kana": "あっする",
+    "meaning": "to press",
+    "type": "godan"
+  },
+  {
+    "dictionary": "圧倒",
+    "kana": "あっとう",
+    "meaning": "to overwhelm (e.g. an opponent), to overpower, to crush",
+    "type": "godan"
+  },
+  {
+    "dictionary": "こき下ろす",
+    "kana": "こきおろす",
+    "meaning": "to denounce, to disparage, to lambast",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "扱く",
+    "kana": "しごく",
+    "meaning": "to draw through one's hand, to stroke (e.g. a beard)",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "宛がう",
+    "kana": "あてがう",
+    "meaning": "to allot, to allocate",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "宛てる",
+    "kana": "あてる",
+    "meaning": "to address",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "粟立つ",
+    "kana": "あわだつ",
+    "meaning": "to have gooseflesh (e.g. from cold or horror)",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "安んじる",
+    "kana": "やすんじる",
+    "meaning": "to be contented, to be at ease",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "暗涙に咽ぶ",
+    "kana": "あんるいにむせぶ",
+    "meaning": "to shed silent tears",
+    "type": "godan",
+    "ending": "bu"
+  },
+  {
+    "dictionary": "案じる",
+    "kana": "あんじる",
+    "meaning": "to be anxious (about), to be concerned (about), to worry (about)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "位取る",
+    "kana": "くらいどる",
+    "meaning": "to scale",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "囲む",
+    "kana": "かこむ",
+    "meaning": "to surround, to encircle, to enclose",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "委ねる",
+    "kana": "ゆだねる",
+    "meaning": "to entrust (a matter) to, to leave to",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "威張り散らす",
+    "kana": "いばりちらす",
+    "meaning": "to domineer, to throw one's weight around, to lord it (over)",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "威張る",
+    "kana": "いばる",
+    "meaning": "to put on airs, to act big, to throw one's weight about",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "意気込む",
+    "kana": "いきごむ",
+    "meaning": "to be enthusiastic (about), to be eager (to do), to be keen",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "慰む",
+    "kana": "なぐさむ",
+    "meaning": "to feel comforted, to be in good spirits, to feel better",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "慰める",
+    "kana": "なぐさめる",
+    "meaning": "to comfort, to console, to amuse",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "為さる",
+    "kana": "なさる",
+    "meaning": "to do",
+    "type": "godan"
+  },
+  {
+    "dictionary": "なし終える",
+    "kana": "なしおえる",
+    "meaning": "to accomplish, to finish",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "なし終わる",
+    "kana": "なしおわる",
+    "meaning": "to finish",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "成す",
+    "kana": "なす",
+    "meaning": "to form, to make, to constitute",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "して遣る",
+    "kana": "してやる",
+    "meaning": "to do for (someone)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "為る",
+    "kana": "する",
+    "meaning": "to do, to carry out, to perform",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "為果せる",
+    "kana": "しおおせる",
+    "meaning": "to accomplish",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "し過ぎる",
+    "kana": "しすぎる",
+    "meaning": "to overdo, to do too much",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "し合う",
+    "kana": "しあう",
+    "meaning": "to do together",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "し残す",
+    "kana": "しのこす",
+    "meaning": "to leave unfinished",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "為初める",
+    "kana": "しそめる",
+    "meaning": "to begin to do",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "し尽くす",
+    "kana": "しつくす",
+    "meaning": "to leave nothing undone, to do all in one's might, to do everything possible",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "し続ける",
+    "kana": "しつづける",
+    "meaning": "to continue to do, to persist in doing",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "為落とす",
+    "kana": "しおとす",
+    "meaning": "to fail to do, to make light of, to neglect",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "畏まる",
+    "kana": "かしこまる",
+    "meaning": "to obey respectfully, to humble oneself, to sit straight (upright, respectfully, attentively)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "異なる",
+    "kana": "ことなる",
+    "meaning": "to differ, to be different, to disagree",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "移す",
+    "kana": "うつす",
+    "meaning": "to transfer (to a different place, group, etc.), to change, to swap",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "移り行く",
+    "kana": "うつりゆく",
+    "meaning": "to change, to shift, to come and go",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "移ろう",
+    "kana": "うつろう",
+    "meaning": "to change (with the passage of time)",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "萎える",
+    "kana": "なえる",
+    "meaning": "to lose strength, to become weak, to disappear (of energy, drive, etc.)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "萎びる",
+    "kana": "しなびる",
+    "meaning": "to shrivel (e.g. cut vegetables, skin), to wilt, to fade",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "萎れる",
+    "kana": "しおれる",
+    "meaning": "to wither, to wilt, to droop",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "違う",
+    "kana": "ちがう",
+    "meaning": "to differ (from), to be different, to be distinct",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "違える",
+    "kana": "ちがえる",
+    "meaning": "to change, to alter",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "育ち行く",
+    "kana": "そだちゆく",
+    "meaning": "to grow up",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "育つ",
+    "kana": "そだつ",
+    "meaning": "to be raised (e.g. child), to be brought up, to grow (up)",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "育てる",
+    "kana": "そだてる",
+    "meaning": "to raise, to rear, to bring up",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "育て上げる",
+    "kana": "そだてあげる",
+    "meaning": "to raise (to maturity), to bring up, to rear",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "一句詠む",
+    "kana": "いっくよむ",
+    "meaning": "to compose a poem (esp. haiku)",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "一緒にする",
+    "kana": "いっしょにする",
+    "meaning": "to do together",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "一笑に付す",
+    "kana": "いっしょうにふす",
+    "meaning": "to laugh (something) off, to dismiss with a laugh, to pooh-pooh",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "一人前になる",
+    "kana": "いちにんまえになる",
+    "meaning": "to come of age, to become an adult, to become fully qualified",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "一肌脱ぐ",
+    "kana": "ひとはだぬぐ",
+    "meaning": "to pitch in and help, to give someone a hand",
+    "type": "godan",
+    "ending": "gu"
+  },
+  {
+    "dictionary": "一発かます",
+    "kana": "いっぱつかます",
+    "meaning": "to hit (someone) once, to give (someone) a punch",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "一泡吹かせる",
+    "kana": "ひとあわふかせる",
+    "meaning": "to give someone a surprise, to catch off guard and fluster, to frustrate (e.g. someone's plans)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "一籌を輸する",
+    "kana": "いっちゅうをゆする",
+    "meaning": "to be inferior to, to be outdone, to compare unfavourably with",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "溢れ出る",
+    "kana": "あふれでる",
+    "meaning": "to overflow from something full",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "逸らす",
+    "kana": "そらす",
+    "meaning": "to turn away (one's eyes, face, etc.), to avert, to divert (e.g. one's attention)",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "依る",
+    "kana": "よる",
+    "meaning": "to be due to, to be caused by",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "惹かれる",
+    "kana": "ひかれる",
+    "meaning": "to be charmed by, to be attracted to, to be taken with",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "引きちぎる",
+    "kana": "ひきちぎる",
+    "meaning": "to tear off",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引き下がる",
+    "kana": "ひきさがる",
+    "meaning": "to withdraw, to leave, to retire",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引き下ろす",
+    "kana": "ひきおろす",
+    "meaning": "to haul down, to drag down, to pull down",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "引き回す",
+    "kana": "ひきまわす",
+    "meaning": "to draw around (e.g. a curtain), to drag around",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "引き寄せる",
+    "kana": "ひきよせる",
+    "meaning": "to draw (something) toward one, to pull toward one, to pull closer",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "引き起こす",
+    "kana": "ひきおこす",
+    "meaning": "to cause, to induce, to bring about",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "引き去る",
+    "kana": "ひきさる",
+    "meaning": "to retreat, to withdraw, to deduct",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引き金を引く",
+    "kana": "ひきがねをひく",
+    "meaning": "to pull the trigger, to squeeze the trigger",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "引き継ぐ",
+    "kana": "ひきつぐ",
+    "meaning": "to take over (someone's duties, business, etc.), to inherit, to succeed to",
+    "type": "godan",
+    "ending": "gu"
+  },
+  {
+    "dictionary": "引き絞る",
+    "kana": "ひきしぼる",
+    "meaning": "to draw (a bow) to the limit",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引き合う",
+    "kana": "ひきあう",
+    "meaning": "to pay, to be profitable",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "引き込む",
+    "kana": "ひきこむ",
+    "meaning": "to pull into, to draw in, to bring in",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "引き取る",
+    "kana": "ひきとる",
+    "meaning": "to take into one's possession, to receive, to accept",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引き摺り込む",
+    "kana": "ひきずりこむ",
+    "meaning": "to drag in, to pull in",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "引きずる",
+    "kana": "ひきずる",
+    "meaning": "to drag, to trail, to pull along the ground",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引き締まる",
+    "kana": "ひきしまる",
+    "meaning": "to become tense, to be tightened, to become firm (e.g. body)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引き入れる",
+    "kana": "ひきいれる",
+    "meaning": "to drag into, to pull into, to draw into",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "引き剥がす",
+    "kana": "ひきはがす",
+    "meaning": "to tear off, to rip off",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "引き抜く",
+    "kana": "ひきぬく",
+    "meaning": "to extract, to pull out, to draw out",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "引き払う",
+    "kana": "ひきはらう",
+    "meaning": "to vacate, to move out",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "引き分ける",
+    "kana": "ひきわける",
+    "meaning": "to pull apart, to separate",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "引き返す",
+    "kana": "ひきかえす",
+    "meaning": "to turn back, to go back, to come back",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "引き放つ",
+    "kana": "ひきはなつ",
+    "meaning": "to pull apart",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "引き戻す",
+    "kana": "ひきもどす",
+    "meaning": "to bring back, to restore",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "引き離す",
+    "kana": "ひきはなす",
+    "meaning": "to pull apart, to separate",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "引き立つ",
+    "kana": "ひきたつ",
+    "meaning": "to cheer up, to liven up, to become active",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "引き裂く",
+    "kana": "ひきさく",
+    "meaning": "to tear up, to tear off, to rip up",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "引き連れる",
+    "kana": "ひきつれる",
+    "meaning": "to take (someone) along, to bring along, to be accompanied by",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "引きこもる",
+    "kana": "ひきこもる",
+    "meaning": "to stay indoors, to be confined indoors",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引く",
+    "kana": "ひく",
+    "meaning": "to pull, to tug, to lead (e.g. a horse)",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "引ける",
+    "kana": "ひける",
+    "meaning": "to close, to be over, to break up (e.g. school)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "ひっくり返る",
+    "kana": "ひっくりかえる",
+    "meaning": "to be overturned, to be reversed, to turn over",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引っ越す",
+    "kana": "ひっこす",
+    "meaning": "to move (house), to change residence",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "引っかかる",
+    "kana": "ひっかかる",
+    "meaning": "to be caught in, to be stuck in",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引っ掛ける",
+    "kana": "ひっかける",
+    "meaning": "to hang (something) on (something), to throw on (clothes)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "引っ込む",
+    "kana": "ひっこむ",
+    "meaning": "to draw back, to sink, to cave in",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "引っ込める",
+    "kana": "ひっこめる",
+    "meaning": "to draw in, to take in, to retract",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "引ったくる",
+    "kana": "ひったくる",
+    "meaning": "to snatch (from someone), to tear (away), to steal",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "引っ叩く",
+    "kana": "ひっぱたく",
+    "meaning": "to slap, to strike, to spank",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "引っ張り出す",
+    "kana": "ひっぱりだす",
+    "meaning": "to take out, to drag out",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "飲み下す",
+    "kana": "のみくだす",
+    "meaning": "to swallow, to gulp down",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "飲み回す",
+    "kana": "のみまわす",
+    "meaning": "to pass the cup round",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "飲み回る",
+    "kana": "のみまわる",
+    "meaning": "to go on a pub-crawl, to drink at a round of places",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "飲み干す",
+    "kana": "のみほす",
+    "meaning": "to drink up, to drink to the last drop, to drink (a glass) dry",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "飲み明かす",
+    "kana": "のみあかす",
+    "meaning": "to drink the night away",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "飲む",
+    "kana": "のむ",
+    "meaning": "to drink, to swallow, to take (medicine)",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "飲んだくれる",
+    "kana": "のんだくれる",
+    "meaning": "to get dead drunk, to get blind drunk",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "隠す",
+    "kana": "かくす",
+    "meaning": "to hide, to conceal",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "隠れる",
+    "kana": "かくれる",
+    "meaning": "to hide, to conceal oneself, to take cover",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "烏有に帰する",
+    "kana": "うゆうにきする",
+    "meaning": "to be reduced to ashes",
+    "type": "godan"
+  },
+  {
+    "dictionary": "羽ばたく",
+    "kana": "はばたく",
+    "meaning": "to flap (wings)",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "羽織る",
+    "kana": "はおる",
+    "meaning": "to put on (coat, gown, etc.)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "うかがい知る",
+    "kana": "うかがいしる",
+    "meaning": "to infer, to figure out, to get an idea of",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "窺う",
+    "kana": "うかがう",
+    "meaning": "to peep (through), to peek, to examine (esp. covertly)",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "渦巻く",
+    "kana": "うずまく",
+    "meaning": "to whirl, to eddy, to swirl",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "嘘で固める",
+    "kana": "うそでかためる",
+    "meaning": "to lie all the time, to fabricate a web of lies",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "嘘をつく",
+    "kana": "うそをつく",
+    "meaning": "to tell a lie, to fib",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "運び込む",
+    "kana": "はこびこむ",
+    "meaning": "to carry in, to bring in",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "運び出す",
+    "kana": "はこびだす",
+    "meaning": "to carry out (of somewhere), to transport, to take out",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "運ぶ",
+    "kana": "はこぶ",
+    "meaning": "to carry, to transport, to move",
+    "type": "godan",
+    "ending": "bu"
+  },
+  {
+    "dictionary": "営む",
+    "kana": "いとなむ",
+    "meaning": "to run (a business), to operate, to conduct",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "影響を及ぼす",
+    "kana": "えいきょうをおよぼす",
+    "meaning": "to affect, to impact, to influence",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "映る",
+    "kana": "うつる",
+    "meaning": "to be reflected, to harmonize with (harmonise), to come out (photo)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "栄える",
+    "kana": "さかえる",
+    "meaning": "to prosper, to flourish",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "泳ぐ",
+    "kana": "およぐ",
+    "meaning": "to swim",
+    "type": "godan",
+    "ending": "gu"
+  },
+  {
+    "dictionary": "詠む",
+    "kana": "よむ",
+    "meaning": "to compose (a Japanese poem), to write, to use as the theme of a poem",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "悦に入る",
+    "kana": "えつにいる",
+    "meaning": "to be pleased, to gloat, to glow with self-satisfaction",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "謁する",
+    "kana": "えっする",
+    "meaning": "to have an audience (with)",
+    "type": "godan"
+  },
+  {
+    "dictionary": "越す",
+    "kana": "こす",
+    "meaning": "to cross over (e.g. mountain), to go across",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "厭う",
+    "kana": "いとう",
+    "meaning": "to be loath to, to balk at (doing), to grudge (doing)",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "延び延びになる",
+    "kana": "のびのびになる",
+    "meaning": "to be delayed",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "延べる",
+    "kana": "のべる",
+    "meaning": "to lay out (a futon), to make (bed), to spread out",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "延期になる",
+    "kana": "えんきになる",
+    "meaning": "to be postponed, to be deferred, to be delayed",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "沿う",
+    "kana": "そう",
+    "meaning": "to run along, to run beside, to stick to (a line)",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "演じる",
+    "kana": "えんじる",
+    "meaning": "to act (a part), to play (a role)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "演ずる",
+    "kana": "えんずる",
+    "meaning": "to act (a part), to play (a role)",
+    "type": "godan"
+  },
+  {
+    "dictionary": "煙たがる",
+    "kana": "けむたがる",
+    "meaning": "to be sensitive to smoke",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "煙る",
+    "kana": "けむる",
+    "meaning": "to smoke (e.g. fire), to billow smoke, to smoulder",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "猿ぐつわをかます",
+    "kana": "さるぐつわをかます",
+    "meaning": "to gag someone",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "艶めく",
+    "kana": "つやめく",
+    "meaning": "(for an object) to be shiny, to be glossy",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "遠ざかる",
+    "kana": "とおざかる",
+    "meaning": "to go away, to become more distant, to fade away",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "遠ざける",
+    "kana": "とおざける",
+    "meaning": "to keep away, to keep at a distance",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "遠のく",
+    "kana": "とおのく",
+    "meaning": "to move off (into the distance), to become distant, to recede",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "遠のける",
+    "kana": "とおのける",
+    "meaning": "to keep (someone) at a distance",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "汚す",
+    "kana": "よごす",
+    "meaning": "to pollute, to contaminate, to soil",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "汚れる",
+    "kana": "けがれる",
+    "meaning": "to be violated, to be corrupted, to be polluted",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "凹ます",
+    "kana": "へこます",
+    "meaning": "to dent, to indent, to depress",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "凹ませる",
+    "kana": "へこませる",
+    "meaning": "to dent, to indent, to depress",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "凹む",
+    "kana": "へこむ",
+    "meaning": "to be dented, to be indented, to yield",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "凹める",
+    "kana": "くぼめる",
+    "meaning": "to hollow out",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "奥まる",
+    "kana": "おくまる",
+    "meaning": "to lie deep in, to extend far back",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "往なす",
+    "kana": "いなす",
+    "meaning": "to parry, to sidestep, to dodge",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "応える",
+    "kana": "こたえる",
+    "meaning": "to respond, to answer, to meet (e.g. demands, expectations)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "応じる",
+    "kana": "おうじる",
+    "meaning": "to respond, to satisfy, to accept",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押さえ込む",
+    "kana": "おさえこむ",
+    "meaning": "to pin (someone) down, to hold down, to immobilize",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "押しまくる",
+    "kana": "おしまくる",
+    "meaning": "to push and push, to keep pushing to the end",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "押し開ける",
+    "kana": "おしあける",
+    "meaning": "to force open, to push open",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押しかける",
+    "kana": "おしかける",
+    "meaning": "to go uninvited, to call on without an invitation, to barge in on",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し寄せる",
+    "kana": "おしよせる",
+    "meaning": "to advance on, to close in, to march on",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し詰まる",
+    "kana": "おしつまる",
+    "meaning": "to approach the year end, to be jammed tight",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "押し詰める",
+    "kana": "おしつめる",
+    "meaning": "to cram (into a box, bag, etc.), to pack",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し固める",
+    "kana": "おしかためる",
+    "meaning": "to press together",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し広める",
+    "kana": "おしひろめる",
+    "meaning": "to spread, to extend, to expand",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し合う",
+    "kana": "おしあう",
+    "meaning": "to jostle, to crowd, to haggle",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "押し込む",
+    "kana": "おしこむ",
+    "meaning": "to push into, to cram into, to stuff into",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "押し切る",
+    "kana": "おしきる",
+    "meaning": "to overcome (opposition), to push past, to force one's way",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "押しのける",
+    "kana": "おしのける",
+    "meaning": "to push aside, to brush aside",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し通す",
+    "kana": "おしとおす",
+    "meaning": "to persist in, to carry out, to have one's own way",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "押し通る",
+    "kana": "おしとおる",
+    "meaning": "to force one's way through",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "押しつぶす",
+    "kana": "おしつぶす",
+    "meaning": "to crush, to squash, to flatten",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "押し倒す",
+    "kana": "おしたおす",
+    "meaning": "to pin down, to knock down, to push (and hold) someone down (esp. with sexual connotations)",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "押し当てる",
+    "kana": "おしあてる",
+    "meaning": "to push (something) against",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し入る",
+    "kana": "おしいる",
+    "meaning": "to push in, to force into, to break in (e.g. into a house)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "押し破る",
+    "kana": "おしやぶる",
+    "meaning": "to break through",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "押し付ける",
+    "kana": "おしつける",
+    "meaning": "to press against, to push against, to force against",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し分ける",
+    "kana": "おしわける",
+    "meaning": "to push aside",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し返す",
+    "kana": "おしかえす",
+    "meaning": "to push back, to press back, to force back",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "押し黙る",
+    "kana": "おしだまる",
+    "meaning": "to keep silent",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "押し戻す",
+    "kana": "おしもどす",
+    "meaning": "to push back",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "押し立てる",
+    "kana": "おしたてる",
+    "meaning": "to set up, to raise",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "押し流す",
+    "kana": "おしながす",
+    "meaning": "to wash away, to sweep away, to carry away",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "押す",
+    "kana": "おす",
+    "meaning": "to push, to thrust, to shove",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "横たえる",
+    "kana": "よこたえる",
+    "meaning": "to lay down",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "横たわる",
+    "kana": "よこたわる",
+    "meaning": "to lie down, to stretch out",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "横向く",
+    "kana": "よこむく",
+    "meaning": "to turn sideways",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "横切る",
+    "kana": "よこぎる",
+    "meaning": "to cross (e.g. road), to traverse",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "殴り合う",
+    "kana": "なぐりあう",
+    "meaning": "to exchange blows, to hit each other, to punch each other",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "殴り殺す",
+    "kana": "なぐりころす",
+    "meaning": "to strike dead, to beat to death",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "殴り倒す",
+    "kana": "なぐりたおす",
+    "meaning": "to knock down, to knock out",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "殴りつける",
+    "kana": "なぐりつける",
+    "meaning": "to hit hard, to strike hard",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "殴る",
+    "kana": "なぐる",
+    "meaning": "to strike, to hit, to beat",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "黄ばむ",
+    "kana": "きばむ",
+    "meaning": "to turn yellow, to become tinged with yellow, to yellow (with age)",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "卸す",
+    "kana": "おろす",
+    "meaning": "to sell wholesale",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "恩がある",
+    "kana": "おんがある",
+    "meaning": "to be in one's debt",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "恩を仇で返す",
+    "kana": "おんをあだでかえす",
+    "meaning": "to return evil for good, to return a favour with spite (favor)",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "温む",
+    "kana": "ぬるむ",
+    "meaning": "to become lukewarm, to become tepid",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "音を立てる",
+    "kana": "おとをたてる",
+    "meaning": "to make a sound",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "下がる",
+    "kana": "さがる",
+    "meaning": "to come down, to go down, to fall",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "下げる",
+    "kana": "さげる",
+    "meaning": "to hang, to suspend, to wear (e.g. decoration)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "下げ渡す",
+    "kana": "さげわたす",
+    "meaning": "to make a (government) grant",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "下さる",
+    "kana": "くださる",
+    "meaning": "to give, to confer, to bestow",
+    "type": "godan"
+  },
+  {
+    "dictionary": "降り立つ",
+    "kana": "おりたつ",
+    "meaning": "to go down and stand",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "下押す",
+    "kana": "したおす",
+    "meaning": "to decline (stock market)",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "下火になる",
+    "kana": "したびになる",
+    "meaning": "to die down (of a fire), to be brought under control",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "下回る",
+    "kana": "したまわる",
+    "meaning": "to fall below (esp. figures: profits, unemployment rate, etc.), to be less than, to be lower than",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "下掛かる",
+    "kana": "しもがかる",
+    "meaning": "to talk about indecent things",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "下種張る",
+    "kana": "げすばる",
+    "meaning": "to be churlish, to be crude, to be boorish",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "下駄を預ける",
+    "kana": "げたをあずける",
+    "meaning": "to leave everything to (someone)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "下卑る",
+    "kana": "げびる",
+    "meaning": "to become vulgar, to coarsen",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "化けの皮を剥ぐ",
+    "kana": "ばけのかわをはぐ",
+    "meaning": "to unmask (someone's true nature)",
+    "type": "godan",
+    "ending": "gu"
+  },
+  {
+    "dictionary": "化ける",
+    "kana": "ばける",
+    "meaning": "to take the form of (esp. in ref. to a spirit, fox, raccoon dog, etc.), to assume the shape of, to turn oneself into",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "化する",
+    "kana": "かする",
+    "meaning": "to change (into), to turn (into), to transform (into)",
+    "type": "godan"
+  },
+  {
+    "dictionary": "加える",
+    "kana": "くわえる",
+    "meaning": "to add, to add up, to sum up",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "加わる",
+    "kana": "くわわる",
+    "meaning": "to be added to, to be appended",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "可愛がる",
+    "kana": "かわいがる",
+    "meaning": "to be affectionate to, to treat tenderly, to dote on",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "科する",
+    "kana": "かする",
+    "meaning": "to inflict, to impose (a fine, etc.)",
+    "type": "godan"
+  },
+  {
+    "dictionary": "暇取る",
+    "kana": "ひまどる",
+    "meaning": "to take (much) time, to be delayed",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "果せる",
+    "kana": "おおせる",
+    "meaning": "to succeed in doing, to manage to do, to finish doing",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "果たす",
+    "kana": "はたす",
+    "meaning": "to accomplish, to achieve, to carry out",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "果てる",
+    "kana": "はてる",
+    "meaning": "to end, to be finished, to be exhausted",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "架かる",
+    "kana": "かかる",
+    "meaning": "to span, to bridge, to cross",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "歌い合う",
+    "kana": "うたいあう",
+    "meaning": "to sing responsively",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "歌い上げる",
+    "kana": "うたいあげる",
+    "meaning": "to sing at the top of one's voice, to belt out a song",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "火照る",
+    "kana": "ほてる",
+    "meaning": "to feel hot, to flush, to burn",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "稼ぐ",
+    "kana": "かせぐ",
+    "meaning": "to earn (income), to make (money)",
+    "type": "godan",
+    "ending": "gu"
+  },
+  {
+    "dictionary": "稼げる",
+    "kana": "かせげる",
+    "meaning": "to work, to earn income",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "花咲く",
+    "kana": "はなさく",
+    "meaning": "to bloom",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "苛む",
+    "kana": "さいなむ",
+    "meaning": "to torment, to torture, to afflict",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "苛める",
+    "kana": "いじめる",
+    "meaning": "to ill-treat, to bully, to torment",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "苛立つ",
+    "kana": "いらだつ",
+    "meaning": "to be irritated, to get annoyed, to lose one's patience",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "苛立てる",
+    "kana": "いらだてる",
+    "meaning": "to irritate, to exasperate",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "荷物を詰める",
+    "kana": "にもつをつめる",
+    "meaning": "to pack one's things",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "課す",
+    "kana": "かす",
+    "meaning": "to impose (a tax, fine, etc.), to levy, to assign (a task, duty, etc.)",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "課する",
+    "kana": "かする",
+    "meaning": "to impose (a tax, fine, etc.), to levy, to assign (a task, duty, etc.)",
+    "type": "godan"
+  },
+  {
+    "dictionary": "過ぎる",
+    "kana": "すぎる",
+    "meaning": "to pass through, to pass by, to go beyond",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "過ぎ去る",
+    "kana": "すぎさる",
+    "meaning": "to pass, to pass by",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "過ごす",
+    "kana": "すごす",
+    "meaning": "to spend (time), to pass, to lead (a life)",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "過つ",
+    "kana": "あやまつ",
+    "meaning": "to err",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "霞む",
+    "kana": "かすむ",
+    "meaning": "to become misty, to become hazy",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "我を出す",
+    "kana": "がをだす",
+    "meaning": "to insist on one's own ideas",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "我を折る",
+    "kana": "がをおる",
+    "meaning": "to concede a point, to yield, to give in",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "我を張る",
+    "kana": "がをはる",
+    "meaning": "to insist on one's own ideas",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "我を通す",
+    "kana": "がをとおす",
+    "meaning": "to insist on one's own ideas, to have one's own way",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "我を立てる",
+    "kana": "がをたてる",
+    "meaning": "to insist on one's own ideas",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "我が意を得る",
+    "kana": "わがいをえる",
+    "meaning": "to approve of",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "画する",
+    "kana": "かくする",
+    "meaning": "to draw (a line)",
+    "type": "godan"
+  },
+  {
+    "dictionary": "臥し転ぶ",
+    "kana": "ふしまろぶ",
+    "meaning": "to fall and roll over, wriggle about",
+    "type": "godan",
+    "ending": "bu"
+  },
+  {
+    "dictionary": "臥せる",
+    "kana": "ふせる",
+    "meaning": "to lie down, to retire, to go to bed (with an illness)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "芽ぐむ",
+    "kana": "めぐむ",
+    "meaning": "to bud, to sprout",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "芽生える",
+    "kana": "めばえる",
+    "meaning": "to bud, to sprout",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "会わせる",
+    "kana": "あわせる",
+    "meaning": "to make (someone) to meet, to let (someone) meet",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "解く",
+    "kana": "とく",
+    "meaning": "to untie, to unfasten, to unwrap",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "解ける",
+    "kana": "とける",
+    "meaning": "to be solved, to be resolved",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "解れる",
+    "kana": "ほぐれる",
+    "meaning": "to come untied, to come apart",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "回す",
+    "kana": "まわす",
+    "meaning": "to turn, to rotate, to spin",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "壊す",
+    "kana": "こわす",
+    "meaning": "to break, to destroy, to demolish",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "壊れる",
+    "kana": "こわれる",
+    "meaning": "to be broken, to break, to fall apart",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "怪しむ",
+    "kana": "あやしむ",
+    "meaning": "to suspect",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "悔いる",
+    "kana": "くいる",
+    "meaning": "to regret",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "悔い改める",
+    "kana": "くいあらためる",
+    "meaning": "to repent, to be penitent",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "悔やむ",
+    "kana": "くやむ",
+    "meaning": "to mourn, to lament",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "懐かしむ",
+    "kana": "なつかしむ",
+    "meaning": "to yearn for (someone, something), to miss",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "懐く",
+    "kana": "なつく",
+    "meaning": "to become attached (to), to take (to), to become affectionate (with)",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "懐ける",
+    "kana": "なつける",
+    "meaning": "to win over, to win another's heart",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "改まる",
+    "kana": "あらたまる",
+    "meaning": "to be renewed, to change",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "改める",
+    "kana": "あらためる",
+    "meaning": "to change, to alter, to revise",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "灰になる",
+    "kana": "はいになる",
+    "meaning": "to be reduced to ashes, to be cremated",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "開き直る",
+    "kana": "ひらきなおる",
+    "meaning": "to become defiant, to fight back, to turn upon",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "開く",
+    "kana": "ひらく",
+    "meaning": "to open, to undo, to unseal",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "開ける",
+    "kana": "あける",
+    "meaning": "to open (a door, etc.), to unwrap (e.g. parcel, package), to unlock",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "開け放す",
+    "kana": "あけはなす",
+    "meaning": "to open wide (doors or windows), to throw open, to fling open",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "開け放つ",
+    "kana": "あけはなつ",
+    "meaning": "to open wide (doors or windows), to throw open, to fling open",
+    "type": "godan",
+    "ending": "tsu"
+  },
+  {
+    "dictionary": "外す",
+    "kana": "はずす",
+    "meaning": "to remove, to take off, to detach",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "外れる",
+    "kana": "はずれる",
+    "meaning": "to be disconnected, to get out of place, to be off",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "垣間見る",
+    "kana": "かいまみる",
+    "meaning": "to take a peep at, to catch a glimpse of",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "確かめる",
+    "kana": "たしかめる",
+    "meaning": "to make sure, to check, to ascertain",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "覚える",
+    "kana": "おぼえる",
+    "meaning": "to memorize, to memorise, to commit to memory",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "覚ます",
+    "kana": "さます",
+    "meaning": "to awaken, to arouse from sleep",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "覚める",
+    "kana": "さめる",
+    "meaning": "to wake, to wake up",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "角立てる",
+    "kana": "かどだてる",
+    "meaning": "to be sharp, to be pointed",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "隔たる",
+    "kana": "へだたる",
+    "meaning": "to be distant",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "隔てる",
+    "kana": "へだてる",
+    "meaning": "to separate (by distance, time, etc.), to isolate, to partition",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "学ぶ",
+    "kana": "まなぶ",
+    "meaning": "to learn, to study, to take lessons in",
+    "type": "godan",
+    "ending": "bu"
+  },
+  {
+    "dictionary": "楽しみにする",
+    "kana": "たのしみにする",
+    "meaning": "to look forward to",
+    "type": "irregular"
+  },
+  {
+    "dictionary": "楽しむ",
+    "kana": "たのしむ",
+    "meaning": "to enjoy, to take pleasure in, to have a good time",
+    "type": "godan",
+    "ending": "mu"
+  },
+  {
+    "dictionary": "掛かり合う",
+    "kana": "かかりあう",
+    "meaning": "to have something to do with, to be concerned with, to have a connection with",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "掛かる",
+    "kana": "かかる",
+    "meaning": "to take (a resource, e.g. time or money)",
+    "type": "godan",
+    "ending": "ru"
+  },
+  {
+    "dictionary": "掛ける",
+    "kana": "かける",
+    "meaning": "to hang up (e.g. a coat, a picture on the wall), to let hang, to suspend (from)",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "掛け合う",
+    "kana": "かけあう",
+    "meaning": "to negotiate (with someone about), to talk over (something with), to tackle someone (about)",
+    "type": "godan",
+    "ending": "u"
+  },
+  {
+    "dictionary": "掛け合わせる",
+    "kana": "かけあわせる",
+    "meaning": "to multiply",
+    "type": "ichidan"
+  },
+  {
+    "dictionary": "割り引く",
+    "kana": "わりびく",
+    "meaning": "to discount, to reduce (the price), to take off (a percentage)",
+    "type": "godan",
+    "ending": "ku"
+  },
+  {
+    "dictionary": "割り出す",
+    "kana": "わりだす",
+    "meaning": "to calculate, to compute",
+    "type": "godan",
+    "ending": "su"
+  },
+  {
+    "dictionary": "割り振る",
+    "kana": "わりふる",
+    "meaning": "to assign, to allot, to divide among",
+    "type": "godan",
+    "ending": "ru"
+  }
+]

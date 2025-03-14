@@ -359,8 +359,21 @@ export const formalityOptions: FormalityOption[] = [
 	{ id: 'polite', label: 'Polite', description: '丁寧形' }
 ];
 
-// Sample verb list
-export const verbs: Verb[] = [
+// Import the generated verb data if available
+let importedVerbs: Verb[] = [];
+
+(async () => {
+	try {
+		importedVerbs = (await import('./verb-data.json')).default as Verb[];
+		console.log(`Loaded ${importedVerbs.length} verbs from JMdict data`);
+	} catch {
+		console.log('Using default verb list (verb-data.json not found)');
+		// Will use the default verb list below
+	}
+})();
+
+// Sample verb list as fallback
+const sampleVerbs: Verb[] = [
 	{
 		dictionary: '食べる',
 		kana: 'たべる',
@@ -386,19 +399,6 @@ export const verbs: Verb[] = [
 		kana: 'くる',
 		meaning: 'to come',
 		type: 'irregular'
-		// irregularForms: {
-		//     'present-affirmative-plain': 'くる',
-		//     'present-negative-plain': 'こない',
-		//     'past-affirmative-plain': 'きた',
-		//     'past-negative-plain': 'こなかった',
-		//     'teForm-affirmative-plain': 'きて',
-		//     'teForm-negative-plain': 'きない',
-		//     'potential-affirmative-plain': 'くれる',
-		//     'potential-negative-plain': 'くれない',
-		//     'passive-affirmative-plain': 'きられる',
-		//     'passive-negative-plain': 'きられない',
-		//     'causative-affirmative-plain': 'きさせる',
-		// }
 	},
 	{
 		dictionary: '見る',
@@ -442,3 +442,6 @@ export const verbs: Verb[] = [
 		ending: 'u'
 	}
 ];
+
+// Use imported verbs if available, otherwise use sample verbs
+export const verbs: Verb[] = importedVerbs.length > 0 ? importedVerbs : sampleVerbs;

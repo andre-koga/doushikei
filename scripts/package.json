@@ -1,0 +1,13 @@
+{
+    "name": "japanese-verb-extractor",
+    "version": "1.0.0",
+    "description": "Extract Japanese verbs from JMdict for use in the verb conjugation app",
+    "main": "extract-verbs.js",
+    "type": "module",
+    "scripts": {
+        "extract": "node extract-verbs.js"
+    },
+    "dependencies": {
+        "xml2js": "^0.6.2"
+    }
+}

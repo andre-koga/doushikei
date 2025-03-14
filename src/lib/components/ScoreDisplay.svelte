@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { score, attempts } from '$lib/stores/gameStore';
+	import { score } from '$lib/stores/gameStore';
 	import { newQuestion, resetGame } from '$lib/stores/gameStore';
 </script>
 
@@ -7,8 +7,9 @@
 	<div class="text-center">
 		<h3 class="mb-3 text-xl font-semibold">Score</h3>
 		<p class="text-2xl">
-			{$score} / {$attempts}
-			({$attempts > 0 ? Math.round(($score / $attempts) * 100) : 0}%)
+			{$score.correct} / {$score.total}
+			(
+			{$score.total > 0 ? Math.round(($score.correct / $score.total) * 100) : 0}% )
 		</p>
 
 		<div class="mt-4 flex justify-center gap-4">
