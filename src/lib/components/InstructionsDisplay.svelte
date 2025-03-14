@@ -65,8 +65,4 @@
 			Note: Both なければならない and なければなりません forms are accepted for this tense.
 		</p>
 	{/if}
-	<p class="mt-2 text-sm text-gray-400">
-		You have {$remainingAttempts}
-		{$remainingAttempts === 1 ? 'attempt' : 'attempts'} for this question.
-	</p>
 </div>

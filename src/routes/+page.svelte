@@ -14,7 +14,6 @@
 	import TenseSelector from '$lib/components/TenseSelector.svelte';
 	import PolaritySelector from '$lib/components/PolaritySelector.svelte';
 	import FormalitySelector from '$lib/components/FormalitySelector.svelte';
-	import RomajiToggle from '$lib/components/RomajiToggle.svelte';
 
 	// Stores and utilities
 	import { loadPreferences } from '$lib/stores/preferenceStore';
@@ -75,9 +74,6 @@
 			<!-- Formality Selection -->
 			<FormalitySelector />
 		</div>
-
-		<!-- Romaji Toggle -->
-		<RomajiToggle />
 
 		{#if $currentVerb}
 			<!-- Verb information -->
@@ -159,9 +155,5 @@
 <style>
 	.container {
 		max-width: 800px;
-	}
-	select {
-		width: 100%;
-		max-width: 400px;
 	}
 </style>
