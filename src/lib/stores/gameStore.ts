@@ -79,11 +79,31 @@ export const newQuestion = () => {
             tenseOptions.map((t) => t.id),
             enabledTensesValue
         );
-        polarityValue = getRandomOption(
-            ['affirmative', 'negative'] as Polarity[],
-            enabledPolaritiesValue
-        );
-        formalityValue = getRandomOption(['plain', 'polite'] as Formality[], enabledFormalitiesValue);
+
+        // Find the current tense option to check if it has polarity and formality
+        const tenseOption = tenseOptions.find(t => t.id === tenseValue);
+
+        // Only randomize polarity if the tense has polarity variations
+        if (tenseOption && tenseOption.hasPolarity) {
+            polarityValue = getRandomOption(
+                ['affirmative', 'negative'] as Polarity[],
+                enabledPolaritiesValue
+            );
+        } else {
+            // Default to affirmative if tense doesn't have polarity
+            polarityValue = 'affirmative';
+        }
+
+        // Only randomize formality if the tense has formality variations
+        if (tenseOption && tenseOption.hasFormality) {
+            formalityValue = getRandomOption(
+                ['plain', 'polite'] as Formality[],
+                enabledFormalitiesValue
+            );
+        } else {
+            // Default to plain if tense doesn't have formality
+            formalityValue = 'plain';
+        }
 
         // Skip the dictionary form (present affirmative plain)
         isDictionaryForm =

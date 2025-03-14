@@ -10,15 +10,24 @@
 	$: currentTenseOption = tenseOptions.find((t) => t.id === $currentTense);
 	$: currentPolarityOption = polarityOptions.find((p) => p.id === $currentPolarity);
 	$: currentFormalityOption = formalityOptions.find((f) => f.id === $currentFormality);
+
+	// Check if the current tense has formality and polarity
+	$: hasFormality = currentTenseOption ? currentTenseOption.hasFormality : true;
+	$: hasPolarity = currentTenseOption ? currentTenseOption.hasPolarity : true;
 </script>
 
 <div class="mb-6 text-center">
 	<p class="text-lg">
 		Conjugate this verb to the
 		<span class="font-semibold">{currentTenseOption?.label}</span>
-		<span class="text-sm text-gray-400">({currentTenseOption?.description})</span> tense in the
-		<span class="font-semibold">{currentPolarityOption?.label}</span>,
-		<span class="font-semibold">{currentFormalityOption?.label}</span> form.
+		<span class="text-sm text-gray-400">({currentTenseOption?.description})</span> tense
+		{#if hasPolarity}
+			in the <span class="font-semibold">{currentPolarityOption?.label}</span>
+		{/if}
+		{#if hasFormality}
+			{#if hasPolarity},{/if}
+			<span class="font-semibold">{currentFormalityOption?.label}</span> form
+		{/if}.
 	</p>
 	{#if $currentTense === 'must' && $currentPolarity === 'affirmative'}
 		<p class="mt-2 text-sm text-indigo-400">
