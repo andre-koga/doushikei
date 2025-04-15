@@ -1,4 +1,5 @@
-import type { Formality, Polarity, Tense } from './types';
+import type { Formality, Polarity, Tense, VerbEnding } from './types';
+import { allVerbs } from './jlpt-verbs';
 
 export interface Verb {
 	dictionary: string; // Dictionary form
@@ -6,7 +7,7 @@ export interface Verb {
 	meaning: string; // English meaning
 	type: 'godan' | 'ichidan' | 'irregular'; // Verb type
 	// For godan verbs, what character the stem ends with
-	ending?: 'u' | 'ku' | 'gu' | 'su' | 'tsu' | 'nu' | 'bu' | 'mu' | 'ru';
+	ending?: VerbEnding;
 	// For irregular verbs
 	irregularForms?: Record<`${Tense}-${Polarity}-${Formality}`, string>;
 }
@@ -331,18 +332,5 @@ export const formalityOptions: FormalityOption[] = [
 	{ id: 'polite', label: 'Polite', description: '丁寧形' }
 ];
 
-// Import the generated verb data if available
-let importedVerbs: Verb[] = [];
-
-(async () => {
-	try {
-		importedVerbs = (await import('./verb-data.json')).default as Verb[];
-		console.log(`Loaded ${importedVerbs.length} verbs from JMdict data`);
-	} catch {
-		console.log('Using default verb list (verb-data.json not found)');
-		// Will use the default verb list below
-	}
-})();
-
-// Use imported verbs if available, otherwise use sample verbs
-export const verbs: Verb[] = importedVerbs.length > 0 ? importedVerbs : [];
+// Use the verb lists from jlpt-verbs
+export const verbs: Verb[] = Object.values(allVerbs).flat();

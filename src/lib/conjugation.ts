@@ -1,5 +1,6 @@
 import type { JapaneseVerb, Tense, Polarity, Formality } from './types';
-import { allRules } from './conjugation-rules/allRules';
+import { allRules } from './conjugation-rules';
+import { allVerbs } from './jlpt-verbs';
 
 // Main conjugate function that applies the rules
 export function conjugateVerb(
@@ -12,7 +13,6 @@ export function conjugateVerb(
 
 	// Handle irregular verbs with pre-defined forms
 	if (verb.type === 'irregular' && verb.irregularForms && verb.irregularForms[formKey]) {
-		// No special-case handling - just use the irregular form directly from the data
 		return verb.irregularForms[formKey];
 	}
 
@@ -71,14 +71,42 @@ export function checkAnswer(expected: string, actual: string): boolean {
 // ==================== VerbConjugator Class ====================
 
 export class VerbConjugator {
-	private verbs: JapaneseVerb[];
+	private selectedLevels: Set<'n5' | 'n4' | 'n3' | 'n2' | 'n1'>;
+	private recentVerbs: string[]; // Store dictionary forms of recent verbs
+	private readonly maxRecentVerbs = 20;
 
-	constructor(verbs: JapaneseVerb[] = []) {
-		this.verbs = verbs;
+	constructor(initialLevels: ('n5' | 'n4' | 'n3' | 'n2' | 'n1')[] = ['n5']) {
+		this.selectedLevels = new Set(initialLevels);
+		this.recentVerbs = [];
+	}
+
+	setLevels(levels: ('n5' | 'n4' | 'n3' | 'n2' | 'n1')[]): void {
+		this.selectedLevels = new Set(levels);
+	}
+
+	addLevel(level: 'n5' | 'n4' | 'n3' | 'n2' | 'n1'): void {
+		this.selectedLevels.add(level);
+	}
+
+	removeLevel(level: 'n5' | 'n4' | 'n3' | 'n2' | 'n1'): void {
+		this.selectedLevels.delete(level);
+		// Ensure at least one level is selected
+		if (this.selectedLevels.size === 0) {
+			this.selectedLevels.add('n5');
+		}
+	}
+
+	getSelectedLevels(): string[] {
+		return Array.from(this.selectedLevels);
 	}
 
 	findVerb(dictionary: string): JapaneseVerb | undefined {
-		return this.verbs.find(v => v.dictionary === dictionary);
+		// Search through all selected levels
+		for (const level of this.selectedLevels) {
+			const verb = allVerbs[level].find(v => v.dictionary === dictionary);
+			if (verb) return verb;
+		}
+		return undefined;
 	}
 
 	conjugate(verb: JapaneseVerb, tense: Tense, polarity: Polarity = 'affirmative', formality: Formality = 'plain'): string {
@@ -96,16 +124,48 @@ export class VerbConjugator {
 		return conjugateVerb(internalVerb, tense, polarity, formality);
 	}
 
+	getRandomVerb(): JapaneseVerb {
+		// Get a random level from selected levels
+		const levels = Array.from(this.selectedLevels);
+		const randomLevel = levels[Math.floor(Math.random() * levels.length)];
+
+		// Get verbs from the selected level
+		const levelVerbs = allVerbs[randomLevel];
+
+		// Filter out recent verbs
+		const availableVerbs = levelVerbs.filter(verb => !this.recentVerbs.includes(verb.dictionary));
+
+		// If all verbs have been used recently, clear the recent verbs list
+		if (availableVerbs.length === 0) {
+			this.recentVerbs = [];
+			return this.getRandomVerb();
+		}
+
+		// Get a random verb from available verbs
+		const randomIndex = Math.floor(Math.random() * availableVerbs.length);
+		const selectedVerb = availableVerbs[randomIndex];
+
+		// Add to recent verbs
+		this.recentVerbs.push(selectedVerb.dictionary);
+
+		// Maintain the size limit of recent verbs
+		if (this.recentVerbs.length > this.maxRecentVerbs) {
+			this.recentVerbs.shift();
+		}
+
+		return selectedVerb;
+	}
+
+	getVerbsForLevel(level: 'n5' | 'n4' | 'n3' | 'n2' | 'n1'): JapaneseVerb[] {
+		return allVerbs[level];
+	}
+
 	getAllVerbs(): JapaneseVerb[] {
-		return this.verbs;
-	}
-
-	addVerb(verb: JapaneseVerb): void {
-		this.verbs.push(verb);
-	}
-
-	removeVerb(dictionary: string): void {
-		this.verbs = this.verbs.filter(v => v.dictionary !== dictionary);
+		const allSelectedVerbs: JapaneseVerb[] = [];
+		for (const level of this.selectedLevels) {
+			allSelectedVerbs.push(...allVerbs[level]);
+		}
+		return allSelectedVerbs;
 	}
 }
 

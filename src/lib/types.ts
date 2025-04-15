@@ -3,7 +3,7 @@ export interface JapaneseVerb {
     kana: string;
     meaning: string;
     type: 'godan' | 'ichidan' | 'irregular';
-    ending?: string;
+    ending?: VerbEnding;
     irregularForms?: Record<string, string>;
 }
 

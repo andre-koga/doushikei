@@ -5,7 +5,7 @@
 	$: verb = $currentVerb as JapaneseVerb;
 </script>
 
-<div class="mb-6 rounded-lg bg-gray-700 p-4">
+<div class="mb-6 rounded-lg bg-gray-700 p-4 text-center">
 	{#if verb}
 		<div class="mb-2 text-xl font-bold">{verb.dictionary}</div>
 		<div class="mb-1 text-lg text-gray-300">{verb.kana}</div>
