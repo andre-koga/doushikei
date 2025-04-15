@@ -66,11 +66,11 @@
 
 	<div class="mb-8 rounded-lg bg-gray-800 p-6 shadow-lg">
 		<div class="mb-6 grid gap-8 md:grid-cols-2">
-			<!-- JLPT Level Selection -->
-			<JLPTLevelSelector />
-
 			<!-- Tense Selection -->
 			<TenseSelector />
+
+			<!-- JLPT Level Selection -->
+			<JLPTLevelSelector />
 
 			<!-- Polarity Selection -->
 			<PolaritySelector />

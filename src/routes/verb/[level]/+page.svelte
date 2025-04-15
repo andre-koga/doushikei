@@ -1,16 +1,22 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { allVerbs } from '$lib/jlpt-verbs';
 	import type { Verb } from '$lib/verbs';
 
-	// Get the level from the URL parameter
-	const level = $page.params.level;
+	// Get the level from the URL parameter using $state
+	let level = $state(page.params.level);
 
-	// Get verbs for the current level
-	const levelVerbs = allVerbs[level as keyof typeof allVerbs] || [];
+	// Create a reactive effect to update level when params change
+	$effect(() => {
+		level = page.params.level;
+	});
 
-	// Sort verbs alphabetically by dictionary form
-	levelVerbs.sort((a: Verb, b: Verb) => a.dictionary.localeCompare(b.dictionary));
+	// Get verbs for the current level using $derived
+	let levelVerbs = $derived(
+		(allVerbs[level as keyof typeof allVerbs] || []).sort((a: Verb, b: Verb) =>
+			a.dictionary.localeCompare(b.dictionary)
+		)
+	);
 </script>
 
 <div class="rounded-lg bg-gray-800 p-6 shadow-lg">

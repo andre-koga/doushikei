@@ -15,7 +15,8 @@ export type JapaneseVerb =
 		kana: string;
 		meaning: string;
 		type: 'godan' | 'ichidan';
-		ending?: VerbEnding;
+		ending: VerbEnding;
+		transitivity: 'transitive' | 'intransitive';
 	}
 	| {
 		dictionary: string;
@@ -24,7 +25,8 @@ export type JapaneseVerb =
 		type: 'irregular';
 		irregularForms: IrregularVerbForms;
 		// Optional: specify which regular pattern to follow for non-specified forms
-		regularPattern?: 'godan' | 'ichidan';
+		regularPattern: 'godan' | 'ichidan';
+		transitivity: 'transitive' | 'intransitive';
 	};
 
 export interface ConjugationRule {

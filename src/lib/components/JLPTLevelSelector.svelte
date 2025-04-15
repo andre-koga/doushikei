@@ -64,7 +64,15 @@
 			<div class="flex items-center divide-x divide-gray-600 overflow-hidden rounded-md">
 				<button
 					class="px-3 py-1 text-sm transition-colors {$enabledJLPTLevels.includes(level.id)
-						? 'bg-indigo-600 text-white hover:bg-indigo-700'
+						? level.id === 'n5'
+							? 'bg-violet-800/90 text-white hover:bg-violet-900/90'
+							: level.id === 'n4'
+								? 'bg-blue-800/90 text-white hover:bg-blue-900/90'
+								: level.id === 'n3'
+									? 'bg-emerald-800/90 text-white hover:bg-emerald-900/90'
+									: level.id === 'n2'
+										? 'bg-amber-800/70 text-white hover:bg-amber-900/70'
+										: 'bg-red-800/70 text-white hover:bg-red-900/70'
 						: 'bg-gray-700 text-white hover:bg-gray-600'}"
 					on:click={() => toggleLevel(level.id)}
 				>
