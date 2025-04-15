@@ -60,9 +60,12 @@ export const n5Verbs: JapaneseVerb[] = [
 	{
 		dictionary: '有る',
 		kana: 'ある',
-		meaning: 'to be, to exist',
-		type: 'godan',
-		ending: 'ru',
+		meaning: 'to be, to exist (inanimate objects)',
+		type: 'irregular',
+		irregularForms: {
+			'present-negative-plain': 'ない'
+		},
+		regularPattern: 'godan',
 		transitivity: 'intransitive'
 	},
 	{
@@ -100,7 +103,7 @@ export const n5Verbs: JapaneseVerb[] = [
 	{
 		dictionary: '居る',
 		kana: 'いる',
-		meaning: 'to be, to exist',
+		meaning: 'to be, to exist (animate objects)',
 		type: 'ichidan',
 		ending: 'ru',
 		transitivity: 'intransitive'
@@ -582,6 +585,14 @@ export const n5Verbs: JapaneseVerb[] = [
 		transitivity: 'intransitive'
 	},
 	{
+		dictionary: '勉強する',
+		kana: 'べんきょうする',
+		meaning: 'to study',
+		type: 'godan',
+		ending: 'ru',
+		transitivity: 'transitive'
+	},
+	{
 		dictionary: '取る',
 		kana: 'とる',
 		meaning: 'to take',
@@ -683,7 +694,7 @@ export const n5Verbs: JapaneseVerb[] = [
 		meaning: 'to put on shoes',
 		type: 'godan',
 		ending: 'ku',
-		transitivity: 'intransitive'
+		transitivity: 'transitive'
 	},
 	{
 		dictionary: '始まる',
@@ -883,6 +894,6 @@ export const n5Verbs: JapaneseVerb[] = [
 		meaning: 'to take off clothes',
 		type: 'godan',
 		ending: 'gu',
-		transitivity: 'intransitive'
+		transitivity: 'transitive'
 	}
 ];

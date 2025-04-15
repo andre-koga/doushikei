@@ -60,54 +60,53 @@
 	const allVerbs = conjugator.getAllVerbs();
 </script>
 
-<main class="container mx-auto max-w-4xl bg-gray-900 px-4 py-8 text-white">
-	<h1 class="mb-6 text-center text-3xl font-bold">日本語動詞活用練習</h1>
-	<h2 class="mb-8 text-center text-xl font-semibold">Japanese Verb Conjugation Practice</h2>
+<h1 class="mb-6 text-center text-3xl font-bold">日本語動詞活用練習</h1>
+<h2 class="mb-8 text-center text-xl font-semibold">Conjugation Practice</h2>
 
-	<div class="mb-8 rounded-lg bg-gray-800 p-6 shadow-lg">
-		<div class="mb-6 grid gap-8 md:grid-cols-2">
-			<!-- Tense Selection -->
-			<TenseSelector />
+<div class="mb-8 rounded-lg bg-gray-800 p-6 shadow-lg">
+	<div class="mb-6 grid gap-8 md:grid-cols-2">
+		<!-- Tense Selection -->
+		<TenseSelector />
 
-			<!-- JLPT Level Selection -->
-			<JLPTLevelSelector />
+		<!-- JLPT Level Selection -->
+		<JLPTLevelSelector />
 
-			<!-- Polarity Selection -->
-			<PolaritySelector />
+		<!-- Polarity Selection -->
+		<PolaritySelector />
 
-			<!-- Formality Selection -->
-			<FormalitySelector />
-		</div>
-
-		{#if $currentVerb}
-			<!-- Verb information -->
-			<VerbCard />
-
-			<!-- Instructions -->
-			<InstructionsDisplay />
-
-			<!-- User answer input -->
-			<AnswerInput />
-
-			<!-- Feedback and answer -->
-			<FeedbackDisplay />
-
-			<!-- Next question button -->
-			<NextButton />
-
-			<!-- Tense explanation -->
-			<TenseExplanation />
-		{/if}
+		<!-- Formality Selection -->
+		<FormalitySelector />
 	</div>
 
-	<!-- Score display -->
-	<ScoreDisplay />
+	{#if $currentVerb}
+		<!-- Verb information -->
+		<VerbCard />
 
-	<!-- Tense Performance Stats -->
-	<TensePerformance />
+		<!-- Instructions -->
+		<InstructionsDisplay />
 
-	<!-- Example of using the verb conjugator -->
-	<!-- <div class="container mx-auto p-4">
+		<!-- User answer input -->
+		<AnswerInput />
+
+		<!-- Feedback and answer -->
+		<FeedbackDisplay />
+
+		<!-- Next question button -->
+		<NextButton />
+
+		<!-- Tense explanation -->
+		<TenseExplanation />
+	{/if}
+</div>
+
+<!-- Score display -->
+<ScoreDisplay />
+
+<!-- Tense Performance Stats -->
+<TensePerformance />
+
+<!-- Example of using the verb conjugator -->
+<!-- <div class="container mx-auto p-4">
 		<h1 class="mb-4 text-2xl font-bold">Japanese Verb Conjugator</h1>
 
 		<div class="mb-4">
@@ -146,7 +145,6 @@
 			</div>
 		{/if}
 	</div> -->
-</main>
 
 <footer class="flex flex-col items-center gap-1 bg-gray-900 pt-4 pb-20 text-center text-gray-400">
 	<p class="font-bold text-gray-300">日本語動詞活用練習</p>

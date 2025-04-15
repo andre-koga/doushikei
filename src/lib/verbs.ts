@@ -11,6 +11,7 @@ export interface Verb {
 	// For irregular verbs
 	irregularForms?: Partial<Record<`${Tense}-${Polarity}-${Formality}`, string>>;
 	regularPattern?: 'godan' | 'ichidan';
+	transitivity?: 'transitive' | 'intransitive'; // Whether the verb takes a direct object
 }
 
 export interface TenseOption {
