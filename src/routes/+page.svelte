@@ -60,8 +60,6 @@
 	const allVerbs = conjugator.getAllVerbs();
 </script>
 
-<p class="bg-red-600/40 px-2 py-1.5 text-center text-sm">This app is still under development!</p>
-
 <main class="container mx-auto max-w-4xl bg-gray-900 px-4 py-8 text-white">
 	<h1 class="mb-6 text-center text-3xl font-bold">日本語動詞活用練習</h1>
 	<h2 class="mb-8 text-center text-xl font-semibold">Japanese Verb Conjugation Practice</h2>

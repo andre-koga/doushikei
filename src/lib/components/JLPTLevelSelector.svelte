@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { enabledJLPTLevels, savePreferences } from '$lib/stores/preferenceStore';
+	import { ExternalLink } from 'lucide-svelte';
+	import { goto } from '$app/navigation';
 
 	const jlptLevels = [
-		{ id: 'n5', label: 'N5', description: 'Basic Level' },
-		{ id: 'n4', label: 'N4', description: 'Elementary Level' },
-		{ id: 'n3', label: 'N3', description: 'Intermediate Level' },
-		{ id: 'n2', label: 'N2', description: 'Pre-Advanced Level' },
-		{ id: 'n1', label: 'N1', description: 'Advanced Level' }
+		{ id: 'n5', label: 'N5' },
+		{ id: 'n4', label: 'N4' },
+		{ id: 'n3', label: 'N3' },
+		{ id: 'n2', label: 'N2' },
+		{ id: 'n1', label: 'N1' }
 	];
 
 	function toggleLevel(level: string) {
@@ -33,11 +35,15 @@
 		}
 		savePreferences();
 	}
+
+	function navigateToLevel(level: string) {
+		goto(`/verb/${level}`);
+	}
 </script>
 
-<div class="space-y-2">
+<div class="space-y-2 md:col-span-2">
 	<div class="flex items-center justify-between">
-		<h3 class="font-medium">JLPT Level</h3>
+		<h3 class="font-medium">Verb Lists</h3>
 		<div class="flex gap-2">
 			<button
 				class="rounded bg-indigo-900 px-2 py-1 text-xs text-white hover:bg-indigo-800"
@@ -55,17 +61,23 @@
 	</div>
 	<div class="flex flex-wrap gap-2">
 		{#each jlptLevels as level}
-			<button
-				class="tooltip rounded-md px-3 py-1 text-sm transition-colors {$enabledJLPTLevels.includes(
-					level.id
-				)
-					? 'bg-indigo-600 text-white hover:bg-indigo-700'
-					: 'bg-gray-700 text-white hover:bg-gray-600'}"
-				on:click={() => toggleLevel(level.id)}
-			>
-				{level.label}
-				<span class="text-xs text-gray-400">{level.description}</span>
-			</button>
+			<div class="flex items-center divide-x divide-gray-600 overflow-hidden rounded-md">
+				<button
+					class="px-3 py-1 text-sm transition-colors {$enabledJLPTLevels.includes(level.id)
+						? 'bg-indigo-600 text-white hover:bg-indigo-700'
+						: 'bg-gray-700 text-white hover:bg-gray-600'}"
+					on:click={() => toggleLevel(level.id)}
+				>
+					{level.label}
+				</button>
+				<button
+					class="flex items-center justify-center bg-gray-700 px-2 py-1.5 text-white hover:bg-gray-600"
+					on:click={() => navigateToLevel(level.id)}
+					title="View {level.label} verbs"
+				>
+					<ExternalLink class="h-4 w-4" />
+				</button>
+			</div>
 		{/each}
 	</div>
 	<div class="mt-1 text-xs text-gray-400">

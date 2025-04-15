@@ -106,11 +106,11 @@ export const tenseOptions: TenseOption[] = [
 		id: 'imperative',
 		label: 'Imperative',
 		description: '命令形',
-		essential: false,
+		essential: true,
 		hasFormality: true,
 		hasPolarity: true,
 		longDescription:
-			'The imperative form is used for commands or strong requests. The plain form is considered rude except among close friends.'
+			'The imperative form is used for commands or strong requests. The plain form is considered rude except among close friends. The negative form (prohibitive) is used to tell someone not to do something, with な being the plain form and ないでください being the polite form.'
 	},
 
 	{

@@ -11,21 +11,21 @@ export type IrregularVerbForms = Partial<Record<ConjugationFormKey, string>>;
 // Create a discriminated union type for JapaneseVerb
 export type JapaneseVerb =
 	| {
-			dictionary: string;
-			kana: string;
-			meaning: string;
-			type: 'godan' | 'ichidan';
-			ending?: VerbEnding;
-	  }
+		dictionary: string;
+		kana: string;
+		meaning: string;
+		type: 'godan' | 'ichidan';
+		ending?: VerbEnding;
+	}
 	| {
-			dictionary: string;
-			kana: string;
-			meaning: string;
-			type: 'irregular';
-			irregularForms: IrregularVerbForms;
-			// Optional: specify which regular pattern to follow for non-specified forms
-			regularPattern?: 'godan' | 'ichidan';
-	  };
+		dictionary: string;
+		kana: string;
+		meaning: string;
+		type: 'irregular';
+		irregularForms: IrregularVerbForms;
+		// Optional: specify which regular pattern to follow for non-specified forms
+		regularPattern?: 'godan' | 'ichidan';
+	};
 
 export interface ConjugationRule {
 	appliesTo: string[];
