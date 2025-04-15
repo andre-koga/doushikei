@@ -21,3 +21,8 @@ input,
 select {
 	@apply focus:outline-none;
 }
+
+/* Add cursor pointer to all buttons */
+button {
+	@apply cursor-pointer;
+}

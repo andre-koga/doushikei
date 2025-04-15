@@ -14,6 +14,7 @@
 	import TenseSelector from '$lib/components/TenseSelector.svelte';
 	import PolaritySelector from '$lib/components/PolaritySelector.svelte';
 	import FormalitySelector from '$lib/components/FormalitySelector.svelte';
+	import JLPTLevelSelector from '$lib/components/JLPTLevelSelector.svelte';
 
 	// Stores and utilities
 	import { loadPreferences } from '$lib/stores/preferenceStore';
@@ -59,101 +60,47 @@
 	const allVerbs = conjugator.getAllVerbs();
 </script>
 
-<main class="container mx-auto max-w-4xl bg-gray-900 px-4 py-8 text-white">
-	<h1 class="mb-6 text-center text-3xl font-bold">日本語動詞活用練習</h1>
-	<h2 class="mb-8 text-center text-xl font-semibold">Japanese Verb Conjugation Practice</h2>
+<h1 class="mb-6 text-center text-3xl font-bold">日本語動詞活用練習</h1>
+<h2 class="mb-8 text-center text-xl font-semibold">Conjugation Practice</h2>
 
-	<div class="mb-8 rounded-lg bg-gray-800 p-6 shadow-lg">
-		<div class="mb-6 grid gap-8 md:grid-cols-2">
-			<!-- Tense Selection -->
-			<TenseSelector />
+<div class="mb-8 rounded-lg bg-gray-800 p-6 shadow-lg">
+	<div class="mb-6 grid gap-8 md:grid-cols-2">
+		<!-- Tense Selection -->
+		<TenseSelector />
 
-			<!-- Polarity Selection -->
-			<PolaritySelector />
+		<!-- JLPT Level Selection -->
+		<JLPTLevelSelector />
 
-			<!-- Formality Selection -->
-			<FormalitySelector />
-		</div>
+		<!-- Polarity Selection -->
+		<PolaritySelector />
 
-		{#if $currentVerb}
-			<!-- Verb information -->
-			<VerbCard />
-
-			<!-- Instructions -->
-			<InstructionsDisplay />
-
-			<!-- User answer input -->
-			<AnswerInput />
-
-			<!-- Feedback and answer -->
-			<FeedbackDisplay />
-
-			<!-- Next question button -->
-			<NextButton />
-		{/if}
+		<!-- Formality Selection -->
+		<FormalitySelector />
 	</div>
 
-	<!-- Score display -->
-	<ScoreDisplay />
+	{#if $currentVerb}
+		<!-- Verb information -->
+		<VerbCard />
 
-	<!-- Tense Performance Stats -->
-	<TensePerformance />
+		<!-- Instructions -->
+		<InstructionsDisplay />
 
-	<!-- Example of using the verb conjugator -->
-	<!-- <div class="container mx-auto p-4">
-		<h1 class="mb-4 text-2xl font-bold">Japanese Verb Conjugator</h1>
+		<!-- User answer input -->
+		<AnswerInput />
 
-		<div class="mb-4">
-			<label for="verb-select" class="mb-2 block">Select a verb:</label>
-			<select id="verb-select" class="rounded border p-2" bind:value={selectedVerb}>
-				<option value={undefined}>Choose a verb...</option>
-				{#each allVerbs as verb}
-					<option value={verb}>{verb.dictionary} ({verb.meaning})</option>
-				{/each}
-			</select>
-		</div>
+		<!-- Feedback and answer -->
+		<FeedbackDisplay />
 
-		{#if selectedVerb}
-			<div class="mb-4">
-				<label for="form-select" class="mb-2 block">Select conjugation form:</label>
-				<select id="form-select" class="rounded border p-2" bind:value={conjugationForm}>
-					<option value="present">Present</option>
-					<option value="past">Past</option>
-					<option value="negative">Negative</option>
-					<option value="te">Te-form</option>
-					<option value="potential">Potential</option>
-					<option value="passive">Passive</option>
-					<option value="causative">Causative</option>
-					<option value="imperative">Imperative</option>
-				</select>
-			</div>
+		<!-- Next question button -->
+		<NextButton />
 
-			<div class="mt-6 rounded bg-gray-100 p-4">
-				<h2 class="mb-2 text-xl">Conjugation Result:</h2>
-				<div class="text-2xl font-bold">{conjugatedForm}</div>
-				<div class="mt-2 text-gray-600">
-					Original: {selectedVerb.dictionary} ({selectedVerb.kana})
-					<br />
-					Meaning: {selectedVerb.meaning}
-				</div>
-			</div>
-		{/if}
-	</div> -->
-</main>
+		<!-- Tense explanation -->
+		<TenseExplanation />
 
-<footer class="flex flex-col items-center gap-1 bg-gray-900 pt-4 pb-12 text-center text-gray-400">
-	<p>Japanese Verb Conjugation Practice App</p>
-	<p class="text-sm">
-		Created with Svelte and Tailwind CSS by <a
-			href="https://github.com/andre-koga"
-			target="_blank"
-			class="text-indigo-400 hover:text-indigo-300">Andre Koga</a
-		>
-	</p>
-</footer>
+		<!-- Score display -->
+		<ScoreDisplay />
+	{/if}
+</div>
 
-<style>
-	.container {
-		max-width: 800px;
-	}
-</style>
+<!-- Tense Performance Stats -->
+<TensePerformance />

@@ -1,43 +1,18 @@
+import type { Formality, Polarity, Tense, VerbEnding } from './types';
+import { allVerbs } from './jlpt-verbs';
+
 export interface Verb {
 	dictionary: string; // Dictionary form
 	kana: string; // Kana reading
 	meaning: string; // English meaning
 	type: 'godan' | 'ichidan' | 'irregular'; // Verb type
 	// For godan verbs, what character the stem ends with
-	ending?: 'u' | 'ku' | 'gu' | 'su' | 'tsu' | 'nu' | 'bu' | 'mu' | 'ru';
+	ending?: VerbEnding;
 	// For irregular verbs
-	irregularForms?: Record<`${Tense}-${Polarity}-${Formality}`, string>;
+	irregularForms?: Partial<Record<`${Tense}-${Polarity}-${Formality}`, string>>;
+	regularPattern?: 'godan' | 'ichidan';
+	transitivity?: 'transitive' | 'intransitive'; // Whether the verb takes a direct object
 }
-
-export type Tense =
-	| 'present'
-	| 'past'
-	| 'teForm'
-	| 'potential'
-	| 'passive'
-	| 'causative'
-	| 'imperative'
-	| 'volitional'
-	| 'conditionalBa'
-	| 'conditionalTara'
-	| 'progressive'
-	| 'desire'
-	| 'causativePassive'
-	| 'conditionalNara'
-	| 'conditionalTo'
-	| 'should'
-	| 'must'
-	| 'attemptive'
-	| 'preparatory'
-	| 'regrettable'
-	| 'giving'
-	| 'receiving'
-	| 'receivingFavor'
-	| 'simultaneous'
-	| 'purposeGoing'
-	| 'purposeComing';
-export type Polarity = 'affirmative' | 'negative';
-export type Formality = 'plain' | 'polite';
 
 export interface TenseOption {
 	id: Tense;
@@ -45,8 +20,8 @@ export interface TenseOption {
 	description: string;
 	essential: boolean;
 	longDescription?: string; // Add detailed explanation of what the form is used for
-	hasFormality: boolean;    // Whether this tense has formality variations
-	hasPolarity: boolean;     // Whether this tense has polarity variations
+	hasFormality: boolean; // Whether this tense has formality variations
+	hasPolarity: boolean; // Whether this tense has polarity variations
 }
 
 export interface PolarityOption {
@@ -132,11 +107,11 @@ export const tenseOptions: TenseOption[] = [
 		id: 'imperative',
 		label: 'Imperative',
 		description: '命令形',
-		essential: false,
+		essential: true,
 		hasFormality: true,
 		hasPolarity: true,
 		longDescription:
-			'The imperative form is used for commands or strong requests. The plain form is considered rude except among close friends.'
+			'The imperative form is used for commands or strong requests. The plain form is considered rude except among close friends. The negative form (prohibitive) is used to tell someone not to do something, with な being the plain form and ないでください being the polite form.'
 	},
 
 	{
@@ -359,89 +334,5 @@ export const formalityOptions: FormalityOption[] = [
 	{ id: 'polite', label: 'Polite', description: '丁寧形' }
 ];
 
-// Import the generated verb data if available
-let importedVerbs: Verb[] = [];
-
-(async () => {
-	try {
-		importedVerbs = (await import('./verb-data.json')).default as Verb[];
-		console.log(`Loaded ${importedVerbs.length} verbs from JMdict data`);
-	} catch {
-		console.log('Using default verb list (verb-data.json not found)');
-		// Will use the default verb list below
-	}
-})();
-
-// Sample verb list as fallback
-const sampleVerbs: Verb[] = [
-	{
-		dictionary: '食べる',
-		kana: 'たべる',
-		meaning: 'to eat',
-		type: 'ichidan'
-	},
-	{
-		dictionary: '飲む',
-		kana: 'のむ',
-		meaning: 'to drink',
-		type: 'godan',
-		ending: 'mu'
-	},
-	{
-		dictionary: '行く',
-		kana: 'いく',
-		meaning: 'to go',
-		type: 'godan',
-		ending: 'ku'
-	},
-	{
-		dictionary: '来る',
-		kana: 'くる',
-		meaning: 'to come',
-		type: 'irregular'
-	},
-	{
-		dictionary: '見る',
-		kana: 'みる',
-		meaning: 'to see, to look',
-		type: 'ichidan'
-	},
-	{
-		dictionary: '話す',
-		kana: 'はなす',
-		meaning: 'to speak',
-		type: 'godan',
-		ending: 'su'
-	},
-	{
-		dictionary: '書く',
-		kana: 'かく',
-		meaning: 'to write',
-		type: 'godan',
-		ending: 'ku'
-	},
-	{
-		dictionary: '読む',
-		kana: 'よむ',
-		meaning: 'to read',
-		type: 'godan',
-		ending: 'mu'
-	},
-	{
-		dictionary: '泳ぐ',
-		kana: 'およぐ',
-		meaning: 'to swim',
-		type: 'godan',
-		ending: 'gu'
-	},
-	{
-		dictionary: '買う',
-		kana: 'かう',
-		meaning: 'to buy',
-		type: 'godan',
-		ending: 'u'
-	}
-];
-
-// Use imported verbs if available, otherwise use sample verbs
-export const verbs: Verb[] = importedVerbs.length > 0 ? importedVerbs : sampleVerbs;
+// Use the verb lists from jlpt-verbs
+export const verbs: Verb[] = Object.values(allVerbs).flat();

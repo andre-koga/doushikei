@@ -9,15 +9,16 @@
 		remainingAttempts
 	} from '$lib/stores/gameStore';
 	import { tenseOptions } from '$lib/verbs';
-	import { conjugator } from '$lib/conjugation';
+	import { conjugator, checkAnswer as checkConjugationAnswer } from '$lib/conjugation';
 	import { romajiToJapanese, isRomaji } from '$lib/romaji';
-	import type { JapaneseVerb } from '$lib/types';
-	import type { Tense } from '$lib/verbs';
+	import type { JapaneseVerb, Tense } from '$lib/types';
 
 	let userInput = '';
 	let expectedAnswer = '';
+	let kanjiAnswer = '';
 	let feedback = '';
 	let previewText = '';
+	let lastProcessedInput = '';
 
 	// Update preview text when user types
 	$: if (userInput && isRomaji(userInput)) {
@@ -34,6 +35,20 @@
 			$currentPolarity,
 			$currentFormality
 		);
+
+		// Also get the kanji version by creating a copy of the verb with dictionary as dictionary
+		const kanjiVerb = {
+			...verb,
+			kana: verb.dictionary // This makes the original conjugator use the kanji form
+		};
+		kanjiAnswer = conjugator.conjugate(
+			kanjiVerb,
+			$currentTense as Tense,
+			$currentPolarity,
+			$currentFormality
+		);
+
+		lastProcessedInput = '';
 	}
 
 	// Get the readable tense name
@@ -48,7 +63,10 @@
 	function handleSubmit() {
 		if (!$currentVerb) return;
 
-		const isAnswerCorrect = userInput.trim() === expectedAnswer.trim();
+		lastProcessedInput = userInput;
+		// Convert romaji input to Japanese if needed
+		const processedInput = isRomaji(userInput) ? romajiToJapanese(userInput) : userInput;
+		const isAnswerCorrect = checkConjugationAnswer(expectedAnswer, processedInput);
 
 		if (isAnswerCorrect) {
 			isCorrect.set(true);
@@ -74,11 +92,14 @@
 				<p class="mt-2 text-yellow-500">
 					{feedback}
 				</p>
-			{/if}
-			{#if $isCorrect}
-				<p class="mt-2 text-green-500">
-					{feedback}
-				</p>
+				<!-- <p class="mt-2 text-sm text-gray-400">
+					Debug - Last input: {lastProcessedInput}
+					{#if isRomaji(lastProcessedInput)}
+						→ Converted to: {romajiToJapanese(lastProcessedInput)}
+					{/if}
+					<br />
+					Expected: {expectedAnswer}
+				</p> -->
 			{/if}
 		</div>
 		<div class="relative">
@@ -105,9 +126,13 @@
 	</div>
 </form>
 
-{#if $showAnswer}
+{#if $showAnswer || $isCorrect}
 	<div class="mt-4 text-center">
-		<p class="mb-2 text-red-500">{feedback}</p>
-		<p class="text-lg">Correct answer: <span class="font-bold">{expectedAnswer}</span></p>
+		{#if $isCorrect}
+			<p class="mb-2 text-green-500">{feedback}</p>
+		{:else}
+			<p class="mb-2 text-red-500">{feedback}</p>
+		{/if}
+		<p class="text-lg">Answer: <span class="font-bold">{kanjiAnswer} ({expectedAnswer})</span></p>
 	</div>
 {/if}

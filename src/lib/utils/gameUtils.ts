@@ -85,7 +85,6 @@ export function checkUserAnswer(useRomajiInput: boolean): void {
 	let convertedAnswerValue = '';
 	let currentTenseValue: string;
 	let currentAttemptValue = 0;
-	let statsValue: Record<string, { attempts: number; correct: number }> = {};
 
 	// Get current values from stores
 	userAnswer.subscribe((value) => {
@@ -96,9 +95,6 @@ export function checkUserAnswer(useRomajiInput: boolean): void {
 	})();
 	currentTense.subscribe((value) => {
 		currentTenseValue = value;
-	})();
-	tenseStats.subscribe((value) => {
-		statsValue = value;
 	})();
 	currentAttempt.subscribe((value) => {
 		currentAttemptValue = value;
@@ -130,7 +126,7 @@ export function checkUserAnswer(useRomajiInput: boolean): void {
 	if (checkConjugationAnswer(correctAnswerValue, convertedAnswerValue)) {
 		feedback.set('正解！ (Correct!)');
 		isCorrect.set(true);
-		score.update((n) => n + 1);
+		score.update((n) => ({ correct: n.correct + 1, total: n.total + 1 }));
 
 		// Only increment correct stat on first attempt
 		if (currentAttemptValue === 1) {
