@@ -1,3 +1,5 @@
+import type { Formality, Polarity, Tense } from './types';
+
 export interface Verb {
 	dictionary: string; // Dictionary form
 	kana: string; // Kana reading
@@ -8,36 +10,6 @@ export interface Verb {
 	// For irregular verbs
 	irregularForms?: Record<`${Tense}-${Polarity}-${Formality}`, string>;
 }
-
-export type Tense =
-	| 'present'
-	| 'past'
-	| 'teForm'
-	| 'potential'
-	| 'passive'
-	| 'causative'
-	| 'imperative'
-	| 'volitional'
-	| 'conditionalBa'
-	| 'conditionalTara'
-	| 'progressive'
-	| 'desire'
-	| 'causativePassive'
-	| 'conditionalNara'
-	| 'conditionalTo'
-	| 'should'
-	| 'must'
-	| 'attemptive'
-	| 'preparatory'
-	| 'regrettable'
-	| 'giving'
-	| 'receiving'
-	| 'receivingFavor'
-	| 'simultaneous'
-	| 'purposeGoing'
-	| 'purposeComing';
-export type Polarity = 'affirmative' | 'negative';
-export type Formality = 'plain' | 'polite';
 
 export interface TenseOption {
 	id: Tense;
@@ -372,76 +344,5 @@ let importedVerbs: Verb[] = [];
 	}
 })();
 
-// Sample verb list as fallback
-const sampleVerbs: Verb[] = [
-	{
-		dictionary: '食べる',
-		kana: 'たべる',
-		meaning: 'to eat',
-		type: 'ichidan'
-	},
-	{
-		dictionary: '飲む',
-		kana: 'のむ',
-		meaning: 'to drink',
-		type: 'godan',
-		ending: 'mu'
-	},
-	{
-		dictionary: '行く',
-		kana: 'いく',
-		meaning: 'to go',
-		type: 'godan',
-		ending: 'ku'
-	},
-	{
-		dictionary: '来る',
-		kana: 'くる',
-		meaning: 'to come',
-		type: 'irregular'
-	},
-	{
-		dictionary: '見る',
-		kana: 'みる',
-		meaning: 'to see, to look',
-		type: 'ichidan'
-	},
-	{
-		dictionary: '話す',
-		kana: 'はなす',
-		meaning: 'to speak',
-		type: 'godan',
-		ending: 'su'
-	},
-	{
-		dictionary: '書く',
-		kana: 'かく',
-		meaning: 'to write',
-		type: 'godan',
-		ending: 'ku'
-	},
-	{
-		dictionary: '読む',
-		kana: 'よむ',
-		meaning: 'to read',
-		type: 'godan',
-		ending: 'mu'
-	},
-	{
-		dictionary: '泳ぐ',
-		kana: 'およぐ',
-		meaning: 'to swim',
-		type: 'godan',
-		ending: 'gu'
-	},
-	{
-		dictionary: '買う',
-		kana: 'かう',
-		meaning: 'to buy',
-		type: 'godan',
-		ending: 'u'
-	}
-];
-
 // Use imported verbs if available, otherwise use sample verbs
-export const verbs: Verb[] = importedVerbs.length > 0 ? importedVerbs : sampleVerbs;
+export const verbs: Verb[] = importedVerbs.length > 0 ? importedVerbs : [];

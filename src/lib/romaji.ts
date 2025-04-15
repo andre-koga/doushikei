@@ -206,6 +206,12 @@ export function romajiToJapanese(romaji: string): string {
 		// Try 2 character sequences
 		if (i < lowerRomaji.length - 1) {
 			const twoChars = lowerRomaji.substring(i, i + 2);
+			// Special handling for 'wo' particle
+			if (twoChars === 'wo') {
+				result += 'を';
+				i += 2;
+				continue;
+			}
 			if (romajiToHiragana[twoChars]) {
 				result += romajiToHiragana[twoChars];
 				i += 2;

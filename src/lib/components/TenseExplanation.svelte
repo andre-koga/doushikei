@@ -6,7 +6,7 @@
 </script>
 
 {#if $isCorrect || $showAnswer}
-	<div class="mb-6 rounded-lg bg-gray-700 p-4 text-left">
+	<div class="mt-6 rounded-lg bg-gray-700 p-4 text-left">
 		<h4
 			class="mb-2 border-b border-gray-600 pb-2 text-center text-lg font-semibold text-indigo-300"
 		>

@@ -59,6 +59,8 @@
 	const allVerbs = conjugator.getAllVerbs();
 </script>
 
+<p class="bg-red-600/40 px-2 py-1.5 text-center text-sm">This app is still under development!</p>
+
 <main class="container mx-auto max-w-4xl bg-gray-900 px-4 py-8 text-white">
 	<h1 class="mb-6 text-center text-3xl font-bold">日本語動詞活用練習</h1>
 	<h2 class="mb-8 text-center text-xl font-semibold">Japanese Verb Conjugation Practice</h2>
@@ -90,6 +92,9 @@
 
 			<!-- Next question button -->
 			<NextButton />
+
+			<!-- Tense explanation -->
+			<TenseExplanation />
 		{/if}
 	</div>
 
@@ -141,14 +146,17 @@
 	</div> -->
 </main>
 
-<footer class="flex flex-col items-center gap-1 bg-gray-900 pt-4 pb-12 text-center text-gray-400">
-	<p>Japanese Verb Conjugation Practice App</p>
+<footer class="flex flex-col items-center gap-1 bg-gray-900 pt-4 pb-20 text-center text-gray-400">
+	<p class="font-bold text-gray-300">日本語動詞活用練習</p>
 	<p class="text-sm">
-		Created with Svelte and Tailwind CSS by <a
+		Created with 🥰 by <a
 			href="https://github.com/andre-koga"
 			target="_blank"
 			class="text-indigo-400 hover:text-indigo-300">Andre Koga</a
-		>
+		> @ 2025
+	</p>
+	<p class="text-sm text-gray-400">
+		Donate to support the development of this app and other projects!
 	</p>
 </footer>
 
