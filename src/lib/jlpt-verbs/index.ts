@@ -11,9 +11,9 @@ import { n2Verbs } from './list-n2';
 import { n1Verbs } from './list-n1';
 
 export const allVerbs = {
-    n5: n5Verbs,
-    n4: n4Verbs,
-    n3: n3Verbs,
-    n2: n2Verbs,
-    n1: n1Verbs
-}; 
+	n5: n5Verbs,
+	n4: n4Verbs,
+	n3: n3Verbs,
+	n2: n2Verbs,
+	n1: n1Verbs
+};

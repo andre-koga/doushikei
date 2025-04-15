@@ -10,6 +10,7 @@ This tool downloads and extracts Japanese verbs from JMdict for use in the conju
 ## Setup
 
 1. Navigate to the `scripts` directory:
+
    ```
    cd scripts
    ```
@@ -26,15 +27,19 @@ This tool downloads and extracts Japanese verbs from JMdict for use in the conju
 ## Usage
 
 Run the extractor:
+
 ```
 npm run extract
 ```
+
 or
+
 ```
 pnpm run extract
 ```
 
 This will:
+
 1. Download the latest JMdict.gz file from the official source
 2. Parse the XML and extract verb entries
 3. Create a `verb-data.json` file in the `src/lib` directory with formatted verb data
@@ -57,4 +62,4 @@ You can modify settings in the `extract-verbs.js` file:
 ## Credits
 
 - JMdict/EDICT is the property of the Electronic Dictionary Research and Development Group (EDRDG), and used in conformance with the license.
-- More information at: https://www.edrdg.org/wiki/index.php/JMdict-EDICT_Dictionary_Project 
+- More information at: https://www.edrdg.org/wiki/index.php/JMdict-EDICT_Dictionary_Project

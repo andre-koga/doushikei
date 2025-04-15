@@ -1,6 +1,6 @@
-import { writable } from 'svelte/store';
+import { writable, get } from 'svelte/store';
 import { browser } from '$app/environment';
-import type { Tense, Polarity, Formality } from '$lib/verbs';
+import type { Tense, Polarity, Formality } from '$lib/types';
 import { tenseOptions, polarityOptions, formalityOptions } from '$lib/verbs';
 
 // Default preferences
@@ -8,12 +8,14 @@ const defaultTenses = tenseOptions.map((t) => t.id);
 const defaultPolarities = polarityOptions.map((p) => p.id);
 const defaultFormalities = formalityOptions.map((f) => f.id);
 const defaultRomaji = true;
+const defaultJLPTLevels = ['n5', 'n4', 'n3', 'n2', 'n1'];
 
 // Create stores with default values
 export const enabledTenses = writable<Tense[]>(defaultTenses);
 export const enabledPolarities = writable<Polarity[]>(defaultPolarities);
 export const enabledFormalities = writable<Formality[]>(defaultFormalities);
 export const useRomaji = writable<boolean>(defaultRomaji);
+export const enabledJLPTLevels = writable<string[]>(defaultJLPTLevels);
 
 // Load preferences from localStorage
 export const loadPreferences = () => {
@@ -43,6 +45,11 @@ export const loadPreferences = () => {
 			if (preferences.useRomaji !== undefined) {
 				useRomaji.set(preferences.useRomaji);
 			}
+
+			// Restore JLPT level selections
+			if (preferences.enabledJLPTLevels && preferences.enabledJLPTLevels.length > 0) {
+				enabledJLPTLevels.set(preferences.enabledJLPTLevels);
+			}
 		}
 	} catch (error) {
 		console.error('Error loading preferences:', error);
@@ -54,37 +61,15 @@ export const loadPreferences = () => {
 export const savePreferences = () => {
 	if (!browser) return;
 
-	try {
-		let tenseValues: Tense[] = [];
-		let polarityValues: Polarity[] = [];
-		let formalityValues: Formality[] = [];
-		let romajiValue = defaultRomaji;
+	const preferences = {
+		enabledTenses: get(enabledTenses),
+		enabledPolarities: get(enabledPolarities),
+		enabledFormalities: get(enabledFormalities),
+		useRomaji: get(useRomaji),
+		enabledJLPTLevels: get(enabledJLPTLevels)
+	};
 
-		// Get current values from stores
-		enabledTenses.subscribe((value) => {
-			tenseValues = value;
-		})();
-		enabledPolarities.subscribe((value) => {
-			polarityValues = value;
-		})();
-		enabledFormalities.subscribe((value) => {
-			formalityValues = value;
-		})();
-		useRomaji.subscribe((value) => {
-			romajiValue = value;
-		})();
-
-		const preferences = {
-			enabledTenses: tenseValues,
-			enabledPolarities: polarityValues,
-			enabledFormalities: formalityValues,
-			useRomaji: romajiValue
-		};
-
-		localStorage.setItem('verbConjugationPreferences', JSON.stringify(preferences));
-	} catch (error) {
-		console.error('Error saving preferences:', error);
-	}
+	localStorage.setItem('verbConjugationPreferences', JSON.stringify(preferences));
 };
 
 // Toggle functions

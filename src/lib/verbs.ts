@@ -9,7 +9,8 @@ export interface Verb {
 	// For godan verbs, what character the stem ends with
 	ending?: VerbEnding;
 	// For irregular verbs
-	irregularForms?: Record<`${Tense}-${Polarity}-${Formality}`, string>;
+	irregularForms?: Partial<Record<`${Tense}-${Polarity}-${Formality}`, string>>;
+	regularPattern?: 'godan' | 'ichidan';
 }
 
 export interface TenseOption {
@@ -18,8 +19,8 @@ export interface TenseOption {
 	description: string;
 	essential: boolean;
 	longDescription?: string; // Add detailed explanation of what the form is used for
-	hasFormality: boolean;    // Whether this tense has formality variations
-	hasPolarity: boolean;     // Whether this tense has polarity variations
+	hasFormality: boolean; // Whether this tense has formality variations
+	hasPolarity: boolean; // Whether this tense has polarity variations
 }
 
 export interface PolarityOption {

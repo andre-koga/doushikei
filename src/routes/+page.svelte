@@ -14,6 +14,7 @@
 	import TenseSelector from '$lib/components/TenseSelector.svelte';
 	import PolaritySelector from '$lib/components/PolaritySelector.svelte';
 	import FormalitySelector from '$lib/components/FormalitySelector.svelte';
+	import JLPTLevelSelector from '$lib/components/JLPTLevelSelector.svelte';
 
 	// Stores and utilities
 	import { loadPreferences } from '$lib/stores/preferenceStore';
@@ -67,6 +68,9 @@
 
 	<div class="mb-8 rounded-lg bg-gray-800 p-6 shadow-lg">
 		<div class="mb-6 grid gap-8 md:grid-cols-2">
+			<!-- JLPT Level Selection -->
+			<JLPTLevelSelector />
+
 			<!-- Tense Selection -->
 			<TenseSelector />
 

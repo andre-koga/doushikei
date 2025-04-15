@@ -12,15 +12,15 @@ import { purposeGoingRules } from './purposeGoing';
 import { purposeComingRules } from './purposeComing';
 
 export const allRules = {
-    ...basicRules,
-    ...shouldRules,
-    ...mustRules,
-    ...attemptiveRules,
-    ...preparatoryRules,
-    ...regrettableRules,
-    ...givingRules,
-    ...receivingRules,
-    ...simultaneousRules,
-    ...purposeGoingRules,
-    ...purposeComingRules
+	...basicRules,
+	...shouldRules,
+	...mustRules,
+	...attemptiveRules,
+	...preparatoryRules,
+	...regrettableRules,
+	...givingRules,
+	...receivingRules,
+	...simultaneousRules,
+	...purposeGoingRules,
+	...purposeComingRules
 };
