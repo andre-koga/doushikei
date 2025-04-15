@@ -96,72 +96,11 @@
 
 		<!-- Tense explanation -->
 		<TenseExplanation />
+
+		<!-- Score display -->
+		<ScoreDisplay />
 	{/if}
 </div>
 
-<!-- Score display -->
-<ScoreDisplay />
-
 <!-- Tense Performance Stats -->
 <TensePerformance />
-
-<!-- Example of using the verb conjugator -->
-<!-- <div class="container mx-auto p-4">
-		<h1 class="mb-4 text-2xl font-bold">Japanese Verb Conjugator</h1>
-
-		<div class="mb-4">
-			<label for="verb-select" class="mb-2 block">Select a verb:</label>
-			<select id="verb-select" class="rounded border p-2" bind:value={selectedVerb}>
-				<option value={undefined}>Choose a verb...</option>
-				{#each allVerbs as verb}
-					<option value={verb}>{verb.dictionary} ({verb.meaning})</option>
-				{/each}
-			</select>
-		</div>
-
-		{#if selectedVerb}
-			<div class="mb-4">
-				<label for="form-select" class="mb-2 block">Select conjugation form:</label>
-				<select id="form-select" class="rounded border p-2" bind:value={conjugationForm}>
-					<option value="present">Present</option>
-					<option value="past">Past</option>
-					<option value="negative">Negative</option>
-					<option value="te">Te-form</option>
-					<option value="potential">Potential</option>
-					<option value="passive">Passive</option>
-					<option value="causative">Causative</option>
-					<option value="imperative">Imperative</option>
-				</select>
-			</div>
-
-			<div class="mt-6 rounded bg-gray-100 p-4">
-				<h2 class="mb-2 text-xl">Conjugation Result:</h2>
-				<div class="text-2xl font-bold">{conjugatedForm}</div>
-				<div class="mt-2 text-gray-600">
-					Original: {selectedVerb.dictionary} ({selectedVerb.kana})
-					<br />
-					Meaning: {selectedVerb.meaning}
-				</div>
-			</div>
-		{/if}
-	</div> -->
-
-<footer class="flex flex-col items-center gap-1 bg-gray-900 pt-4 pb-20 text-center text-gray-400">
-	<p class="font-bold text-gray-300">日本語動詞活用練習</p>
-	<p class="text-sm">
-		Created with 🥰 by <a
-			href="https://github.com/andre-koga"
-			target="_blank"
-			class="text-indigo-400 hover:text-indigo-300">Andre Koga</a
-		> @ 2025
-	</p>
-	<p class="text-sm text-gray-400">
-		Donate to support the development of this app and other projects!
-	</p>
-</footer>
-
-<style>
-	.container {
-		max-width: 800px;
-	}
-</style>

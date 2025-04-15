@@ -63,6 +63,7 @@
 		{#each jlptLevels as level}
 			<div class="flex items-center divide-x divide-gray-600 overflow-hidden rounded-md">
 				<button
+					disabled={level.id !== 'n5'}
 					class="px-3 py-1 text-sm transition-colors {$enabledJLPTLevels.includes(level.id)
 						? level.id === 'n5'
 							? 'bg-violet-800/90 text-white hover:bg-violet-900/90'
@@ -90,5 +91,6 @@
 	</div>
 	<div class="mt-1 text-xs text-gray-400">
 		{$enabledJLPTLevels.length} of {jlptLevels.length} selected
+		<span class="ml-2 italic">(Note: Only N5 is currently available)</span>
 	</div>
 </div>
